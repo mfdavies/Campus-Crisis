@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Skein rootNode="node-0">
+  <generator>Windows Inform 10.1.2</generator>
+  <item nodeId="node-0">
+    <command xml:space="preserve">Yellow Team Demo</command>
+    <result xml:space="preserve">Yellow Team Demo&#x000A;An Interactive Fiction by Matt&#x000A;Release 1 / Serial number 221022 / Inform 7 v10.1.2 / D&#x000A;&#x000A;Classroom&#x000A;"Hey, hey wake up! We fell asleep!" You groggily awaken, fleeting thoughts of your dreams slowly dissipate from your memory as you begin to recall where you are. You look around the room calmly for a moment, then reality sets in. Your eyes widen and the panic hits you&#x2026; You fell asleep studying and your exam is in&#x2026; wait, what time is it? &#x000A;&#x000A;You can see a normal door and a backpack (in which is a phone) here.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-10"/>
+      <child nodeId="node-5"/>
+      <child nodeId="node-1"/>
+    </children>
+  </item>
+  <item nodeId="node-10">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">Classroom&#x000A;Here's the normal text.&#x000A;&#x000A;You can see a normal door, a key and a backpack (closed) here.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-11"/>
+    </children>
+  </item>
+  <item nodeId="node-11">
+    <command xml:space="preserve">open backpack</command>
+    <result xml:space="preserve">You open the backpack, revealing a phone.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-12"/>
+    </children>
+  </item>
+  <item nodeId="node-12">
+    <command xml:space="preserve">look</command>
+    <result xml:space="preserve">Classroom&#x000A;Here's the normal text.&#x000A;&#x000A;You can see a normal door, a key and a backpack (in which is a phone) here.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-13"/>
+    </children>
+  </item>
+  <item nodeId="node-13">
+    <command xml:space="preserve">take phone</command>
+    <result xml:space="preserve">Taken.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-14"/>
+    </children>
+  </item>
+  <item nodeId="node-14">
+    <command xml:space="preserve">use</command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-5">
+    <command xml:space="preserve">open backpack</command>
+    <result xml:space="preserve">That's already open.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-6"/>
+      <child nodeId="node-8"/>
+    </children>
+  </item>
+  <item nodeId="node-6">
+    <command xml:space="preserve">look backpack</command>
+    <result xml:space="preserve">In the backpack is a Phone.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-7"/>
+    </children>
+  </item>
+  <item nodeId="node-7">
+    <command xml:space="preserve">take phone</command>
+    <result xml:space="preserve">You can't see any such thing.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-8">
+    <command xml:space="preserve">take phone</command>
+    <result xml:space="preserve">Taken.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-9"/>
+    </children>
+  </item>
+  <item nodeId="node-9">
+    <command xml:space="preserve">use phone</command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-1">
+    <command xml:space="preserve">open door</command>
+    <result xml:space="preserve">You open the normal door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-15"/>
+      <child nodeId="node-2"/>
+    </children>
+  </item>
+  <item nodeId="node-15">
+    <command xml:space="preserve">close door</command>
+    <result xml:space="preserve">You close the normal door.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-16"/>
+    </children>
+  </item>
+  <item nodeId="node-16">
+    <command xml:space="preserve">enter door</command>
+    <result xml:space="preserve">(first opening the normal door)&#x000A;&#x000A;Computer Room&#x000A; It looks like a nerds heaven&#x000A;&#x000A;You can see a normal door here.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+  <item nodeId="node-2">
+    <command xml:space="preserve">eneter door</command>
+    <result xml:space="preserve">That's not a verb I recognise.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-3"/>
+    </children>
+  </item>
+  <item nodeId="node-3">
+    <command xml:space="preserve">enter door</command>
+    <result xml:space="preserve">Computer Room&#x000A; The Computer Room loos like a nerds heaven&#x000A;&#x000A;You can see a normal door here.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+    <children>
+      <child nodeId="node-4"/>
+    </children>
+  </item>
+  <item nodeId="node-4">
+    <command xml:space="preserve">enter door</command>
+    <result xml:space="preserve">Classroom&#x000A;Here's the normal text.&#x000A;&#x000A;You can see a normal door and a key here.&#x000A;&#x000A;&gt;</result>
+    <commentary xml:space="preserve"></commentary>
+    <changed>NO</changed>
+  </item>
+</Skein>
