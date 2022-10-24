@@ -1,4 +1,5 @@
 "Yellow Team Demo" by Matt
+
 Classroom is a room.
 The description of Classroom is "[if unvisited]'Hey, hey wake up! We fell asleep!' You groggily awaken, fleeting thoughts of your dreams slowly dissipate from your memory as you begin to recall where you are. You look around the room calmly for a moment, then reality sets in. Your eyes widen and the panic hits you… You fell asleep studying and your exam is in… wait, what time is it? [otherwise]Here's the text for every other time you enter the room."
 A desk are scenery in the Classroom.
@@ -8,7 +9,6 @@ The normal door is a door.
 The normal door is an closed door.
 The normal door is north of the Classroom and south of the Computer Room.
 The Computer Room is a room."It looks like a nerds heaven"
-
 
 [Start "Use" Definition]
 Using is an action applying to one thing. 
@@ -23,26 +23,6 @@ Carry out using something:
 	otherwise:
 		say "You can't use that.".
 [End "Use" Definition]
-
-The crab is an animal in Classroom. The description of the crab is "A crab, with bright red shell and long pincers."
-
-The crab can be adoring or not adoring. The crab is not adoring. 
-
-There is a fish head in Classroom. The description of the fish head is "This fish head smells a bit, but the crab seems to eye it longingly."
-
-Parking Lot is a room. Parking lot is east of Classroom.
-Sandbar is a room. Sandbar is west of Classroom.
-Ocean is a room. Ocean is south of Classroom.
-
-Instead of giving the fish head to the crab:
-	say "The crab takes the fish head in its long pincers and devours it. The little fella looks at you and trundles in your direction.";
-	now the crab is adoring;
-	remove the fish head from play.
-
-Every turn while the crab is adoring:
-	let pth be the best route from the location of the crab to the location of the player;
-	if pth is not nothing, try crab going pth.
-
 
 [test]
 [>CHECK YOUR PHONE (1)
