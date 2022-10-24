@@ -43,6 +43,8 @@ Every turn while the crab is adoring:
 	let pth be the best route from the location of the crab to the location of the player;
 	if pth is not nothing, try crab going pth.
 
+
+[test]
 [>CHECK YOUR PHONE (1)
 #>ASK YOUR FRIEND (2)
 #(1). You quickly fumble through your backpack for your phone, but you can’t seem to find it within the mess of your cue cards, #snacks, and empty energy drink cans. Frustrated, you turn to your friend & exasperatedly ask for the time. ]
