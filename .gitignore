@@ -1,6 +1,7 @@
 *~
 *.blurb
 *Build
+*Materials
 *.DS_Store
 *.glk*
 *.iFiction
