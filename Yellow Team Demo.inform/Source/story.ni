@@ -3,6 +3,7 @@
 Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
 Include NPC Implicit Actions by Eric Eve.
+Use undo prevention.
 
 When play begins:
 	 prepare the command sidebar, shown automatically, on the left, suggested after blank commands.
@@ -27,22 +28,33 @@ Displayed Command
 "Put it on something"
 "Wait (Z)"
 "?"
-"About"
 "Help"
 "Hint"
 "Save/Restore"
 "Quit (Q)"
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
 
+[Start "Classroom" Definition]
 Classroom is a room.
 The description of Classroom is "[if unvisited]'Hey, hey wake up! We fell asleep!' You groggily awaken, fleeting thoughts of your dreams slowly dissipate from your memory as you begin to recall where you are. You look around the room calmly for a moment, then reality sets in. Your eyes widen and the panic hits you… You fell asleep studying and your exam is in… wait, what time is it? [otherwise]Here's the text for every other time you enter the room."
 A desk are scenery in the Classroom.
 A backpack is a closed openable container in the Classroom.
 A phone is an object inside the backpack.
-The normal door is a door.
-The normal door is an closed door.
-The normal door is north of the Classroom and south of the Computer Room.
-The Computer Room is a room."It looks like a nerds heaven"
+
+The wooden door is a door.
+The wooden door is an closed door.
+The wooden door is north of the Classroom and south of the Computer Room.
+[End "Classroom" Definition]
+
+[Start "Computer Room" Definition]
+The Computer Room is a room.
+The description of Computer  Room is "It looks like a nerds heaven."
+[End "Computer Room" Definition]
+
+[Start "" Definition]
+The Computer Room is a room.
+The description of Computer  Room is "It looks like a nerds heaven."
+[End "Computer Room" Definition]
 
 [Start "Use" Definition]
 Using is an action applying to one thing. 
@@ -58,7 +70,5 @@ Carry out using something:
 		say "You can't use that.".
 [End "Use" Definition]
 
-[test]
-[>CHECK YOUR PHONE (1)
-#>ASK YOUR FRIEND (2)
-#(1). You quickly fumble through your backpack for your phone, but you can’t seem to find it within the mess of your cue cards, #snacks, and empty energy drink cans. Frustrated, you turn to your friend & exasperatedly ask for the time. ]
+
+
