@@ -43,15 +43,26 @@ A phone is an object inside the backpack.
 
 The wooden door is a door.
 The wooden door is an closed door.
-The wooden door is north of the Classroom and south of the Computer Room.
+The wooden door is north of the Classroom and south of the Hallway.
 [End "Classroom" Definition]
 
-[Start "Computer Room" Definition]
-The Computer Room is a room.
-The description of Computer  Room is "It looks like a nerds heaven."
-[End "Computer Room" Definition]
+[Start "Hallway" Definition]
+The Hallway is a room.
+The description of Hallway is "A crowded hallway with boxes blocking the exit."
+The box are scenery in the Hallway.
+The box can be blocking or not blocking. The box is blocking.
+Instead of pushing the box:
+	say "You moved the box out of the way!";
+	now the box is not blocking.
 
-[Start "" Definition]
+Before going north:
+	if the player is in the Hallway and the box is blocking:
+    		say "You can't get past because of all of the boxes.";
+		stop the action.
+The Hallway is south of the Computer room.
+[End "Hallway" Definition]
+
+[Start "Computer Room" Definition]
 The Computer Room is a room.
 The description of Computer  Room is "It looks like a nerds heaven."
 [End "Computer Room" Definition]
@@ -69,6 +80,4 @@ Carry out using something:
 	otherwise:
 		say "You can't use that.".
 [End "Use" Definition]
-
-
 
