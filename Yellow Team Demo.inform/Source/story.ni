@@ -1,6 +1,8 @@
 "Yellow Team Demo" by Matt
 
 Include Common Commands Sidebar by Alice Grove.
+Include Conversation Package by Eric Eve.
+Include NPC Implicit Actions by Eric Eve.
 
 When play begins:
 	 prepare the command sidebar, shown automatically, on the left, suggested after blank commands.
