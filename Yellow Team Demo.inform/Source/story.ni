@@ -3,10 +3,13 @@
 Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
 Include NPC Implicit Actions by Eric Eve.
+Include Exit Lister by Gavin Lambert.
+
 Use undo prevention.
 
 When play begins:
-	 prepare the command sidebar, shown automatically, on the left, suggested after blank commands.
+	prepare the command sidebar, shown automatically, on the left, suggested after blank commands;
+	don't mention visited rooms.
 
 Table of Custom Sidebar Commands (continued)
 Displayed Command
@@ -32,13 +35,13 @@ Displayed Command
 "Hint"
 "Save/Restore"
 "Quit (Q)"
+"Exits on/off"
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
 
 [Start Room Layout Definition]
 The wooden door is a closed door.
 The wooden door is west of the Classroom and east of the Hallway.
 
-The Computer Room is north of the Hallway.
 The Puzzle Room 1 is south of the Hallway.
 The Central Hub is west of the Puzzle Room 1.
 The Temp 1 is west of the Central Hub.
@@ -59,23 +62,19 @@ A phone is an object inside the backpack.
 
 [Start "Hallway" Definition]
 The Hallway is a room.
-The description of Hallway is "A crowded hallway with boxes blocking the exit."
-The box are scenery in the Hallway.
-The box can be blocking or not blocking. The box is blocking.
-Instead of pushing the box:
-	say "You moved the box out of the way!";
-	now the box is not blocking.
+The description of Hallway is "[if boxes are blocking]A crowded hallway with boxes blocking the south exit.[otherwise]A crowded hallway."
+Some boxes are in the Hallway. The boxes are fixed in place.
+The boxes can be blocking or not blocking. The boxes are blocking.
+Instead of pushing the boxes:
+	if the boxes are blocking:
+		say "You moved the boxes out of the way!";
+		now the boxes are not blocking.
 
-Before going north:
-	if the player is in the Hallway and the box is blocking:
+Before going south:
+	if the player is in the Hallway and the boxes is blocking:
     		say "You can't get past because of all of the boxes.";
 		stop the action.
 [End "Hallway" Definition]
-
-[Start "Computer Room" Definition]
-The Computer Room is a room.
-The description of Computer Room is "It looks like a nerds heaven."
-[End "Computer Room" Definition]
 
 [Start "Puzzle Room 1" Definition]
 The Puzzle Room 1 is a room.
