@@ -37,7 +37,7 @@ Displayed Command
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
 
 [Start Room Layout Definition]
-The wooden door is a closed door.
+The wooden door is a locked closed door.
 The wooden door is west of the Classroom and east of the Hallway.
 
 The Puzzle Room 1 is south of the Hallway.
@@ -108,9 +108,9 @@ Your locker can be locked or unlocked. Your locker is locked.
 	if the input is XXX:
 		now the locker is still locked. ]
 
-Before going west:
+[Before going west:
 	say "I need to open my locker get my stuff";
-	stop the action.
+	stop the action.]
 
 
 [End "Puzzle Room 1" Definition]
@@ -168,12 +168,15 @@ Understand "call [any thing]" as calling.
 Carry out calling someone:
 	if player is carrying phone:
 		if the noun is Companion:
-			[TODO - Classroom is initially locked and Companion unlocks the door from the outside;
-			calls after the first should have different behaviour]
-			now the Companion is in the Classroom;
-			now the Companion is following;
-			say "'Hi Companion. I need some help, can you come to the Classroom?'[paragraph break]
-				 Soon after, the companion enters the room and greets you.";
+			if player is in Classroom and wooden door is locked:
+				now the Companion is in the Classroom;
+				now the Companion is following;
+				now the wooden door is unlocked;
+				say "'Hi Companion, I'm locked inside the Classroom, can you come help me?'[paragraph break]
+					 Soon after, you hear a click and the door unlocks.[paragraph break]
+					 The Companion enters the room and greets you.";
+			otherwise:
+				say "'What are you doing? I'm right beside you,' says the Companion";
 		otherwise:
 			say "You can't call that person.";
 	otherwise:
