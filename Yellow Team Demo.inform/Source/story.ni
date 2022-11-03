@@ -7,9 +7,29 @@ Include Exit Lister by Gavin Lambert.
 
 Use undo prevention.
 
+The pname is a text that varies.
+
 When play begins:
 	prepare the command sidebar, shown automatically, on the left, suggested after blank commands;
-	don't mention visited rooms.
+	don't mention visited rooms;
+	now the command prompt is "What is your name? > ".
+
+To decide whether collecting names:
+	if the command prompt is "What is your name? > ", yes;
+	no.
+
+After reading a command when collecting names:
+	if the number of words in the player's command is greater than 5:
+		say "[paragraph break]Who are you, a member of the British royal family? No one has that many names. Let's try this again.";
+		reject the player's command;
+	now the pname is the substituted form of the player's command;
+	now the command prompt is ">";
+	say "Hi, [pname]![paragraph break]";
+	move the player to the location;
+	reject the player's command.
+	
+Instead of looking when collecting names: do nothing.
+Rule for constructing the status line when collecting names: do nothing.
 
 Table of Custom Sidebar Commands (continued)
 Displayed Command
