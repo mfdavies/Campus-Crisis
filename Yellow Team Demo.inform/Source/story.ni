@@ -35,7 +35,7 @@ Displayed Command
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
 
 [Start Room Layout Definition]
-The wooden door is an closed door.
+The wooden door is a closed door.
 The wooden door is west of the Classroom and east of the Hallway.
 
 The Computer Room is north of the Hallway.
@@ -118,16 +118,44 @@ The description of Exam Room is "Exam Room placeholder."
 [End "Exam Room" Definition]
 
 [Start "Use" Definition]
-Using is an action applying to one thing. 
+Using is an action applying to one carried thing. 
 Understand "use [something]" as using.
 
 Carry out using something:
 	if the noun is the phone:
-		if the player carries the phone:
-			say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get Binder[line break]-Print Notes";
-		otherwise:
-			say "You aren't carrying the phone.";
+		say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get Binder[line break]-Print Notes";
 	otherwise:
 		say "You can't use that.".
 [End "Use" Definition]
 
+[Start "Call" Definition]
+Calling is an action applying to one visible thing.
+Understand "call [any thing]" as calling.
+
+Carry out calling someone:
+	if player is carrying phone:
+		if the noun is Companion:
+			[TODO - Classroom is initially locked and Companion unlocks the door from the outside;
+			calls after the first should have different behaviour]
+			now the Companion is in the Classroom;
+			now the Companion is following;
+			say "'Hi Companion. I need some help, can you come to the Classroom?'[paragraph break]
+				 Soon after, the companion enters the room and greets you.";
+		otherwise:
+			say "You can't call that person.";
+	otherwise:
+		say "You aren't carrying the phone.".
+[End "Call" Definition]
+
+[Start Companion Definition]
+
+Companion is a person.
+Companion can be following or not following. Companion is not following.
+
+Every turn:
+	if Companion is following:
+		if the location of Companion is not the location of the player:
+			let the way be the best route from the location of Companion to the location of the player, using even locked doors;
+			try Companion going the way;
+
+[End Companion Definition]
