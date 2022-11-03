@@ -16,10 +16,8 @@ Displayed Command
 "[bold type]Useful Commands"
 " "
 "[fixed letter spacing]     N"
-"[fixed letter spacing]  NW   NE"
-"[fixed letter spacing]W    *    E"
-"[fixed letter spacing]  SW   SE"
-"[fixed letter spacing]	    S"
+"[fixed letter spacing]W  *  E"
+"[fixed letter spacing]     S"
 " "
 "Look (L)"
 "Inventory (I)"
@@ -89,26 +87,26 @@ Before going south:
 The Puzzle Room 1 is a room.
 The description of Puzzle Room 1 is "Your locker with a num lock."
 
-Your locker and your Companion's locker are scenery in the Puzzle Room 1.
-Your locker and Companion's locker can be locked or unlocked. Your locker and Companion's locker are locked.
+Your Companion's locker are scenery in the Puzzle Room 1.
+Your Companion's locker can be locked or unlocked. Your Companion's locker are locked.
 
 Your locker are scenery in the Puzzle Room 1.
 Your locker can be locked or unlocked. Your locker is locked.
 
 
-If player is trying to open the locker:
+[If player is trying to open the locker:
 	say "password of nun lock? >";
 	now the locker is still locked.
 
 	if the input is XXX:
-		now the locker is still locked.
+		now the locker is still locked. ]
 		
 
-If player is trying to open companion's locker:
+ [ If player is trying to open companion's locker:
 	say "ask companion for the password >"
 	now the locker is still locked.
 	if the input is XXX:
-		now the locker is still locked.
+		now the locker is still locked. ]
 
 Before going west:
 	say "I need to open my locker get my stuff";
@@ -175,7 +173,7 @@ Carry out calling someone:
 			now the Companion is in the Classroom;
 			now the Companion is following;
 			say "'Hi Companion. I need some help, can you come to the Classroom?'[paragraph break]
-				 Soon after, the companion				 enters the room and greets you.";
+				 Soon after, the companion enters the room and greets you.";
 		otherwise:
 			say "You can't call that person.";
 	otherwise:
