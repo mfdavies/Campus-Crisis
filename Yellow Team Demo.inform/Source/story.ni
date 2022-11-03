@@ -52,6 +52,7 @@ The Cafeteria is south of the Puzzle Room 4.
 The Exam Room is west of the Cafeteria.
 [End Room Layout Definition]
 
+
 [Start "Classroom" Definition]
 Classroom is a room.
 The description of Classroom is "[if unvisited]'Hey, hey wake up! We fell asleep!' You groggily awaken, fleeting thoughts of your dreams slowly dissipate from your memory as you begin to recall where you are. You look around the room calmly for a moment, then reality sets in. Your eyes widen and the panic hits you… You fell asleep studying and your exam is in… wait, what time is it? [otherwise]Here's the text for every other time you enter the room."
@@ -59,6 +60,7 @@ A desk is scenery in the Classroom.
 A backpack is a closed openable container in the Classroom.
 A phone is an object inside the backpack.
 [End "Classroom" Definition]
+
 
 [Start "Hallway" Definition]
 The Hallway is a room.
@@ -79,12 +81,18 @@ Before going south:
 [Start "Puzzle Room 1" Definition]
 The Puzzle Room 1 is a room.
 The description of Puzzle Room 1 is "Your locker with a num lock."
+<<<<<<< Updated upstream
 Your locker and your Companion's locker are scenery in the Puzzle Room 1.
 Your locker and Companion's locker can be locked or unlocked. Your locker and Companion's locker are locked.
+=======
+Your locker are scenery in the Puzzle Room 1.
+Your locker can be locked or unlocked. Your locker is locked.
+>>>>>>> Stashed changes
 
 If player is trying to open the locker:
 	say "password of nun lock?";
 	now the locker is still locked.
+<<<<<<< Updated upstream
 	if the input is XXX:
 		now the locker is still locked.
 		
@@ -95,10 +103,16 @@ If player is trying to open companion's locker:
 	if the input is XXX:
 		now the locker is still locked.
 
+=======
+>>>>>>> Stashed changes
 
 Before going west:
 	say "I need to open my locker get my stuff";
 	stop the action.
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 [End "Puzzle Room 1" Definition]
 
 [Start "Central Hub" Definition]
@@ -179,7 +193,15 @@ Every turn:
 
 [End Companion Definition]
 
+<<<<<<< Updated upstream
 [Start Start Room Definition]
 Start Room is a room.
 The description of Start Room is "Create Your Character and Your Companion."
 [End Start Room Definition]
+=======
+[Start "StartRoom" Definition]
+Start room is a room. 
+The description of Start room is "Create your character. "
+
+[End "StartRoom" Definition]
+>>>>>>> Stashed changes
