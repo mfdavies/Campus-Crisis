@@ -115,13 +115,19 @@ Before going south:
 
 [Start "Puzzle Room 1" Definition]
 The Puzzle Room 1 is a room.
-The description of Puzzle Room 1 is "Your locker with a num lock."
+The description of Puzzle Room 1 is "There is a row of lockers. You are here for your stuff and your companion's wallet"
 
-Your Companion's locker are scenery in the Puzzle Room 1.
-Your Companion's locker can be locked or unlocked. Your Companion's locker are locked.
+Player and player's companion's lockers are in the Puzzle Room 1.
+Player's Companion's locker is an openable container in the Puzzle Room 1.
+Player's Companion's wallet is inside the Companion's locker.
+The description of Companion's locker is "Your companion locker with a num lock."
+Player's Companion's locker are scenery in the Puzzle Room 1.
+Player's Companion's locker can be locked or unlocked. Your Companion's locker are locked.
+Instead of opening Companion's locker:
+	say "You don't know the password of the num lock, Call your companion asking for the password."
 
-Your locker are scenery in the Puzzle Room 1.
-Your locker can be locked or unlocked. Your locker is locked.
+[Your locker are scenery in the Puzzle Room 1.
+Your locker can be locked or unlocked. Your locker is locked.]
 
 
 [If player is trying to open the locker:
@@ -250,6 +256,13 @@ Carry out calling someone:
 			say "You can't call that person.";
 	otherwise:
 		say "You aren't carrying the phone.".
+		
+Carry out calling someone:
+	if player is carrying phone:
+		if the noun is Companion:
+			if player is in Puzzle Room 1 and Companion's locker is locked:
+				now the Companion's locker is unlocked;
+				say "'You forgot my locker password?! It's 5020";
 [End "Call" Definition]
 
 [Start Companion Definition]
