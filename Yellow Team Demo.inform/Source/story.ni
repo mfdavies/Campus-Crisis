@@ -46,6 +46,7 @@ Displayed Command
 "[fixed letter spacing]   S"
 " "
 "Look (L)"
+"Go/Walk direction"
 "Inventory (I)"
 "Take/Drop something"
 "Examine something"
@@ -78,11 +79,11 @@ The wooden door is west of the Classroom and east of the Hallway.
 Classroom is a room.
 The Locker Room is south of the Hallway.
 The Central Hub is west of the Locker Room.
-The Temp 1 is west of the Central Hub.
-The Puzzle Room 2 is north of the Temp 1.
-The Puzzle Room 3 is west of the Temp 1.
-The Puzzle Room 4 is south of the Central Hub.
-The Cafeteria is south of the Puzzle Room 4.
+The west wing is west of the Central Hub.
+The Computer Room is north of the west wing.
+The Library is west of the west wing.
+The Chemistry Lab is south of the Central Hub.
+The Cafeteria is south of the Chemistry Lab.
 The Exam Room is west of the Cafeteria.
 [End Room Layout Definition]
 
@@ -102,12 +103,12 @@ Check opening the locked wooden door:
 
 [Start "Hallway" Definition]
 The Hallway is a room.
-The description of Hallway is "[if boxes are blocking]A crowded hallway with boxes blocking the south exit.[otherwise]A crowded hallway."
+The description of Hallway is "[if unvisited]You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. You ask your friend, 'was this always here?' To which they simply shrug in response.[otherwise if boxes are blocking]A crowded hallway with boxes and papers all over the ground, there is a pile of boxes blocking the south exit.[otherwise]A crowded hallway with boxes and papers all over the ground."
 Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
 Instead of pushing the boxes:
 	say "Ugh its too heavy, maybe I should ask my companion for help".
-	
+
 Before going south:
 	if the player is in the Hallway and the boxes is blocking:
     		say "You can't get past because of all of the boxes.";
@@ -116,11 +117,11 @@ Before going south:
 
 [Start "Locker Room" Definition]
 The Locker Room is a room.
-The description of Locker Room is "[if unvisited] There is a row of lockers. [add password ask suggestion] [otherwise] There is a row of lockers. ".
+The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and your companion always store your suppies. [add password ask suggestion] [otherwise] There is a row of lockers along the south wall, this is where you and your companion always store your suppies.".
 
 Your shared locker is an openable container in Locker Room.
 pencil is inside Your shared locker.
-The description of Your shared locker is "Your Companion's locker with a number combination lock."
+The description of Your shared locker is "Your shared locker with a number combination lock."
 Your shared locker can be locked or unlocked.  Your shared locker is locked.
 Check opening the locked Your shared locker:
 	say "You don't know the password, maybe you should ask your companion about it."
@@ -128,29 +129,30 @@ Check opening the locked Your shared locker:
 
 [Start "Central Hub" Definition]
 The Central Hub is a room.
-The description of Central Hub is "central hub placeholder."
+The description of Central Hub is "This is the main hub of the school, you are surprised you dont see anyone around, it must be too early.".
 [End "Central Hub" Definition]
 
-[Start "Temp 1" Definition]
-The Temp 1 is a room.
-The description of Temp 1 is "Temp 1 placeholder."
-[End "Temp 1" Definition]
+[Start "west wing" Definition]
+The West Wing is a room.
+The description of west wing is "It's called the wing but its pretty small, there are some couches in the center of the room."
+Some couches are scenery in the west wing.
+[End "west wing" Definition]
 
-[Start "Puzzle Room 2" Definition]
-The Puzzle Room 2 is a room.
-The description of Puzzle Room 2 is "Puzzle Room 2 placeholder."
-[End "Puzzle Room 2" Definition]
+[Start "Computer Room" Definition]
+The Computer Room is a room.
+The description of Computer Room is "There are tons of computers in here, unfortunately you don't neeed to use any of them"
+[End "Computer Room" Definition]
 
-[Start "Puzzle Room 3" Definition]
-The Puzzle Room 3 is a room.
-The description of Puzzle Room 3 is "Puzzle Room 3 placeholder."
-[End "Puzzle Room 3" Definition]
+[Start "Library" Definition]
+The Library is a room.
+Some money is in Library.
+The description of Library is "There are tons of books scattered about, looks like you were not the only one panic-studying"
+[End "Library" Definition]
 
-[Start "Puzzle Room 4" Definition]
-The Puzzle Room 4 is a room.
-The description of Puzzle Room 4 is "Puzzle Room 4 placeholder."
-Some money is in Puzzle Room 4.
-[End "Puzzle Room 4" Definition]
+[Start "Chemistry Lab" Definition]
+The Chemistry Lab is a room.
+The description of Chemistry Lab is "Chemistry Lab"
+[End "Chemistry Lab" Definition]
 
 [Start "Cafeteria" Definition]
 The Cafeteria is a room.
@@ -262,12 +264,9 @@ After quizzing Companion about password:
 	now the your shared locker is unlocked;
 	say "'You forgot our locker password?! Come on [pname], it's 5020. [remove password ask suggestion]".
 	
-[Start quizzing Companion about the password definition]
 Instead of requesting Companion for password:
 	now the your shared locker is unlocked;
 	say "'You forgot our locker password?! Come on [pname], it's 5020. [remove password ask suggestion]".
-[End quizzing Companion about the password definition]
-
 [End quizzing Companion about the password definition]
 
 
