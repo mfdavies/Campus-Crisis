@@ -76,8 +76,8 @@ A person can be full or not full.
 The wooden door is a locked closed door.
 The wooden door is west of the Classroom and east of the Hallway.
 Classroom is a room.
-The Puzzle Room 1 is south of the Hallway.
-The Central Hub is west of the Puzzle Room 1.
+The Locker Room is south of the Hallway.
+The Central Hub is west of the Locker Room.
 The Temp 1 is west of the Central Hub.
 The Puzzle Room 2 is north of the Temp 1.
 The Puzzle Room 3 is west of the Temp 1.
@@ -97,7 +97,7 @@ A backpack is a closed openable container in the Classroom.
 A phone is an object inside the backpack.
 
 Check opening the locked wooden door:
-	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type] Hmm, locked in? Maybe I should call companion and see if they can open it from the other side. [roman type]” instead.
+	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call companion and see if they can open it from the other side.[roman type]” instead.
 [End "Classroom" Definition]
 
 [Start "Hallway" Definition]
@@ -114,19 +114,17 @@ Before going south:
 		stop the action.
 [End "Hallway" Definition]
 
-[Start "Puzzle Room 1" Definition]
-The Puzzle Room 1 is a room.
-The description of Puzzle Room 1 is "There is a row of lockers. You are here for your stuff and your companion's wallet"
+[Start "Locker Room" Definition]
+The Locker Room is a room.
+The description of Locker Room is "[if unvisited] There is a row of lockers. [add password ask suggestion] [otherwise] There is a row of lockers. ".
 
-Companion's locker is an openable container in Puzzle Room 1.
-Companion's wallet is inside Companion's locker.
-The description of Companion's locker is "Your Companion's locker with a number combination lock."
-Companion's locker are scenery in the Puzzle Room 1.
-Companion's locker can be locked or unlocked.  Companion's locker are locked.
-Instead of opening Companion's locker:
-	say "You don't know the password of the num lock, Call your companion asking for the password."
-
-[End "Puzzle Room 1" Definition]
+Your shared locker is an openable container in Locker Room.
+pencil is inside Your shared locker.
+The description of Your shared locker is "Your Companion's locker with a number combination lock."
+Your shared locker can be locked or unlocked.  Your shared locker is locked.
+Check opening the locked Your shared locker:
+	say "You don't know the password, maybe you should ask your companion about it."
+[End "Locker Room" Definition]
 
 [Start "Central Hub" Definition]
 The Central Hub is a room.
@@ -141,7 +139,6 @@ The description of Temp 1 is "Temp 1 placeholder."
 [Start "Puzzle Room 2" Definition]
 The Puzzle Room 2 is a room.
 The description of Puzzle Room 2 is "Puzzle Room 2 placeholder."
-A pencil is in Puzzle Room 2.
 [End "Puzzle Room 2" Definition]
 
 [Start "Puzzle Room 3" Definition]
@@ -161,6 +158,7 @@ The description of Cafeteria is "You can smell a lot of delicious food in here, 
 
 [Start Employee Definition]
 food is a familiar thing.
+where they were is a familiar thing.
 Employee is a person in the Cafeteria.
 The ask-suggestions are {food }.
 Instead of requesting Employee for food:
@@ -224,11 +222,7 @@ Carry out calling someone:
 				now the Companion is ontheway;
 				say "'You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait…[roman type]";
 			otherwise:
-				if player is in Puzzle Room 1 and Companion's locker is locked:
-					now the Companion's locker is unlocked;
-					say "'You forgot my locker password?! It's 5020";
-				otherwise:
-					say "'What are you doing? I'm right beside you,' says the Companion";
+				say "'What are you doing? I'm right beside you,' says the Companion";
 		otherwise:
 			say "You can't call that person.";
 	otherwise:
@@ -238,36 +232,50 @@ Carry out calling someone:
 [Start Companion Definition]
 
 Companion is a person.
+The ask-suggestions are {where they were }.
 Companion can be following or not following. Companion is not following.
 
 Every turn:
 	if Companion is following:
 		if the location of Companion is not the location of the player:
 			let the way be the best route from the location of Companion to the location of the player, using even locked doors;
-			try Companion going the way;
+			try Companion going the way.
 			
-amanda is a familiar thing.
-[The ask-suggestions are {  self-suggestion, amanda}.]
 [Start imploring for help definition]
 Instead of imploring companion for "help":
 	if the player is in the Hallway and the boxes is blocking:
-		say "Alright [pname], I'll help you out.[line break]You both pushed the boxes out of the way!";
+		say "Alright [pname], I'll help you out.[line break]You both pushed the boxes out of the way![remove where they were ask suggestion]";
 		now the boxes are not blocking;
 		stop the action;
 	otherwise:
 		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room".
 [End imploring for help definition]
 
-After quizzing Companion about amanda:
-	say "Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?[paragraph break]Your friend laughs which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.' [remove amanda ask suggestion]".
+[Start quizzing Companion about where they were definition]
+After quizzing Companion about where they were:
+	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'".
+[End quizzing Companion about where they were definition]
+
+password is a familiar object.
+[Start quizzing Companion about the password definition]
+After quizzing Companion about password:
+	now the your shared locker is unlocked;
+	say "'You forgot our locker password?! Come on [pname], it's 5020. [remove password ask suggestion]".
 	
+[Start quizzing Companion about the password definition]
+Instead of requesting Companion for password:
+	now the your shared locker is unlocked;
+	say "'You forgot our locker password?! Come on [pname], it's 5020. [remove password ask suggestion]".
+[End quizzing Companion about the password definition]
+
+[End quizzing Companion about the password definition]
 
 
-Default ask response for the companion:
-	say "'[one of]This really isn't the best time to discuss that[or]I'd rather not talk about that right now[or]You should focus on getting your supplies for this exam[in random order],' he replies.".
-	
+[This is not currently used.]
+After quizzing Companion about food:
+	say "'Oh yeah I'm starving', they reply.".
 
-
+[Start Companion on the way definition]
 Companion can be ontheway or not ontheway. Companion is not ontheway.
 Instead of waiting:
 	if the player is in the classroom and the wooden door is locked and the companion is ontheway:
@@ -276,4 +284,5 @@ Instead of waiting:
 		now the wooden door is unlocked;
 		now the wooden door is open;
 		say "After a few brief moments, you hear a *click* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type]  Your companion smirks back at you and says, 'You look like you have something to ask me' [italic type]Do I ask them something or quit wasting time?'[roman type]".
+[end Companion on the way definition]
 [End Companion Definition]
