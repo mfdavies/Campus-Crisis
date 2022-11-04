@@ -100,7 +100,6 @@ Check opening the locked wooden door:
 	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type] Hmm, locked in? Maybe I should call companion and see if they can open it from the other side. [roman type]” instead.
 [End "Classroom" Definition]
 
-
 [Start "Hallway" Definition]
 The Hallway is a room.
 The description of Hallway is "[if boxes are blocking]A crowded hallway with boxes blocking the south exit.[otherwise]A crowded hallway."
@@ -222,9 +221,7 @@ Carry out calling someone:
 	if player is carrying phone:
 		if the noun is Companion:
 			if player is in Classroom and wooden door is locked:
-				now the Companion is in the Classroom;
-				now the Companion is following;
-				now the wooden door is unlocked;
+				now the Companion is ontheway;
 				say "'You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait…[roman type]";
 			otherwise:
 				if player is in Puzzle Room 1 and Companion's locker is locked:
@@ -268,4 +265,15 @@ After quizzing Companion about amanda:
 
 Default ask response for the companion:
 	say "'[one of]This really isn't the best time to discuss that[or]I'd rather not talk about that right now[or]You should focus on getting your supplies for this exam[in random order],' he replies.".
+	
+
+
+Companion can be ontheway or not ontheway. Companion is not ontheway.
+Instead of waiting:
+	if the player is in the classroom and the wooden door is locked and the companion is ontheway:
+		now the Companion is in the Classroom;
+		now the Companion is following;
+		now the wooden door is unlocked;
+		now the wooden door is open;
+		say "After a few brief moments, you hear a *click* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type]  Your companion smirks back at you and says, 'You look like you have something to ask me' [italic type]Do I ask them something or quit wasting time?'[roman type]".
 [End Companion Definition]
