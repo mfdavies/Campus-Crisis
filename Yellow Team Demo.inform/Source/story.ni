@@ -9,6 +9,9 @@ Use undo prevention.
 Sound of alarm is the file "alarm.ogg".
 The pname is a text that varies.
 
+Release along with an interpreter.
+
+
 When play begins:
 	prepare the command sidebar, shown automatically, on the left, suggested after blank commands;
 	don't mention visited rooms;
