@@ -1,16 +1,17 @@
-"Yellow Team Demo" by Matt
+"Exam" by The Yellow Team
 
 Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
 Include NPC Implicit Actions by Eric Eve.
 Include Exit Lister by Gavin Lambert.
+Include Complex Listing by Emily Short
+
 
 Use undo prevention.
 Sound of alarm is the file "alarm.ogg".
 The pname is a text that varies.
 
 Release along with an interpreter.
-
 
 When play begins:
 	prepare the command sidebar, shown automatically, on the left, suggested after blank commands;
@@ -54,6 +55,12 @@ Displayed Command
 "Put something in something"
 "Put something on something"
 "Wait (Z)"
+"Talk to someone"
+"?"
+"When talking:"
+"Ask for something"
+"Ask about something"
+"Topics"
 "?"
 "Help"
 "Hint"
@@ -61,6 +68,8 @@ Displayed Command
 "Quit (Q)"
 "Exits on/off"
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
+
+A person can be full or not full.
 
 [Start Room Layout Definition]
 The wooden door is a locked closed door.
@@ -84,6 +93,9 @@ A chair is scenery in the Classroom.
 A whiteboard is scenery in the Classroom.
 A backpack is a closed openable container in the Classroom.
 A phone is an object inside the backpack.
+
+Check opening the locked wooden door:
+	say “It's locked, maybe you should try calling your companion.” instead.
 [End "Classroom" Definition]
 
 
@@ -94,12 +106,6 @@ Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
 Instead of pushing the boxes:
 	say "Ugh its too heavy, maybe I should ask my companion for help".
-		
-Instead of imploring for "help":
-	if the player is in the Hallway and the boxes is blocking:
-		say "Alright [pname], I'll help you out.[line break]You both pushed the boxes out of the way!";
-		now the boxes are not blocking;
-		stop the action.
 	
 Before going south:
 	if the player is in the Hallway and the boxes is blocking:
@@ -152,6 +158,7 @@ The description of Temp 1 is "Temp 1 placeholder."
 [Start "Puzzle Room 2" Definition]
 The Puzzle Room 2 is a room.
 The description of Puzzle Room 2 is "Puzzle Room 2 placeholder."
+A pencil is in Puzzle Room 2.
 [End "Puzzle Room 2" Definition]
 
 [Start "Puzzle Room 3" Definition]
@@ -162,16 +169,54 @@ The description of Puzzle Room 3 is "Puzzle Room 3 placeholder."
 [Start "Puzzle Room 4" Definition]
 The Puzzle Room 4 is a room.
 The description of Puzzle Room 4 is "Puzzle Room 4 placeholder."
+Some money is in Puzzle Room 4.
 [End "Puzzle Room 4" Definition]
 
 [Start "Cafeteria" Definition]
 The Cafeteria is a room.
-The description of Cafeteria is "Cafeteria placeholder."
+The description of Cafeteria is "You can smell a lot of delicious food in here, unfortunately only one shop is open. There are a bunch of tables scattered around the room and there is one employee working at McRonalds."
+
+[Start Employee Definition]
+food is a familiar thing.
+Employee is a person in the Cafeteria.
+The ask-suggestions are {food }.
+Instead of requesting Employee for food:
+	  if the money is carried:
+		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up'";
+		now the player is full;
+		stop the action;
+	otherwise:
+		if the player is full:
+			say "'You just ate, how could you be hungry again?' he replies";
+		otherwise:
+			say "You'll need some money first.".
+		
+After quizzing Employee about food:
+	  if the money is carried:
+		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up'";
+		now the player is full;
+		stop the action;
+	otherwise:
+		if the player is full:
+			say "'You just ate, how could you be hungry again?' he replies";
+		otherwise:
+			say "You'll need some money first.".
+
+Default ask response for the Employee:
+	say "'We don't sell that here.' he replies.".
+[End Employee Definition]
+Before going west:
+	if the player is in the Cafeteria:
+		if the player is not full and the pencil is not carried:
+			say "You have more things to do first, use your phone for to see the list.";
+			stop the action;
+		otherwise:
+			end the story saying "You made it to the exam on time.".
 [End "Cafeteria" Definition]
 
 [Start "Exam Room" Definition]
 The Exam Room is a room.
-The description of Exam Room is "Exam Room placeholder."
+The description of Exam Room is "This room is purposely unreachable"
 [End "Exam Room" Definition]
 
 [Start "Use" Definition]
@@ -180,7 +225,7 @@ Understand "use [something]" as using.
 
 Carry out using something:
 	if the noun is the phone:
-		say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get Binder[line break]-Print Notes";
+		say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get Binder[line break]-Get food";
 	otherwise:
 		say "You can't use that.".
 [End "Use" Definition]
@@ -218,4 +263,17 @@ Every turn:
 			let the way be the best route from the location of Companion to the location of the player, using even locked doors;
 			try Companion going the way;
 
+The ask-suggestions are {  self-suggestion }.
+[Start imploring for help definition]
+Instead of imploring companion for "help":
+	if the player is in the Hallway and the boxes is blocking:
+		say "Alright [pname], I'll help you out.[line break]You both pushed the boxes out of the way!";
+		now the boxes are not blocking;
+		stop the action;
+	otherwise:
+		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room".
+[End imploring for help definition]
+
+Default ask response for the companion:
+	say "'[one of]This really isn't the best time to discuss that[or]I'd rather not talk about that right now[or]You should focus on getting your supplies for this exam[in random order],' he replies.".
 [End Companion Definition]
