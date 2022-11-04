@@ -42,7 +42,7 @@ Displayed Command
 "Look (L)"
 "Inventory (I)"
 "Take/Drop something"
-"Examine (X) it"
+"Examine something"
 "Use something"
 "Call someone"
 "Open/Close it"
@@ -87,11 +87,15 @@ The description of Hallway is "[if boxes are blocking]A crowded hallway with box
 Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
 Instead of pushing the boxes:
-	if the boxes are blocking:
-		say "You moved the boxes out of the way!";
-		now the boxes are not blocking.
+		say "Ugh its too heavy, maybe I should ask my companion for help".
 		
 
+Instead of imploring for "help":
+	if the player is in the Hallway and the boxes is blocking:
+		say "Alright [pname], I'll help you out[paragraph break]You both pushed the boxes out of the way!";
+		now the boxes are not blocking;
+		stop the action.
+	
 Before going south:
 	if the player is in the Hallway and the boxes is blocking:
     		say "You can't get past because of all of the boxes.";
