@@ -6,7 +6,7 @@ Include NPC Implicit Actions by Eric Eve.
 Include Exit Lister by Gavin Lambert.
 
 Use undo prevention.
-
+Sound of alarm is the file "alarm.ogg".
 The pname is a text that varies.
 
 When play begins:
@@ -26,6 +26,7 @@ After reading a command when collecting names:
 	now the command prompt is ">";
 	say "Hi, [pname]![paragraph break]";
 	move the player to the location;
+	play the sound of alarm;
 	reject the player's command.
 	
 Instead of looking when collecting names: do nothing.
@@ -45,10 +46,10 @@ Displayed Command
 "Examine something"
 "Use something"
 "Call someone"
-"Open/Close it"
-"Push/Pull it"
-"Put it in something"
-"Put it on something"
+"Open/Close something"
+"Push/Pull something"
+"Put something in something"
+"Put something on something"
 "Wait (Z)"
 "?"
 "Help"
@@ -74,8 +75,10 @@ The Exam Room is west of the Cafeteria.
 
 [Start "Classroom" Definition]
 Classroom is a room.
-The description of Classroom is "[if unvisited]'Hey, hey wake up! We fell asleep!' You groggily awaken, fleeting thoughts of your dreams slowly dissipate from your memory as you begin to recall where you are. You look around the room calmly for a moment, then reality sets in. Your eyes widen and the panic hits you… You fell asleep studying and your exam is in… wait, what time is it? [otherwise]Here's the text for every other time you enter the room."
+The description of Classroom is "[if unvisited] You groggily awaken, fleeting thoughts of your dreams slowly dissipate from your memory as you begin to recall where you are. You look around the room calmly for a moment, then reality sets in. Your eyes widen and the panic hits you… You fell asleep studying and your exam is in… wait, what time is it? [otherwise]The classroom looks pretty boring."
 A desk is scenery in the Classroom.
+A chair is scenery in the Classroom.
+A whiteboard is scenery in the Classroom.
 A backpack is a closed openable container in the Classroom.
 A phone is an object inside the backpack.
 [End "Classroom" Definition]
@@ -87,12 +90,11 @@ The description of Hallway is "[if boxes are blocking]A crowded hallway with box
 Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
 Instead of pushing the boxes:
-		say "Ugh its too heavy, maybe I should ask my companion for help".
+	say "Ugh its too heavy, maybe I should ask my companion for help".
 		
-
 Instead of imploring for "help":
 	if the player is in the Hallway and the boxes is blocking:
-		say "Alright [pname], I'll help you out[paragraph break]You both pushed the boxes out of the way!";
+		say "Alright [pname], I'll help you out.[line break]You both pushed the boxes out of the way!";
 		now the boxes are not blocking;
 		stop the action.
 	
