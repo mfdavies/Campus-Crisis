@@ -222,7 +222,7 @@ Carry out calling someone:
 		if the noun is Companion:
 			if player is in Classroom and wooden door is locked:
 				now the Companion is ontheway;
-				say "'You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait…[roman type]";
+				say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait…[roman type]";
 			otherwise:
 				say "'What are you doing? I'm right beside you,' says the Companion";
 		otherwise:
