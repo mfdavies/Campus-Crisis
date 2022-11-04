@@ -35,14 +35,16 @@ Table of Custom Sidebar Commands (continued)
 Displayed Command
 "[bold type]Useful Commands"
 " "
-"[fixed letter spacing]     N"
+"[fixed letter spacing]   N"
 "[fixed letter spacing]W  *  E"
-"[fixed letter spacing]     S"
+"[fixed letter spacing]   S"
 " "
 "Look (L)"
 "Inventory (I)"
 "Take/Drop something"
 "Examine (X) it"
+"Use something"
+"Call someone"
 "Open/Close it"
 "Push/Pull it"
 "Put it in something"
@@ -70,14 +72,6 @@ The Cafeteria is south of the Puzzle Room 4.
 The Exam Room is west of the Cafeteria.
 [End Room Layout Definition]
 
-[Start "StartRoom" Definition]
-Start room is a room. 
-The description of Start room is "Create your character. 
-
-what's your name? what's your companion's name? >"
-
-[End "StartRoom" Definition]
-
 [Start "Classroom" Definition]
 Classroom is a room.
 The description of Classroom is "[if unvisited]'Hey, hey wake up! We fell asleep!' You groggily awaken, fleeting thoughts of your dreams slowly dissipate from your memory as you begin to recall where you are. You look around the room calmly for a moment, then reality sets in. Your eyes widen and the panic hits you… You fell asleep studying and your exam is in… wait, what time is it? [otherwise]Here's the text for every other time you enter the room."
@@ -96,6 +90,7 @@ Instead of pushing the boxes:
 	if the boxes are blocking:
 		say "You moved the boxes out of the way!";
 		now the boxes are not blocking.
+		
 
 Before going south:
 	if the player is in the Hallway and the boxes is blocking:
