@@ -263,7 +263,6 @@ After quizzing Companion about where they were:
 
 [Start asking Companion for/about the password definition]
 password is a familiar object.
-[Start quizzing Companion about the password definition]
 After quizzing Companion about password:
 	now the your shared locker is unlocked;
 	say "'You forgot our locker password?! Come on [pname], it's 5020. [remove password ask suggestion]".
