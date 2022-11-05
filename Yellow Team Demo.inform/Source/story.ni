@@ -4,13 +4,11 @@ Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
 Include NPC Implicit Actions by Eric Eve.
 Include Exit Lister by Gavin Lambert.
-Include Complex Listing by Emily Short.
 
 Use undo prevention.
 Sound of alarm is the file "alarm.ogg".
-The pname is a text that varies.
-
 Release along with an interpreter.
+The pname is a text that varies.
 
 When play begins:
 	prepare the command sidebar, shown automatically, on the left, suggested after blank commands;
@@ -21,7 +19,6 @@ To decide whether collecting names:
 	if the command prompt is "What is your name? > ", yes;
 	no.
 
-does the player mean calling the Companion: it is likely.
 
 After reading a command when collecting names:
 	if the number of words in the player's command is greater than 5:
@@ -76,7 +73,6 @@ A person can be full or not full.
 [Start Room Layout Definition]
 The wooden door is a locked closed door.
 The wooden door is west of the Classroom and east of the Hallway.
-Classroom is a room.
 The Locker Room is south of the Hallway.
 The Central Hub is west of the Locker Room.
 The west wing is west of the Central Hub.
@@ -88,7 +84,8 @@ The Exam Room is west of the Cafeteria.
 [End Room Layout Definition]
 
 [Start "Classroom" Definition]
-The description of Classroom is "[if unvisited] You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise] You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room."
+Classroom is a room.
+The description of Classroom is "[if unvisited] You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise] You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
 A large oak desk is scenery in the Classroom.
 A chair is scenery in the Classroom.
 A computer terminal is scenery in the Classroom.
@@ -103,7 +100,8 @@ Check opening the locked wooden door:
 
 [Start "Hallway" Definition]
 The Hallway is a room.
-The description of Hallway is "[if unvisited]You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. You ask your friend, 'was this always here?' To which they simply shrug in response.[otherwise if boxes are blocking]A crowded hallway with boxes and papers all over the ground, there is a pile of boxes blocking the south exit.[otherwise]A crowded hallway with boxes and papers all over the ground."
+The description of Hallway is "[if unvisited]You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. You ask your friend, 'was this always here?' To which they simply shrug in response.[otherwise if boxes are blocking]A crowded hallway with boxes and papers all over the ground, there is a pile of boxes blocking the south exit.[otherwise]A crowded hallway with boxes and papers all over the ground.".
+
 Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
 Instead of pushing the boxes:
@@ -121,10 +119,10 @@ The description of Locker Room is "[if unvisited] There is a row of lockers alon
 
 Your shared locker is an openable container in Locker Room.
 pencil is inside Your shared locker.
-The description of Your shared locker is "Your shared locker with a number combination lock."
+The description of Your shared locker is "Your shared locker with a number combination lock.".
 Your shared locker can be locked or unlocked.  Your shared locker is locked.
 Check opening the locked Your shared locker:
-	say "You don't know the password, maybe you should ask your companion about it."
+	say "You don't know the password, maybe you should ask your companion about it.".
 [End "Locker Room" Definition]
 
 [Start "Central Hub" Definition]
@@ -134,24 +132,26 @@ The description of Central Hub is "This is the main hub of the school, you are s
 
 [Start "west wing" Definition]
 The West Wing is a room.
-The description of west wing is "It's called the wing but its pretty small, there are some couches in the center of the room."
+The description of west wing is "It's called the wing but its pretty small, there are some couches in the center of the room.".
 Some couches are scenery in the west wing.
 [End "west wing" Definition]
 
 [Start "Computer Room" Definition]
 The Computer Room is a room.
-The description of Computer Room is "There are tons of computers in here, unfortunately you don't neeed to use any of them"
+The description of Computer Room is "There are tons of computers in here, unfortunately, you don't neeed to use any of them.".
 [End "Computer Room" Definition]
 
 [Start "Library" Definition]
 The Library is a room.
 Some money is in Library.
-The description of Library is "There are tons of books scattered about, looks like you were not the only one panic-studying"
+The description of Library is "There are tons of books scattered about, looks like you were not the only one panic-studying.".
 [End "Library" Definition]
 
 [Start "Chemistry Lab" Definition]
 The Chemistry Lab is a room.
-The description of Chemistry Lab is "Chemistry Lab"
+The description of Chemistry Lab is "There are a few workbenches spread around the room with stools along them.".
+Some workbenches are scenery in the Chemistry Lab.
+Some stools are scenery in the Chemistry Lab.
 [End "Chemistry Lab" Definition]
 
 [Start "Cafeteria" Definition]
@@ -160,9 +160,9 @@ The description of Cafeteria is "You can smell a lot of delicious food in here, 
 
 [Start Employee Definition]
 food is a familiar thing.
-where they were is a familiar thing.
 Employee is a person in the Cafeteria.
 The ask-suggestions are {food }.
+
 Instead of requesting Employee for food:
 	  if the money is carried:
 		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up'";
@@ -188,6 +188,7 @@ After quizzing Employee about food:
 Default ask response for the Employee:
 	say "'We don't sell that here.' he replies.".
 [End Employee Definition]
+
 Before going west:
 	if the player is in the Cafeteria:
 		if the player is not full and the pencil is not carried:
@@ -199,7 +200,7 @@ Before going west:
 
 [Start "Exam Room" Definition]
 The Exam Room is a room.
-The description of Exam Room is "This room is purposely unreachable"
+The description of Exam Room is "This room is purposely unreachable.".
 [End "Exam Room" Definition]
 
 [Start "Use" Definition]
@@ -216,7 +217,9 @@ Carry out using something:
 [Start "Call" Definition]
 Calling is an action applying to one visible thing.
 Understand "call [any thing]" as calling.
-	
+
+Does the player mean calling the Companion: it is likely.
+
 Carry out calling someone:
 	if player is carrying phone:
 		if the noun is Companion:
@@ -232,7 +235,7 @@ Carry out calling someone:
 [End "Call" Definition]
 
 [Start Companion Definition]
-
+where they were is a familiar thing.
 Companion is a person.
 The ask-suggestions are {where they were }.
 Companion can be following or not following. Companion is not following.
@@ -258,6 +261,7 @@ After quizzing Companion about where they were:
 	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'".
 [End quizzing Companion about where they were definition]
 
+[Start asking Companion for/about the password definition]
 password is a familiar object.
 [Start quizzing Companion about the password definition]
 After quizzing Companion about password:
