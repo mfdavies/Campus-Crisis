@@ -85,14 +85,16 @@ The Exam Room is west of the Cafeteria.
 [Start "Study Room" Definition]
 Study Room is a room.
 The description of Study Room is "[if unvisited] You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise] You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
-The pink note is on the large oak desk. The description is "Ey its my locker combo.".
 A chair is scenery in the Study Room.
 A computer terminal is scenery in the Study Room.
 A chair is scenery in the Study Room.
 
 A large oak desk is scenery in the Study Room. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
 A chalkboard is scenery in the Study Room. The description of the chalkboard is "You notice a faded circle next to a calculus formula, along with a pun that reads, 'Why did Pi get its drivers license revoked? Because it didn’t know when to stop!' You lightly chuckle at the joke. [italic type]Funny, but not helpful.[roman type]".
-Some notes are scenery on the large oak desk.
+
+Some notes are scenery on the large oak desk. The description of the notes is "You sift through the pile of papers to reveal a small, pink sticky note that looks out of place. It appears to have an arrangement of numbers scribbled on it and nothing else.".
+The pink note is on the notes. The description is "You look closer at the pink sticky note to reveal the numbers 5-0-2-0.".
+
 A backpack is a closed openable container in the Study Room. The backpack is fixed in place.
 A phone is an object inside the backpack.
 
