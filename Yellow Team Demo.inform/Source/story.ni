@@ -101,13 +101,14 @@ Check opening the locked wooden door:
 	
 The description of the chalkboard is "You notice a faded circle next to a calculus formula, along with a pun that reads, 'Why did Pi get its drivers license revoked? Because it didn’t know when to stop!' You lightly chuckle at the joke. [italic type]Funny, but not helpful.[roman type]".
 
-The description of the 
+Before going west:
+	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you exclaim agitatedly. companion kicks over a garbage can in protest."
 
 [End "Classroom" Definition]
 
 [Start "Hallway" Definition]
 The Hallway is a room.
-The description of Hallway is "[if unvisited]You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. You ask your friend, 'was this always here?' To which they simply shrug in response.[otherwise if boxes are blocking]A crowded hallway with boxes and papers all over the ground, there is a pile of boxes blocking the south exit.[otherwise]A crowded hallway with boxes and papers all over the ground.".
+The description of Hallway is "[if unvisited]You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. You ask your friend, 'was this always here?' To which they simply shrug in response.[otherwise if boxes are blocking]A crowded hallway with boxes and papers all over the ground, there is a pile of boxes blocking the south exit.[otherwise]A crowsay ded hallway with boxes and papers all over the ground.".
 
 Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
