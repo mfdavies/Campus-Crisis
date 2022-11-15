@@ -87,8 +87,8 @@ The Exam Room is west of the Cafeteria.
 Classroom is a room.
 The description of Classroom is "[if unvisited] You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise] You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
 A large oak desk is scenery in the Classroom. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
-Some notes are scenery on the large oak desk.
-The pink notes is on the large oak desk. The description is "Ey its my locker combo.".
+Some notes are scenery on the large oak desk. The description of the notes is "You sift through the pile of papers to reveal a small, pink sticky note that looks out of place. It appears to have an arrangement of numbers scribbled on it and nothing else.".
+The pink note is on the notes. The description is "You look closer at the pink sticky note to reveal the numbers 5-0-2-0.".
 A chair is scenery in the Classroom.
 A computer terminal is scenery in the Classroom.
 A chair is scenery in the Classroom.
