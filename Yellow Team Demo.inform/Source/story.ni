@@ -94,7 +94,7 @@ A chalkboard is scenery in the Study Room. The description of the chalkboard is 
 
 Some notes are scenery on the large oak desk. The description of the notes is "You sift through the pile of papers to reveal a small, pink sticky note that looks out of place. It appears to have an arrangement of numbers scribbled on it and nothing else.".
 The pink note is on the notes. The description is "You look closer at the pink sticky note to reveal the numbers 5-0-2-0.".
-
+After taking the pink note, say "You take the pink sticky note. Oh right, my locker combination! How do I always forget it…!"
 A backpack is a closed openable container in the Study Room. The backpack is fixed in place.
 A phone is an object inside the backpack.
 
