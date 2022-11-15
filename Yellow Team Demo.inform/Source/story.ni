@@ -98,6 +98,11 @@ A phone is an object inside the backpack.
 
 Check opening the locked wooden door:
 	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call companion and see if they can open it from the other side.[roman type]” instead.
+	
+The description of the chalkboard is "You notice a faded circle next to a calculus formula, along with a pun that reads, 'Why did Pi get its drivers license revoked? Because it didn’t know when to stop!' You lightly chuckle at the joke. [italic type]Funny, but not helpful.[roman type]".
+
+The description of the 
+
 [End "Classroom" Definition]
 
 [Start "Hallway" Definition]
