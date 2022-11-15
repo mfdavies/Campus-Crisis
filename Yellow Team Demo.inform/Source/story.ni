@@ -86,12 +86,14 @@ The Exam Room is west of the Cafeteria.
 [Start "Classroom" Definition]
 Classroom is a room.
 The description of Classroom is "[if unvisited] You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise] You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
-A large oak desk is scenery in the Classroom.
+A large oak desk is scenery in the Classroom. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
+Some notes are scenery on the large oak desk.
+The pink notes is on the large oak desk. The description is "Ey its my locker combo.".
 A chair is scenery in the Classroom.
 A computer terminal is scenery in the Classroom.
 A chair is scenery in the Classroom.
 A chalkboard is scenery in the Classroom.
-A backpack is a closed openable container in the Classroom.
+A backpack is a closed openable container in the Classroom. The backpack is fixed in place.
 A phone is an object inside the backpack.
 
 Check opening the locked wooden door:
@@ -115,7 +117,7 @@ Before going south:
 
 [Start "Locker Room" Definition]
 The Locker Room is a room.
-The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and your companion always store your suppies. [add password ask suggestion] [otherwise] There is a row of lockers along the south wall, this is where you and your companion always store your suppies.".
+The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and your companion always store your suppies. [otherwise] There is a row of lockers along the south wall, this is where you and your companion always store your suppies.".
 
 Your shared locker is an openable container in Locker Room.
 pencil is inside Your shared locker.
@@ -196,6 +198,7 @@ Before going west:
 			stop the action;
 		otherwise:
 			end the story saying "You made it to the exam on time.".
+
 [End "Cafeteria" Definition]
 
 [Start "Exam Room" Definition]
