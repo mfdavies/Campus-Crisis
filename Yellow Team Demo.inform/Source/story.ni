@@ -19,7 +19,6 @@ To decide whether collecting names:
 	if the command prompt is "What is your name? > ", yes;
 	no.
 
-
 After reading a command when collecting names:
 	if the number of words in the player's command is greater than 5:
 		say "[paragraph break]Who are you, a member of the British royal family? No one has that many names. Let's try this again.";
@@ -27,7 +26,7 @@ After reading a command when collecting names:
 	now the pname is the substituted form of the player's command;
 	now the command prompt is ">";
 	say "Hi, [pname]![paragraph break]";
-	move the player to the Classroom;
+	move the player to the Study Room;
 	play the sound of alarm;
 	reject the player's command.
 	
@@ -72,7 +71,7 @@ A person can be full or not full.
 
 [Start Room Layout Definition]
 The wooden door is a locked closed door.
-The wooden door is west of the Classroom and east of the Hallway.
+The wooden door is west of the Study Room and east of the Hallway.
 The Locker Room is south of the Hallway.
 The Central Hub is west of the Locker Room.
 The west wing is west of the Central Hub.
@@ -83,32 +82,28 @@ The Cafeteria is south of the Chemistry Lab.
 The Exam Room is west of the Cafeteria.
 [End Room Layout Definition]
 
-[Start "Classroom" Definition]
-Classroom is a room.
-The description of Classroom is "[if unvisited] You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise] You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
-A large oak desk is scenery in the Classroom. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
+[Start "Study Room" Definition]
+Study Room is a room.
+The description of Study Room is "[if unvisited] You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise] You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
+The pink note is on the large oak desk. The description is "Ey its my locker combo.".
+A chair is scenery in the Study Room.
+A computer terminal is scenery in the Study Room.
+A chair is scenery in the Study Room.
+
+A large oak desk is scenery in the Study Room. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
+A chalkboard is scenery in the Study Room. The description of the chalkboard is "You notice a faded circle next to a calculus formula, along with a pun that reads, 'Why did Pi get its drivers license revoked? Because it didn’t know when to stop!' You lightly chuckle at the joke. [italic type]Funny, but not helpful.[roman type]".
 Some notes are scenery on the large oak desk.
-The pink notes is on the large oak desk. The description is "Ey its my locker combo.".
-A chair is scenery in the Classroom.
-A computer terminal is scenery in the Classroom.
-A chair is scenery in the Classroom.
-A chalkboard is scenery in the Classroom.
-A backpack is a closed openable container in the Classroom. The backpack is fixed in place.
+A backpack is a closed openable container in the Study Room. The backpack is fixed in place.
 A phone is an object inside the backpack.
 
 Check opening the locked wooden door:
 	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call companion and see if they can open it from the other side.[roman type]” instead.
 	
-The description of the chalkboard is "You notice a faded circle next to a calculus formula, along with a pun that reads, 'Why did Pi get its drivers license revoked? Because it didn’t know when to stop!' You lightly chuckle at the joke. [italic type]Funny, but not helpful.[roman type]".
-
-Before going west:
-	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you exclaim agitatedly. companion kicks over a garbage can in protest."
-
-[End "Classroom" Definition]
+[End "Study Room" Definition]
 
 [Start "Hallway" Definition]
-The Hallway is a room.
-The description of Hallway is "[if unvisited]You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. You ask your friend, 'was this always here?' To which they simply shrug in response.[otherwise if boxes are blocking]A crowded hallway with boxes and papers all over the ground, there is a pile of boxes blocking the south exit.[otherwise]A crowsay ded hallway with boxes and papers all over the ground.".
+The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTimeEnterHallway. The Hallway is FirstTimeEnterHallway.
+The description of Hallway is "[if boxes are blocking]A crowded hallway with boxes and papers all over the ground, there is a pile of boxes blocking the south exit.[otherwise]A crowded hallway with boxes and papers all over the ground.".
 
 Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
@@ -117,7 +112,7 @@ Instead of pushing the boxes:
 
 Before going south:
 	if the player is in the Hallway and the boxes is blocking:
-    		say "You can't get past because of all of the boxes.";
+		say "You can't get past because of all of the boxes.";
 		stop the action.
 [End "Hallway" Definition]
 
@@ -203,7 +198,10 @@ Before going west:
 			say "You have more things to do first, use your phone for to see the list.";
 			stop the action;
 		otherwise:
-			end the story saying "You made it to the exam on time.".
+			end the story saying "You made it to the exam on time.";
+	if the player is in the Study Room and the Hallway is FirstTimeEnterHallway and the companion is ontheway:
+		say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you exclaim agitatedly. Companion kicks over a garbage can in protest.";
+		now The Hallway is not FirstTimeEnterHallway.
 
 [End "Cafeteria" Definition]
 
@@ -232,7 +230,7 @@ Does the player mean calling the Companion: it is likely.
 Carry out calling someone:
 	if player is carrying phone:
 		if the noun is Companion:
-			if player is in Classroom and wooden door is locked:
+			if player is in Study Room and wooden door is locked:
 				now the Companion is ontheway;
 				say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait…[roman type]";
 			otherwise:
@@ -289,8 +287,8 @@ After quizzing Companion about food:
 [Start Companion on the way definition]
 Companion can be ontheway or not ontheway. Companion is not ontheway.
 Instead of waiting:
-	if the player is in the classroom and the wooden door is locked and the companion is ontheway:
-		now the Companion is in the Classroom;
+	if the player is in the Study Room and the wooden door is locked and the companion is ontheway:
+		now the Companion is in the Study Room;
 		now the Companion is following;
 		now the wooden door is unlocked;
 		now the wooden door is open;
