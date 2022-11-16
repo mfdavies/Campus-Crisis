@@ -90,12 +90,14 @@ A chair is scenery in the Study Room.
 A computer terminal is scenery in the Study Room.
 A chair is scenery in the Study Room.
 
-A large oak desk is scenery in the Study Room. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
 A chalkboard is scenery in the Study Room. The description of the chalkboard is "You notice a faded circle next to a calculus formula, along with a pun that reads, 'Why did Pi get its drivers license revoked? Because it didn’t know when to stop!' You lightly chuckle at the joke. [italic type]Funny, but not helpful.[roman type]".
+
+A large oak desk is scenery in the Study Room. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
 
 Some notes are scenery on the large oak desk. The description of the notes is "You sift through the pile of papers to reveal a small, pink sticky note that looks out of place. It appears to have an arrangement of numbers scribbled on it and nothing else.".
 The pink note is on the notes. The description is "You look closer at the pink sticky note to reveal the numbers 5-0-2-0.".
 After taking the pink note, say "You take the pink sticky note. Oh right, my locker combination! How do I always forget it…!"
+
 A backpack is a closed openable container in the Study Room. The backpack is fixed in place.
 A phone is an object inside the backpack.
 
@@ -112,11 +114,6 @@ Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
 Instead of pushing the boxes:
 	say "Ugh its too heavy, maybe I should ask my companion for help".
-
-Before going south:
-	if the player is in the Hallway and the boxes is blocking:
-		say "You can't get past because of all of the boxes.";
-		stop the action.
 [End "Hallway" Definition]
 
 [Start "Locker Room" Definition]
@@ -196,18 +193,6 @@ After quizzing Employee about food:
 Default ask response for the Employee:
 	say "'We don't sell that here.' he replies.".
 [End Employee Definition]
-
-Before going west:
-	if the player is in the Cafeteria:
-		if the player is not full and the pencil is not carried:
-			say "You have more things to do first, use your phone for to see the list.";
-			stop the action;
-		otherwise:
-			end the story saying "You made it to the exam on time.";
-	if the player is in the Study Room and the Hallway is FirstTimeEnterHallway and the companion is ontheway:
-		say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you exclaim agitatedly. Companion kicks over a garbage can in protest.";
-		now The Hallway is not FirstTimeEnterHallway.
-
 [End "Cafeteria" Definition]
 
 [Start "Exam Room" Definition]
@@ -276,10 +261,10 @@ After quizzing Companion about where they were:
 [Start asking Companion for/about the locker combination definition]
 locker combination is a familiar object.
 After quizzing Companion about locker combination:
-	say "'You forgot our locker locker combination?! Come on [pname], it's 5020.".
+	say "'You forgot our locker combination?! Come on [pname], it's 5020.'".
 	
 Instead of requesting Companion for locker combination:
-	say "'You forgot our locker locker combination?! Come on [pname], it's 5020.".
+	say "'You forgot our locker combination?! Come on [pname], it's 5020.'".
 [End quizzing Companion about the locker combination definition]
 
 
@@ -298,3 +283,23 @@ Instead of waiting:
 		say "After a few brief moments, you hear a *click* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type]  Your companion smirks back at you and says, 'You look like you have something to ask me' [italic type]Do I ask them something or quit wasting time?'[roman type][paragraph break]".
 [end Companion on the way definition]
 [End Companion Definition]
+
+
+
+[Start Before going In a direction]
+Before going west:
+	if the player is in the Cafeteria:
+		if the player is not full and the pencil is not carried:
+			say "You have more things to do first, use your phone for to see the list.";
+			stop the action;
+		otherwise:
+			end the story saying "You made it to the exam on time.";
+	if the player is in the Study Room and the Hallway is FirstTimeEnterHallway and the companion is ontheway:
+		say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you exclaim agitatedly. Companion kicks over a garbage can in protest.";
+		now The Hallway is not FirstTimeEnterHallway.
+
+Before going south:
+	if the player is in the Hallway and the boxes is blocking:
+		say "You can't get past because of all of the boxes.";
+		stop the action.
+[End Before going In a direction]
