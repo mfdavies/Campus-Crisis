@@ -85,7 +85,7 @@ The Exam Room is west of the Cafeteria.
 
 [Start "Study Room" Definition]
 Study Room is a room.
-The description of Study Room is "[if unvisited]You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise] You look around the warm room and see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
+The description of Study Room is "[if unvisited]You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from the desk you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise]You look around the warm room and see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
 A chair is scenery in the Study Room.
 A computer terminal is scenery in the Study Room.
 A chair is scenery in the Study Room.
@@ -97,8 +97,10 @@ The pink sticky note is on the notes. The description is "You look closer at the
 After taking the pink sticky note, say "You take the pink sticky note. [italic type]Oh right, my locker combination! How do I always forget it...[roman type][paragraph break]".
 
 
-A backpack is a closed openable container in the Study Room. The backpack is fixed in place.
+A backpack is a closed openable container in the Study Room. The backpack is fixed in place. The description of the backpack is "The bronze coloured backpack is arguably far too small for a university student. It must be difficult to fit all of your academic materials into it.".
+After opening the backpack, say "[italic type]Wow... my backpack is so empty, where did I leave my exam material?[roman type] You see your phone lying at the bottom of your bag. [italic type]This alarm is giving me a headache, I need to take my phone and shut it off[roman type].".
 A phone is an object inside the backpack.
+After taking phone, say "You pick up your phone and immediately dismiss the alarm. [italic type]Finally, now I can hear myself think. Maybe I should call companion and ask if they're okay...?[roman type] You notice that To Do is the most recently used app on your phone.".
 
 Check opening the locked wooden door:
 	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call companion and see if they can open it from the other side.[roman type]” instead.
