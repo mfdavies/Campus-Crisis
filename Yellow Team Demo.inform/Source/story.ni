@@ -92,18 +92,17 @@ A chair is scenery in the Study Room.
 
 A large oak desk is scenery in the Study Room. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
 
-Some notes are scenery on the large oak desk. The description of the notes is "You sift through the pile of papers to reveal a small, pink sticky note that looks out of place. It appears to have an arrangement of numbers scribbled on it and nothing else.".
-The pink sticky note is on the notes. The description is "You look closer at the pink sticky note to reveal the numbers 5-0-2-0.".
+Some notes are scenery on the large oak desk. The description of the notes is "You sift through the pile of papers and uncover a small, pink sticky note that looks out of place. It appears to have an arrangement of numbers scribbled on it and nothing else.".
+The pink sticky note is on the notes. The pink sticky note is undescribed. The description is "You look closer at the pink sticky note to reveal the numbers 5-0-2-0.".
 After taking the pink sticky note, say "You take the pink sticky note. [italic type]Oh right, my locker combination! How do I always forget it...[roman type][paragraph break]".
 
-
 A backpack is a closed openable container in the Study Room. The backpack is fixed in place. The description of the backpack is "The bronze coloured backpack is arguably far too small for a university student. It must be difficult to fit all of your academic materials into it.".
-After opening the backpack, say "[italic type]Wow... my backpack is so empty, where did I leave my exam material?[roman type] You see your phone lying at the bottom of your bag. [italic type]This alarm is giving me a headache, I need to take my phone and shut it off[roman type].".
+After opening the backpack, say "[italic type]Wow... my backpack's so empty, where did I leave my exam materials?[roman type] You see your phone lying at the bottom of your bag. [italic type]This alarm is giving me a headache, I need to take my phone and shut it off[roman type].".
 A phone is an object inside the backpack.
-After taking phone, say "You pick up your phone and immediately dismiss the alarm. [italic type]Finally, now I can hear myself think. Maybe I should call companion and ask if they're okay...?[roman type] You notice that To Do is the most recently used app on your phone.".
+After taking phone, say "You pick up your phone and immediately dismiss the alarm. [italic type]Finally, now I can hear myself think. Maybe I should call companion and ask if they're okay...?[roman type] You notice that Let's Get This Bread is the most recently used app on your phone. [italic type]Oh right, my to do list[roman type]. Your stomach growls at the reference of delicious carbs.".
 
 Check opening the locked wooden door:
-	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call companion and see if they can open it from the other side.[roman type]” instead.
+	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call companion and see if they can open it from the other side[roman type].” instead.
 	
 A chalkboard is scenery in the Study Room. The description of the chalkboard is "You notice a faded circle next to a calculus formula, along with a pun that reads, 'Why did Pi get its drivers license revoked? Because it didn’t know when to stop!' You lightly chuckle at the joke. [italic type]Funny, but not helpful.[roman type]".
 
@@ -284,7 +283,7 @@ Instead of waiting:
 		now the Companion is following;
 		now the wooden door is unlocked;
 		now the wooden door is open;
-		say "After a few brief moments, you hear a *click* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type]  Your companion smirks back at you and says, 'You look like you have something to ask me' [italic type]Do I ask them something or quit wasting time?'[roman type][paragraph break]".
+		say "After a few brief moments, you hear a *click* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type]  Your companion smirks back at you and says, 'You look like you have something to ask me' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]".
 [end Companion on the way definition]
 [End Companion Definition]
 
