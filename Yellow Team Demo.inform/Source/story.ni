@@ -4,6 +4,7 @@ Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
 Include NPC Implicit Actions by Eric Eve.
 Include Exit Lister by Gavin Lambert.
+Include Password Protected Containers by Matthew Davies.
 
 Use undo prevention.
 Sound of alarm is the file "alarm.ogg".
@@ -122,12 +123,14 @@ Before going south:
 The Locker Room is a room.
 The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and your companion always store your suppies. [otherwise] There is a row of lockers along the south wall, this is where you and your companion always store your suppies.".
 
-Your shared locker is an openable container in Locker Room.
+Your shared locker is a password-protected container.  Your shared locker is in Locker Room.
+The password of Your shared locker is "5020".
+The prompt of Your shared locker is "Combination".
+The password failure of Your shared locker is "[italic type]I don't know the combination...[roman type] Maybe I should ask my companion about it.".
+The password request of Your shared locker is "Please enter the combination".
+
 pencil is inside Your shared locker.
 The description of Your shared locker is "Your shared locker with a number combination lock.".
-Your shared locker can be locked or unlocked.  Your shared locker is locked.
-Check opening the locked Your shared locker:
-	say "You don't know the password, maybe you should ask your companion about it.".
 [End "Locker Room" Definition]
 
 [Start "Central Hub" Definition]
@@ -234,7 +237,7 @@ Carry out calling someone:
 		if the noun is Companion:
 			if player is in Study Room and wooden door is locked:
 				now the Companion is ontheway;
-				say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait…[roman type]";
+				say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
 			otherwise:
 				say "'What are you doing? I'm right beside you,' says the Companion";
 		otherwise:
@@ -270,16 +273,14 @@ After quizzing Companion about where they were:
 	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'".
 [End quizzing Companion about where they were definition]
 
-[Start asking Companion for/about the password definition]
-password is a familiar object.
-After quizzing Companion about password:
-	now the your shared locker is unlocked;
-	say "'You forgot our locker password?! Come on [pname], it's 5020. [remove password ask suggestion]".
+[Start asking Companion for/about the locker combination definition]
+locker combination is a familiar object.
+After quizzing Companion about locker combination:
+	say "'You forgot our locker locker combination?! Come on [pname], it's 5020.".
 	
-Instead of requesting Companion for password:
-	now the your shared locker is unlocked;
-	say "'You forgot our locker password?! Come on [pname], it's 5020. [remove password ask suggestion]".
-[End quizzing Companion about the password definition]
+Instead of requesting Companion for locker combination:
+	say "'You forgot our locker locker combination?! Come on [pname], it's 5020.".
+[End quizzing Companion about the locker combination definition]
 
 
 [This is not currently used.]
@@ -294,6 +295,6 @@ Instead of waiting:
 		now the Companion is following;
 		now the wooden door is unlocked;
 		now the wooden door is open;
-		say "After a few brief moments, you hear a *click* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type]  Your companion smirks back at you and says, 'You look like you have something to ask me' [italic type]Do I ask them something or quit wasting time?'[roman type]".
+		say "After a few brief moments, you hear a *click* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type]  Your companion smirks back at you and says, 'You look like you have something to ask me' [italic type]Do I ask them something or quit wasting time?'[roman type][paragraph break]".
 [end Companion on the way definition]
 [End Companion Definition]
