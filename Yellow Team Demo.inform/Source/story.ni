@@ -8,7 +8,7 @@ Include Password Protected Containers by Matthew Davies.
 
 Use undo prevention.
 Sound of alarm is the file "alarm.ogg".
-Release along with a "Parchment" interpreter, a "Parchment" website.
+Release along with a interpreter.
 The pname is a text that varies.
 
 When play begins:
