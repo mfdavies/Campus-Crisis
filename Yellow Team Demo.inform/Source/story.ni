@@ -118,7 +118,7 @@ The description of Hallway is "[if boxes are blocking]A crowded hallway with box
 Some boxes are in the Hallway. The boxes are fixed in place.
 The boxes can be blocking or not blocking. The boxes are blocking.
 Instead of pushing the boxes:
-	say "Ugh its too heavy, maybe I should ask my companion for help".
+	say "Ugh its too heavy, maybe I should ask my companion for help.".
 [End "Hallway" Definition]
 
 [Start "Locker Room" Definition]
@@ -251,7 +251,7 @@ Every turn:
 [Start imploring for help definition]
 Instead of imploring companion for "help":
 	if the player is in the Hallway and the boxes is blocking:
-		say "Alright [pname], I'll help you out.[line break]You both pushed the boxes out of the way![remove where they were ask suggestion]";
+		say "Alright [pname], I'll help you out.[paragraph break]You both pushed the boxes out of the way![remove where they were ask suggestion]";
 		now the boxes are not blocking;
 		stop the action;
 	otherwise:
@@ -266,10 +266,10 @@ After quizzing Companion about where they were:
 [Start asking Companion for/about the locker combination definition]
 locker combination is a familiar object.
 After quizzing Companion about locker combination:
-	say "'You forgot our locker combination?! Come on [pname], it's 5020.'".
+	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 	
 Instead of requesting Companion for locker combination:
-	say "'You forgot our locker combination?! Come on [pname], it's 5020.'".
+	say say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 [End quizzing Companion about the locker combination definition]
 
 
