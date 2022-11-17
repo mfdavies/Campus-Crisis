@@ -94,7 +94,7 @@ The pink sticky note is on the notes. The pink sticky note is undescribed. The d
 After taking the pink sticky note, say "You take the pink sticky note. [italic type]Oh right, my locker combination! How do I always forget it...[roman type][paragraph break]".
 
 A backpack is a closed openable container in the Study Room. The backpack is fixed in place. The description of the backpack is "The bronze coloured backpack is arguably far too small for a university student. It must be difficult to fit all of your academic materials into it.".
-After opening the backpack, say "[italic type]Wow... my backpack's so empty, where did I leave my exam materials?[roman type] You see your phone lying at the bottom of your bag. [italic type]This alarm is giving me a headache, I need to take my phone and shut it off[roman type].".
+After opening the backpack, say "[italic type]Wow... my backpack's so empty. Where did I leave my exam materials?[roman type] You see your phone lying at the bottom of your bag. [italic type]This alarm is giving me a headache, I need to take my phone and shut it off[roman type].".
 A phone is an object inside the backpack.
 After taking phone, say "You pick up your phone and immediately dismiss the alarm. [italic type]Finally, now I can hear myself think. Maybe I should call companion and ask if they're okay...?[roman type] You notice that Let's Get This Bread is the most recently used app on your phone. [italic type]Oh right, my to do list[roman type]. Your stomach growls at the reference of delicious carbs.".
 
@@ -211,7 +211,7 @@ Understand "use [something]" as using.
 
 Carry out using something:
 	if the noun is the phone:
-		say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get food";
+		say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get food[paragraph break]";
 	otherwise:
 		say "You can't use that.".
 [End "Use" Definition]
@@ -260,7 +260,7 @@ Instead of imploring companion for "help":
 
 [Start quizzing Companion about where they were definition]
 After quizzing Companion about where they were:
-	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'".
+	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs, which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'".
 [End quizzing Companion about where they were definition]
 
 [Start asking Companion for/about the locker combination definition]
@@ -285,7 +285,7 @@ Instead of waiting:
 		now the Companion is following;
 		now the wooden door is unlocked;
 		now the wooden door is open;
-		say "After a few brief moments, you hear a *click* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type]  Your companion smirks back at you and says, 'You look like you have something to ask me' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]".
+		say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]".
 [end Companion on the way definition]
 [End Companion Definition]
 
@@ -300,7 +300,7 @@ Before going west:
 		otherwise:
 			end the story saying "You made it to the exam on time.";
 	if the player is in the Study Room and the Hallway is FirstTimeEnterHallway and the companion is ontheway:
-		say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you exclaim agitatedly. Companion kicks over a garbage can in protest.";
+		say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.";
 		now The Hallway is not FirstTimeEnterHallway.
 
 Before going south:
