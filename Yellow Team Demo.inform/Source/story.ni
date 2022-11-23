@@ -71,16 +71,23 @@ Displayed Command
 A person can be full or not full.
 
 [Start Room Layout Definition]
-The wooden door is a locked closed door.
-The wooden door is west of the Study Room and east of the Hallway.
-The Locker Room is south of the Hallway.
-The Central Hub is west of the Locker Room.
-The west wing is west of the Central Hub.
-The Computer Room is north of the west wing.
-The Library is west of the west wing.
-The Chemistry Lab is south of the Central Hub.
-The Cafeteria is south of the Chemistry Lab.
-The Exam Room is west of the Cafeteria.
+The wooden door is west of the Study Room and east of the Hallway. The wooden door is a locked door.
+The red door is south of the Study Room and north of the Library. The red door is a unlocked door. [door will be locked]
+
+The Central Hub is west of the Hallway.
+The Locker Room is west of the Central Hub. [central hub to locker room will be one way]
+The Gym is south of the Locker Room.
+
+The Outdoors Garden is south of the Central Hub and east of the Gym.
+The Cafeteria is southeast of the Outdoors Garden.
+The Exam Room is southwest of the Outdoors Garden.
+
+The Library is east of the Outdoors Garden.
+The red stair is south of the Library and below the Computer Lab. The red stair is an open door. The red stair is not openable.
+
+The Chemistry Lab is north of the Central Hub.
+The blue stair is east of the Chemistry Lab and below the Nurses Room. The blue stair is an open door. The blue stair is not openable.
+
 [End Room Layout Definition]
 
 [Start "Study Room" Definition]
@@ -140,16 +147,15 @@ The Central Hub is a room.
 The description of Central Hub is "This is the main hub of the school, you are surprised you dont see anyone around, it must be too early.".
 [End "Central Hub" Definition]
 
-[Start "west wing" Definition]
-The West Wing is a room.
-The description of west wing is "It's called the wing but its pretty small, there are some couches in the center of the room.".
-Some couches are scenery in the west wing.
-[End "west wing" Definition]
+[Start "Gym" Definition]
+The Gym is a room.
+The description of the Gym is "This is the Gym".
+[End "Gym" Definition]
 
-[Start "Computer Room" Definition]
-The Computer Room is a room.
-The description of Computer Room is "There are tons of computers in here, unfortunately, you don't neeed to use any of them.".
-[End "Computer Room" Definition]
+[Start "Computer Lab" Definition]
+The Computer Lab is a room.
+The description of Computer Lab is "There are tons of computers in here, thankfully, you don't need to use any of them.".
+[End "Computer Lab" Definition]
 
 [Start "Library" Definition]
 The Library is a room.
@@ -163,6 +169,16 @@ The description of Chemistry Lab is "There are a few workbenches spread around t
 Some workbenches are scenery in the Chemistry Lab.
 Some stools are scenery in the Chemistry Lab.
 [End "Chemistry Lab" Definition]
+
+[Start "Nurses Room" Definition]
+The Nurses Room is a room.
+The description of the Nurses Room is "This is the Nurses Room". [placeholder]
+[End "Nurses Room" Definition]
+
+[Start "Outdoors Garden" Definition]
+The Outdoors Garden is a room.
+The description of the Outdoors Garden is "This is the Outdoors Garden". [placeholder]
+[End "Outdoors Garden" Definition]
 
 [Start "Cafeteria" Definition]
 The Cafeteria is a room.
@@ -290,20 +306,22 @@ Instead of waiting:
 [End Companion Definition]
 
 
-
 [Start Before going In a direction]
-Before going west:
-	if the player is in the Cafeteria:
+Before going southwest:
+	if the player is in the Outdoors Garden:
 		if the player is not full and the pencil is not carried:
 			say "You have more things to do first, use your phone for to see the list.";
 			stop the action;
 		otherwise:
-			end the story saying "You made it to the exam on time.";
+			end the story saying "You made it to the exam on time.".
+			
+[ (not used currently)
 	if the player is in the Study Room and the Hallway is FirstTimeEnterHallway and the companion is ontheway:
 		say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.";
 		now The Hallway is not FirstTimeEnterHallway.
+]
 
-Before going south:
+Before going west:
 	if the player is in the Hallway and the boxes is blocking:
 		say "You can't get past because of all of the boxes.";
 		stop the action.
