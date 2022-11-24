@@ -1,4 +1,4 @@
-"Exam" by The Yellow Team
+"Campus Crisis" by The Yellow Team
 
 Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
@@ -7,7 +7,6 @@ Include Exit Lister by Gavin Lambert.
 Include Password Protected Containers by Matthew Davies.
 
 Use undo prevention.
-Sound of alarm is the file "alarm.ogg".
 Release along with a interpreter.
 The pname is a text that varies.
 
@@ -28,7 +27,6 @@ After reading a command when collecting names:
 	now the command prompt is ">";
 	say "Hi, [pname]![paragraph break]";
 	move the player to the Study Room;
-	play the sound of alarm;
 	reject the player's command.
 	
 Instead of looking when collecting names: do nothing.
@@ -112,25 +110,25 @@ A chalkboard is scenery in the Study Room. The description of the chalkboard is 
 
 A computer terminal is scenery in the Study Room. The description of the computer terminal is "Looking closer at the computer terminal you see that its cord is frayed, rendering the machine useless. [italic type]Looks dangerous to plug in, I better leave this broken terminal alone.[roman type]".
 
-Your seat is scenery in the Study Room. The description of your seat is "[italic type]C'mon [pname], we can't even think about sitting right now [roman type].".
+A your seat is scenery in the Study Room. The description of your seat is "[italic type]C'mon [pname], we can't even think about sitting right now [roman type].".
 
-An empty chair is scenery in the Study Room. The description of the empty chair is "[italic type]I wonder where companion is..[roman type].".
+An empty chair is scenery in the Study Room. The description of the empty chair is "[italic type]I wonder where companion is...[roman type]".
 
 [End "Study Room" Definition]
 
 [Start "Hallway" Definition]
 The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTimeEnterHallway. The Hallway is FirstTimeEnterHallway.
-The description of Hallway is "[if boxes are blocking]A crowded hallway with boxes and papers all over the ground, there is a pile of boxes blocking the south exit.[otherwise]A crowded hallway with boxes and papers all over the ground.".
+The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to see if anything might be useful, but all you see is a closed tool kit, an orange pylon with a sign that reads 'CLOSED: USE OTHER EXIT,' and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
 
-Some boxes are in the Hallway. The boxes are fixed in place.
-The boxes can be blocking or not blocking. The boxes are blocking.
-Instead of pushing the boxes:
-	say "Ugh its too heavy, maybe I should ask my companion for help.".
+Some wooden crates are in the Hallway. The wooden crates are fixed in place.
+The wooden crates can be blocking or not blocking. The wooden crates are blocking.
+Instead of pushing the wooden crates:
+	say "You attempt to move the wooden crates, but they’re too heavy. You exasperatedly turn to your friend and make a self-deprecating joke about your noodle arms. 'Heh, I’m starting to wish my parents signed me up for sports instead of band lessons when I was younger…' Your friend is distractedly looking down, popping bubble wrap they found on the floor. [italic type]*pop* *pop* *pop*[roman type]. You think to yourself, [italic type]What's wrong with them?[roman type]".
 [End "Hallway" Definition]
 
 [Start "Locker Room" Definition]
 The Locker Room is a room.
-The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and your companion always store your suppies. [otherwise] There is a row of lockers along the south wall, this is where you and your companion always store your suppies.".
+The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and your companion always store your supplies. [otherwise] There is a row of lockers along the south wall, this is where you and your companion always store your supplies.".
 
 Your shared locker is a password-protected container.  Your shared locker is in Locker Room.
 The password of Your shared locker is "5020".
@@ -252,10 +250,14 @@ Carry out calling someone:
 		say "You aren't carrying the phone.".
 [End "Call" Definition]
 
+
+
+
+
 [Start Companion Definition]
 where they were is a familiar thing.
 Companion is a person.
-The ask-suggestions are {where they were }.
+The ask-suggestions are {where they were}.
 Companion can be following or not following. Companion is not following.
 
 Every turn:
@@ -266,9 +268,9 @@ Every turn:
 			
 [Start imploring for help definition]
 Instead of imploring companion for "help":
-	if the player is in the Hallway and the boxes is blocking:
-		say "Alright [pname], I'll help you out.[paragraph break]You both pushed the boxes out of the way![remove where they were ask suggestion]";
-		now the boxes are not blocking;
+	if the player is in the Hallway and the wooden crates is blocking:
+		say "Alright [pname], I'll help you out.[paragraph break]You both pushed the wooden crates out of the way![remove where they were ask suggestion]";
+		now the wooden crates are not blocking;
 		stop the action;
 	otherwise:
 		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room".
@@ -306,6 +308,12 @@ Instead of waiting:
 [End Companion Definition]
 
 
+
+
+
+
+
+
 [Start Before going In a direction]
 Before going southwest:
 	if the player is in the Outdoors Garden:
@@ -322,7 +330,7 @@ Before going southwest:
 ]
 
 Before going west:
-	if the player is in the Hallway and the boxes is blocking:
-		say "You can't get past because of all of the boxes.";
+	if the player is in the Hallway and the wooden crates is blocking:
+		say "You can't get past because of the wooden crates.";
 		stop the action.
 [End Before going In a direction]
