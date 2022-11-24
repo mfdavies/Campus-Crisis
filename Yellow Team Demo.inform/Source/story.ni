@@ -118,13 +118,28 @@ An empty chair is scenery in the Study Room. The description of the empty chair 
 
 [Start "Hallway" Definition]
 The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTimeEnterHallway. The Hallway is FirstTimeEnterHallway.
-The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to see if anything might be useful, but all you see is a closed tool kit, an orange pylon with a sign that reads 'CLOSED: USE OTHER EXIT,' and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
+The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to see if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
 
 Some wooden crates are in the Hallway. The wooden crates are fixed in place.
 The wooden crates can be blocking or not blocking. The wooden crates are blocking.
 Instead of pushing the wooden crates:
 	say "You attempt to move the wooden crates, but they’re too heavy. You exasperatedly turn to your friend and make a self-deprecating joke about your noodle arms. 'Heh, I’m starting to wish my parents signed me up for sports instead of band lessons when I was younger…' Your friend is distractedly looking down, popping bubble wrap they found on the floor. [italic type]*pop* *pop* *pop*[roman type]. You think to yourself, [italic type]What's wrong with them?[roman type]".
 [End "Hallway" Definition]
+
+[Start "Central Hub" Definition]
+The Central Hub is a room.
+The description of Central Hub is "Stepping into the large atrium, you feel a sense of relief hearing the quiet trickling of the fountain. It's too early for anyone else to be here, and the usually crowded area feels quite tranquil at this hour. The moonlight is pouring in from the glass dome, casting a shadow on the whole room."
+
+A fountain is scenery in Central Hub. The description of the fountain is "Walking to the centre of the room, you stare up at the oddly ethereal fountain. It doesn't usually look this pretty, but the moonlight shining in from the glass ceiling is giving the fountain a faint glow.[italic type] I should make a wish.[roman type]".
+
+A directory is scenery in Central Hub. The description of the directory is "Blurry eyed, you look at the directory. You read the names of rooms X, X, X."
+
+A plant is scenery in central hub. The description of plant is "How lively."
+
+A log bench is scenery in central hub. The description of log bench is "Right, the founder's bench. What does it say on the plaque?"
+
+A plaque is scenery on the log bench. The description of the plaque is "Albert M. Ford."
+[End "Central Hub" Definition]
 
 [Start "Locker Room" Definition]
 The Locker Room is a room.
@@ -139,11 +154,6 @@ The password request of Your shared locker is "Please enter the combination".
 pencil is inside Your shared locker.
 The description of Your shared locker is "Your shared locker with a number combination lock.".
 [End "Locker Room" Definition]
-
-[Start "Central Hub" Definition]
-The Central Hub is a room.
-The description of Central Hub is "This is the main hub of the school, you are surprised you dont see anyone around, it must be too early.".
-[End "Central Hub" Definition]
 
 [Start "Gym" Definition]
 The Gym is a room.
@@ -251,9 +261,6 @@ Carry out calling someone:
 [End "Call" Definition]
 
 
-
-
-
 [Start Companion Definition]
 where they were is a familiar thing.
 Companion is a person.
@@ -266,20 +273,33 @@ Every turn:
 			let the way be the best route from the location of Companion to the location of the player, using even locked doors;
 			try Companion going the way.
 			
+[Start quizzing Companion about where they were definition]
+After quizzing Companion about where they were:
+	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs, which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'".
+[End quizzing Companion about where they were definition]
+
 [Start imploring for help definition]
 Instead of imploring companion for "help":
 	if the player is in the Hallway and the wooden crates is blocking:
-		say "Alright [pname], I'll help you out.[paragraph break]You both pushed the wooden crates out of the way![remove where they were ask suggestion]";
+		say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.[remove where they were ask suggestion]";
 		now the wooden crates are not blocking;
 		stop the action;
 	otherwise:
 		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room".
 [End imploring for help definition]
 
-[Start quizzing Companion about where they were definition]
-After quizzing Companion about where they were:
-	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs, which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'".
-[End quizzing Companion about where they were definition]
+[Start quizzing companion in hallway definition]
+What's wrong is a familiar thing.
+Companion is a person.
+After quizzing companion about what's wrong:
+	say "'Hey companion, are you alright? You seem preoccupied.' Companion doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about?[roman type][paragraph break]".
+	
+Sigh is a familiar thing.
+Companion is a person.
+After quizzing companion about sigh:
+	say "'We've been friends long enough for me to know when something's on your mind, seriously, what is it?' 'Well,' they begin, 'I'm kind of glad this is happening.' Your concern slowly fades and frustration builds in you once more,[italic type] They're GLAD?[roman type]".
+
+[End quizzing companion in hallway definition]
 
 [Start asking Companion for/about the locker combination definition]
 locker combination is a familiar object.
@@ -290,10 +310,9 @@ Instead of requesting Companion for locker combination:
 	say say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 [End quizzing Companion about the locker combination definition]
 
-
 [This is not currently used.]
 After quizzing Companion about food:
-	say "'Oh yeah I'm starving', they reply.".
+	say "Oh yeah I'm starving', they reply.".
 
 [Start Companion on the way definition]
 Companion can be ontheway or not ontheway. Companion is not ontheway.
@@ -306,12 +325,6 @@ Instead of waiting:
 		say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]".
 [end Companion on the way definition]
 [End Companion Definition]
-
-
-
-
-
-
 
 
 [Start Before going In a direction]
