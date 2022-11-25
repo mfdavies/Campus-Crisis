@@ -70,13 +70,16 @@ A person can be full or not full.
 
 [Start Room Layout Definition]
 The wooden door is west of the Study Room and east of the Hallway. The wooden door is a locked door.
-The red door is south of the Study Room and north of the Library. The red door is a unlocked door. [door will be locked]
+The red door is south of the Study Room and north of the Library. The red door is a locked door.
 
 The Central Hub is west of the Hallway.
-The Locker Room is west of the Central Hub. [central hub to locker room will be one way]
+The Locker Room is west of the Central Hub.
+East of the Locker Room is nowhere. [Central Hub->Locker Room is one-way]
 The Gym is south of the Locker Room.
 
-The Outdoors Garden is south of the Central Hub and east of the Gym.
+The Central Hub is north of the Outdoors Garden.
+The Outdoors Garden is south of the Central Hub.
+The yellow door is east of the Gym and west of the Outdoors Garden. The yellow door is a locked door.
 The Cafeteria is southeast of the Outdoors Garden.
 The Exam Room is southwest of the Outdoors Garden.
 
@@ -146,7 +149,7 @@ A plaque is scenery on the log bench. The description of the plaque is "Albert M
 [End "Central Hub" Definition]
 
 [Start "Locker Room" Definition]
-The Locker Room is a room.
+The Locker Room is a room. The Locker Room can be LockerEventDone or not LockerEventDone. The Locker Room is not LockerEventDone.
 The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and your companion always store your supplies. [otherwise] There is a row of lockers along the south wall, this is where you and your companion always store your supplies.".
 
 Your shared locker is a password-protected container.  Your shared locker is in Locker Room.
@@ -161,7 +164,7 @@ The description of Your shared locker is "Your shared locker with a number combi
 
 [Start "Gym" Definition]
 The Gym is a room.
-The description of the Gym is "This is the Gym".
+The description of the Gym is "There are quite a few nets and hoops set up here for various sports. The room is big and open and the ceiling is tall, a nice change from those narrow hallways.".
 [End "Gym" Definition]
 
 [Start "Computer Lab" Definition]
@@ -176,7 +179,7 @@ The description of Library is "There are tons of books scattered about, looks li
 [End "Library" Definition]
 
 [Start "Chemistry Lab" Definition]
-The Chemistry Lab is a room.
+The Chemistry Lab is a dark room.
 The description of Chemistry Lab is "There are a few workbenches spread around the room with stools along them.".
 Some workbenches are scenery in the Chemistry Lab.
 Some stools are scenery in the Chemistry Lab.
@@ -184,12 +187,12 @@ Some stools are scenery in the Chemistry Lab.
 
 [Start "Nurses Room" Definition]
 The Nurses Room is a room.
-The description of the Nurses Room is "This is the Nurses Room". [placeholder]
+The description of the Nurses Room is "There are a number of beds here with curtains separating each one. This place has seen much less traffic ever since the panademic was cured.". [placeholder]
 [End "Nurses Room" Definition]
 
 [Start "Outdoors Garden" Definition]
 The Outdoors Garden is a room.
-The description of the Outdoors Garden is "This is the Outdoors Garden". [placeholder]
+The description of the Outdoors Garden is "This is the Outdoors Garden.". [placeholder]
 [End "Outdoors Garden" Definition]
 
 [Start "Cafeteria" Definition]
@@ -247,7 +250,10 @@ Understand "use [something]" as using.
 
 Carry out using something:
 	if the noun is the phone:
-		say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get food[paragraph break]";
+		if the room is dark:
+			say "You try turning on the flashlight on your phone, but to no avail. 'Right, the flashlight hasn[']t worked ever since I dropped my phone last month! It must have landed right on the flashlight unit. Since everything else worked fine and I never used the flashlight on my phone, I thought I lucked out... until now. Why do insignificant things always come back to haunt me in crucial situations?' you say as you get frustrated at your bad luck.";
+		otherwise:
+			say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get food[paragraph break]";
 	otherwise:
 		say "You can't use that.".
 [End "Use" Definition]
@@ -264,6 +270,9 @@ Carry out calling someone:
 			if player is in Study Room and wooden door is locked:
 				now the Companion is ontheway;
 				say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
+			else if player is in Locker Room and Locker Room is dark:
+				now the Companion is ontheway;
+				say "You try to calm yourself as you call the Companion, who was separated from you by a heavy automatic door: 'Hello? As soon as you left, the lights in here turned off! The door isn[']t budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker there,' the Companion says in a nonchanlant tone. You hear the sound of their footsteps moving farther away, at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
 			otherwise:
 				say "'What are you doing? I'm right beside you,' says the Companion";
 		otherwise:
@@ -343,14 +352,41 @@ Instead of waiting:
 	if the player is in the Study Room and the wooden door is locked and the companion is ontheway:
 		now the Companion is in the Study Room;
 		now the Companion is following;
+		now the Companion is not ontheway;
 		now the wooden door is unlocked;
 		now the wooden door is open;
 		initiate a conversation with Companion at companion-intro-node;
-		say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]".
+		say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]";
+	else if the player is in the Locker Room and the Locker Room is dark and the companion is ontheway:
+		now the Companion is in the Locker Room;
+		now the Companion is following;
+		now the Companion is not ontheway;
+		now the Locker Room is lit;
+		now the Chemistry Lab is lit;
+		now the Locker Room is LockerEventDone;
+		say "The electricity comes back on and the Companion returns to your side soon after. 'Took you long enough! All I could do was sit in this dark room and stare at the clock on my phone!' You exclaim.[paragraph break]The Companion replies in a dismissive tone: 'Chill, figuring out those switches in the breaker took some time! It[']s not like I'm an electrical engineer either. Hey, as a bonus, I also turned on the light in the Chemistry Lab. That should be north of the Central Hub, if I recall correctly.'[paragraph break] You decide to move on after collecting yourself, despite feelings of annoyance towards the Companion.".
 [end Companion on the way definition]
 [End Companion Definition]
 
 [Start Before going In a direction]
+Before going north:
+	if the player is in the Library:
+		now the red door is unlocked;
+		say "Now the red door is unlocked.".
+
+Before going south:
+	if the player is in the Locker Room:
+		if the Locker Room is not LockerEventDone:
+			if the Locker Room is lit:
+				now the Companion is not following;
+				now the Companion is in the Gym;
+				now the Locker Room is dark;
+				say "The Companion walks ahead of you as you both head towards the exit. As you try to remember if you forgot anything with your head down, the lights abruptly turn off and you hear the sound of a door slamming shut. You quickly lift your gaze to see the face of the Companion behind the vertical window in the automatic door, now closed.";
+				stop the action;
+			otherwise:
+				say "You walk towards the automatic door and try to slide it open. The door stays firmly closed in place. You bang your fist on the window and yell at the Companion, but it seems nothing is getting through due to sound isolation. You see the Companion hold up their phone and point at it, indicating a more suitable form of communication.";
+				stop the action.
+
 Before going southwest:
 	if the player is in the Outdoors Garden:
 		if the player is not full and the pencil is not carried:
@@ -363,4 +399,9 @@ Before going west:
 	if the player is in the Hallway and the wooden crates is blocking:
 		say "You can't get past because of the wooden crates.";
 		stop the action.
+		
+Before going east:
+	if the player is in the Gym:
+		now the yellow door is unlocked;
+		say "Now the yellow door is unlocked.".
 [End Before going In a direction]
