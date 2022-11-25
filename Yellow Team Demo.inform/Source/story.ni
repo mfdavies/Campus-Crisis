@@ -118,7 +118,11 @@ An empty chair is scenery in the Study Room. The description of the empty chair 
 
 [Start "Hallway" Definition]
 The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTimeEnterHallway. The Hallway is FirstTimeEnterHallway.
-The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to see if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
+The description of Hallway is "[node companion-intro-node][if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to see if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
+
+After going to the hallway for the first time:
+	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.";
+	continue the action.
 
 Some wooden crates are in the Hallway. The wooden crates are fixed in place.
 The wooden crates can be blocking or not blocking. The wooden crates are blocking.
@@ -193,34 +197,42 @@ The Cafeteria is a room.
 The description of Cafeteria is "You can smell a lot of delicious food in here, unfortunately only one shop is open. There are a bunch of tables scattered around the room and there is one employee working at McRonalds."
 
 [Start Employee Definition]
-food is a familiar thing.
 Employee is a person in the Cafeteria.
-The ask-suggestions are {food }.
 
-Instead of requesting Employee for food:
+food-suggestion is a misc-suggestion.
+The printed name of food-suggestion is "ask them for/about food".
+The other-suggestions of Employee are {food-suggestion}.
+
+
+[Start ask about/for food]
+response for Employee when asked for "food":
 	  if the money is carried:
-		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up'";
+		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up.'";
 		now the player is full;
-		stop the action;
+		[stop the action; I dont think this is needed]
 	otherwise:
 		if the player is full:
-			say "'You just ate, how could you be hungry again?' he replies";
+			say "'You just ate, how could you be hungry again?' he replies.";
 		otherwise:
 			say "You'll need some money first.".
 		
-After quizzing Employee about food:
+response for Employee when asked about "food":
 	  if the money is carried:
-		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up'";
+		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up.'";
 		now the player is full;
-		stop the action;
+		[stop the action; I dont think this is needed]
 	otherwise:
 		if the player is full:
-			say "'You just ate, how could you be hungry again?' he replies";
+			say "'You just ate, how could you be hungry again?' he replies.";
 		otherwise:
 			say "You'll need some money first.".
+[End ask about/for food]
 
 Default ask response for the Employee:
 	say "'We don't sell that here.' he replies.".
+	
+Default response for the Employee:
+	say "'I can't be bothered to figure out what you meant by that. We just serve food here.' he replies.".
 [End Employee Definition]
 [End "Cafeteria" Definition]
 
@@ -262,9 +274,20 @@ Carry out calling someone:
 
 
 [Start Companion Definition]
-where they were is a familiar thing.
 Companion is a person.
-The ask-suggestions are {where they were}.
+
+[General Suggestions]
+help-suggestion is a misc-suggestion.
+The printed name of help-suggestion is "ask them for help".
+The other-suggestions of Companion are {help-suggestion}.
+[Convonodes]
+The companion-help-node is a closed convnode.
+wtw-suggestion is a misc-suggestion.
+The printed name of wtw-suggestion is "ask them about where they were".
+The companion-intro-node is a closed convnode.
+The other-suggestions of companion-intro-node are {wtw-suggestion}.
+
+[Start Companion following definition]
 Companion can be following or not following. Companion is not following.
 
 Every turn:
@@ -272,46 +295,46 @@ Every turn:
 		if the location of Companion is not the location of the player:
 			let the way be the best route from the location of Companion to the location of the player, using even locked doors;
 			try Companion going the way.
-			
-[Start quizzing Companion about where they were definition]
-After quizzing Companion about where they were:
-	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs, which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'".
-[End quizzing Companion about where they were definition]
+[End Companion following definition]	
 
-[Start imploring for help definition]
-Instead of imploring companion for "help":
+[Start Companion where they were definition (Takes place in the study room)]
+response for companion-intro-node when asked about "where they were":
+	say "[remove wtw-suggestion other suggestion]'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs, which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'[leavenode]".
+	
+default response for companion-intro-node:
+	say "'Huh? what are you talking about? Did you mean to ask me where I was?' Your companion replies.".
+[End Companion where they were definition]
+
+[Start asking for help definition] [This will need to be handled per room, and will only be suggested when no nodes are active]
+response for companion when asked for "help":
 	if the player is in the Hallway and the wooden crates is blocking:
-		say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.[remove where they were ask suggestion]";
+		say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.";
 		now the wooden crates are not blocking;
 		stop the action;
 	otherwise:
-		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room".
-[End imploring for help definition]
+		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room.".
+[End asking for help definition]
 
-[Start quizzing companion in hallway definition]
+[Start quizzing companion in hallway definition] [I'm not sure what to do with theses -Matt]
 What's wrong is a familiar thing.
-Companion is a person.
 After quizzing companion about what's wrong:
 	say "'Hey companion, are you alright? You seem preoccupied.' Companion doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about?[roman type][paragraph break]".
 	
 Sigh is a familiar thing.
-Companion is a person.
 After quizzing companion about sigh:
 	say "'We've been friends long enough for me to know when something's on your mind, seriously, what is it?' 'Well,' they begin, 'I'm kind of glad this is happening.' Your concern slowly fades and frustration builds in you once more,[italic type] They're GLAD?[roman type]".
-
 [End quizzing companion in hallway definition]
 
 [Start asking Companion for/about the locker combination definition]
-locker combination is a familiar object.
-After quizzing Companion about locker combination:
+response for companion when asked about "locker combination":
 	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 	
-Instead of requesting Companion for locker combination:
-	say say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
-[End quizzing Companion about the locker combination definition]
+response for companion when asked for "locker combination":
+	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
+[End asking Companion about the locker combination definition]
 
 [This is not currently used.]
-After quizzing Companion about food:
+response for companion when asked about "food":
 	say "Oh yeah I'm starving', they reply.".
 
 [Start Companion on the way definition]
@@ -322,10 +345,10 @@ Instead of waiting:
 		now the Companion is following;
 		now the wooden door is unlocked;
 		now the wooden door is open;
+		initiate a conversation with Companion at companion-intro-node;
 		say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]".
 [end Companion on the way definition]
 [End Companion Definition]
-
 
 [Start Before going In a direction]
 Before going southwest:
@@ -335,12 +358,6 @@ Before going southwest:
 			stop the action;
 		otherwise:
 			end the story saying "You made it to the exam on time.".
-			
-[ (not used currently)
-	if the player is in the Study Room and the Hallway is FirstTimeEnterHallway and the companion is ontheway:
-		say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess.'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.";
-		now The Hallway is not FirstTimeEnterHallway.
-]
 
 Before going west:
 	if the player is in the Hallway and the wooden crates is blocking:
