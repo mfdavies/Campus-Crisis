@@ -3,10 +3,10 @@
 Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
 Include NPC Implicit Actions by Eric Eve.
+Include Undo Output Control by Erik Temple.
 Include Exit Lister by Gavin Lambert.
 Include Password Protected Containers by Matthew Davies.
 
-Use undo prevention.
 Release along with a interpreter.
 The pname is a text that varies.
 
@@ -121,10 +121,10 @@ An empty chair is scenery in the Study Room. The description of the empty chair 
 
 [Start "Hallway" Definition]
 The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTimeEnterHallway. The Hallway is FirstTimeEnterHallway.
-The description of Hallway is "[node companion-intro-node][if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to see if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
+The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to see if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
 
 After going to the hallway for the first time:
-	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.";
+	say "[leavenode]You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.";
 	continue the action.
 
 Some wooden crates are in the Hallway. The wooden crates are fixed in place.
@@ -188,6 +188,7 @@ Some stools are scenery in the Chemistry Lab.
 [Start "Nurses Room" Definition]
 The Nurses Room is a room.
 The description of the Nurses Room is "There are a number of beds here with curtains separating each one. This place has seen much less traffic ever since the panademic was cured.". [placeholder]
+A Epi Pen is a thing in the Nurses Room.
 [End "Nurses Room" Definition]
 
 [Start "Outdoors Garden" Definition]
@@ -268,11 +269,11 @@ Carry out calling someone:
 	if player is carrying phone:
 		if the noun is Companion:
 			if player is in Study Room and wooden door is locked:
-				now the Companion is ontheway;
 				say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
+				the companion arrivesStudyRoom in four turns from now;
 			else if player is in Locker Room and Locker Room is dark:
-				now the Companion is ontheway;
 				say "You try to calm yourself as you call the Companion, who was separated from you by a heavy automatic door: 'Hello? As soon as you left, the lights in here turned off! The door isn[']t budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker there,' the Companion says in a nonchanlant tone. You hear the sound of their footsteps moving farther away, at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
+				the companion arrivesLockerRoom in two turns from now;
 			otherwise:
 				say "'What are you doing? I'm right beside you,' says the Companion";
 		otherwise:
@@ -291,9 +292,9 @@ The printed name of help-suggestion is "ask them for help".
 The other-suggestions of Companion are {help-suggestion}.
 [Convonodes]
 The companion-help-node is a closed convnode.
+The companion-intro-node is a closed convnode.
 wtw-suggestion is a misc-suggestion.
 The printed name of wtw-suggestion is "ask them about where they were".
-The companion-intro-node is a closed convnode.
 The other-suggestions of companion-intro-node are {wtw-suggestion}.
 
 [Start Companion following definition]
@@ -319,14 +320,12 @@ response for companion when asked for "help":
 	if the player is in the Hallway and the wooden crates is blocking:
 		say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.";
 		now the wooden crates are not blocking;
-		stop the action;
 	otherwise:
 		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room.".
 [End asking for help definition]
 
 [Start quizzing companion in hallway definition] [I'm not sure what to do with theses -Matt]
-What's wrong is a familiar thing.
-After quizzing companion about what's wrong:
+response for companion when asked about "what's wrong":
 	say "'Hey companion, are you alright? You seem preoccupied.' Companion doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about?[roman type][paragraph break]".
 	
 Sigh is a familiar thing.
@@ -346,26 +345,23 @@ response for companion when asked for "locker combination":
 response for companion when asked about "food":
 	say "Oh yeah I'm starving', they reply.".
 
-[Start Companion on the way definition]
-Companion can be ontheway or not ontheway. Companion is not ontheway.
-Instead of waiting:
-	if the player is in the Study Room and the wooden door is locked and the companion is ontheway:
-		now the Companion is in the Study Room;
-		now the Companion is following;
-		now the Companion is not ontheway;
-		now the wooden door is unlocked;
-		now the wooden door is open;
-		initiate a conversation with Companion at companion-intro-node;
-		say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]";
-	else if the player is in the Locker Room and the Locker Room is dark and the companion is ontheway:
+[Start Companion arrives definition]
+At the time when the companion arrivesStudyRoom:
+	now the Companion is in the Study Room;
+	now the Companion is following;
+	now the wooden door is unlocked;
+	now the wooden door is open;
+	initiate a conversation with Companion at companion-intro-node;
+	say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]".
+		
+At the time when the companion arrivesLockerRoom:
 		now the Companion is in the Locker Room;
 		now the Companion is following;
-		now the Companion is not ontheway;
 		now the Locker Room is lit;
 		now the Chemistry Lab is lit;
 		now the Locker Room is LockerEventDone;
 		say "The electricity comes back on and the Companion returns to your side soon after. 'Took you long enough! All I could do was sit in this dark room and stare at the clock on my phone!' You exclaim.[paragraph break]The Companion replies in a dismissive tone: 'Chill, figuring out those switches in the breaker took some time! It[']s not like I'm an electrical engineer either. Hey, as a bonus, I also turned on the light in the Chemistry Lab. That should be north of the Central Hub, if I recall correctly.'[paragraph break] You decide to move on after collecting yourself, despite feelings of annoyance towards the Companion.".
-[end Companion on the way definition]
+[end Companion arrives definition]
 [End Companion Definition]
 
 [Start Before going In a direction]
@@ -405,3 +401,45 @@ Before going east:
 		now the yellow door is unlocked;
 		say "Now the yellow door is unlocked.".
 [End Before going In a direction]
+
+
+
+[Start Save and Undo Definitions]
+DisablePlayerUndo is a truth state that varies. DisablePlayerUndo is true.
+
+[When at the cafeteria, discuss how you only have x amount of time to get to the exam on time. Then have the companion have their reaction, and force the player to rush to get the epi pen, make it to the exam, neither, or both.]
+
+[when the companion the is allergenic:
+	disable saving of undo state.]
+
+[At the time when the companion succumbs:
+	say "[player failed to save comp]".]
+
+To say player failed to save comp:
+	reinstate undo;
+	say "You failed to save your friend";
+	undo the current turn;
+
+[At the time when the exam starts:
+	say "[player missed exam]".]
+
+To say player missed exam:
+	reinstate undo;
+	say "You failed to make it to the exam on time";
+	undo the current turn;
+
+Before undoing an action when DisablePlayerUndo is true:
+	 say "You can't undo the actions you have made. What is this, some kind of game to you?";
+	 rule fails.
+	
+
+Report undoing an action:
+	say "[bold type]";
+	say "[Location]" in title case;
+	say "[roman type]";
+	say "[line break]";
+	say "[bracket]Taking you back to the moment your companion started having their reaction[close bracket][line break]";
+	enable saving of undo state;
+	rule succeeds.
+		
+[End Save and Undo Definitions]
