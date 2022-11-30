@@ -66,7 +66,7 @@ Displayed Command
 "Exits on/off"
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
 
-A person can be full or not full.
+A person can be full or not full. The player is not full.
 
 [Start Room Layout Definition]
 The wooden door is west of the Study Room and east of the Hallway. The wooden door is a locked door.
@@ -124,7 +124,7 @@ The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTime
 The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to see if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
 
 After going to the hallway for the first time:
-	say "[leavenode]You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.";
+	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.[leavenode]";
 	continue the action.
 
 Some wooden crates are in the Hallway. The wooden crates are fixed in place.
@@ -157,6 +157,8 @@ The password of Your shared locker is "5020".
 The prompt of Your shared locker is "Combination".
 The password failure of Your shared locker is "[italic type]I don't know the combination...[roman type] Maybe I should ask my companion about it.".
 The password request of Your shared locker is "Please enter the combination".
+The password success of Your shared locker is "You hear the lock click as it unlocks and the door swings open.".
+
 
 pencil is inside Your shared locker.
 The description of Your shared locker is "Your shared locker with a number combination lock.".
@@ -200,6 +202,12 @@ The description of the Outdoors Garden is "This is the Outdoors Garden.". [place
 The Cafeteria is a room.
 The description of Cafeteria is "You can smell a lot of delicious food in here, unfortunately only one shop is open. There are a bunch of tables scattered around the room and there is one employee working at McRonalds."
 
+After going to the Cafeteria when the the money is carried and the pencil is carried and the companion is not dying and the companion is not saved:
+	disable saving of undo state;
+	say "Alright, lets go get some food, we only have 15 minutes until the exam!";
+	the exam starts in 15 turns from now;
+	continue the action.
+
 [Start Employee Definition]
 Employee is a person in the Cafeteria.
 
@@ -211,9 +219,7 @@ The other-suggestions of Employee are {food-suggestion}.
 [Start ask about/for food]
 response for Employee when asked for "food":
 	  if the money is carried:
-		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up.'";
-		now the player is full;
-		[stop the action; I dont think this is needed]
+		say "[got food]";
 	otherwise:
 		if the player is full:
 			say "'You just ate, how could you be hungry again?' he replies.";
@@ -222,14 +228,22 @@ response for Employee when asked for "food":
 		
 response for Employee when asked about "food":
 	  if the money is carried:
-		say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up.'";
-		now the player is full;
+		say "[got food]";
 		[stop the action; I dont think this is needed]
 	otherwise:
 		if the player is full:
 			say "'You just ate, how could you be hungry again?' he replies.";
 		otherwise:
 			say "You'll need some money first.".
+
+[This is so that everything does not need to be written twice]
+To say got food:
+	say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your companion exclaims' [line break] 'Coming up.'";
+	now the player is full;
+	say "You're sitting enjoying the burgers when your companion suddenly burst out in hives, they start to struggle and gasp for air as their throat slowly closes... How could you forget, McRonalds is famous for using peanut oil to cook their burgers! You realize you must quickly find an epi pen to save your dear companions life..... But it would also suck to be late for the exam.";
+	now the Companion is not following;
+	now the companion is dying;
+	the companion succumbs in 6 turns from now.
 [End ask about/for food]
 
 Default ask response for the Employee:
@@ -254,7 +268,29 @@ Carry out using something:
 		if the room is dark:
 			say "You try turning on the flashlight on your phone, but to no avail. 'Right, the flashlight hasn[']t worked ever since I dropped my phone last month! It must have landed right on the flashlight unit. Since everything else worked fine and I never used the flashlight on my phone, I thought I lucked out... until now. Why do insignificant things always come back to haunt me in crucial situations?' you say as you get frustrated at your bad luck.";
 		otherwise:
-			say "There is a list in the notes app that says: [line break]-Get Pencil[line break]-Get food[paragraph break]";
+			say "There is a list in the notes app that says: [line break]- Get Pencil";
+			if the player is carrying the pencil:
+				say " (DONE) ";
+			 say "[line break]- Get food";
+			if the player is full:
+				say " (DONE) ";
+			say "[line break]";
+			if the companion is dying:
+				 say "- Find EPI Pen";
+				if the player is carrying the epi pen: 
+					say " (DONE) ";
+				say "[line break]";
+			if the companion is saved:
+				 say "- Find EPI Pen (DONE) [line break]";
+			say "- Get to Exam on time[paragraph break]";
+	otherwise if the noun is the epi pen:
+		if the companion is dying and the player is in the cafeteria:
+			now the companion is not dying;
+			now the companion is saved;
+			now the companion is following;
+			say "You managed to save your companion! Now to get to the Exam!";
+		otherwise:
+			say "You can't see anyone to use that on.";
 	otherwise:
 		say "You can't use that.".
 [End "Use" Definition]
@@ -285,7 +321,8 @@ Carry out calling someone:
 
 [Start Companion Definition]
 Companion is a person.
-
+The Companion can be dying or not dying. The Companion is not dying.
+The Companion can be saved or not saved. The Companion is not saved.
 [General Suggestions]
 help-suggestion is a misc-suggestion.
 The printed name of help-suggestion is "ask them for help".
@@ -385,11 +422,14 @@ Before going south:
 
 Before going southwest:
 	if the player is in the Outdoors Garden:
-		if the player is not full and the pencil is not carried:
-			say "You have more things to do first, use your phone for to see the list.";
+		if the player is not full or the pencil is not carried:
+			say "You have more things to do before you can enter the exam room. Use your phone for to see the list.";
 			stop the action;
 		otherwise:
-			end the story saying "You made it to the exam on time.".
+			if the companion is dying:
+				end the story saying "You left your companion behind to suffer.";
+			otherwise:
+				end the story saying "You made it to the exam on time! And you mangedto save your companion!".
 
 Before going west:
 	if the player is in the Hallway and the wooden crates is blocking:
@@ -403,30 +443,25 @@ Before going east:
 [End Before going In a direction]
 
 
-
 [Start Save and Undo Definitions]
 DisablePlayerUndo is a truth state that varies. DisablePlayerUndo is true.
+SavedCompanion is a truth state that varies. SavedCompanion is false.
+MadeExam is a truth state that varies. MadeExam is false.
 
 [When at the cafeteria, discuss how you only have x amount of time to get to the exam on time. Then have the companion have their reaction, and force the player to rush to get the epi pen, make it to the exam, neither, or both.]
 
-[when the companion the is allergenic:
-	disable saving of undo state.]
+At the time when the companion succumbs:
+	if the companion is not saved:
+		say "You failed to save your friend, they passed into another life, maybe you can still make it to the exam on time.".
 
-[At the time when the companion succumbs:
-	say "[player failed to save comp]".]
-
-To say player failed to save comp:
-	reinstate undo;
-	say "You failed to save your friend";
-	undo the current turn;
-
-[At the time when the exam starts:
-	say "[player missed exam]".]
-
-To say player missed exam:
-	reinstate undo;
-	say "You failed to make it to the exam on time";
-	undo the current turn;
+At the time when the exam starts:
+	say "You failed to make it to the exam on time.";
+	if companion is not dying:
+		end the story saying "At least you were able to save your companion";
+	otherwise:
+		end the story saying "You weren't even able to save your companion";
+	undo the current turn.
+	
 
 Before undoing an action when DisablePlayerUndo is true:
 	 say "You can't undo the actions you have made. What is this, some kind of game to you?";
@@ -434,11 +469,10 @@ Before undoing an action when DisablePlayerUndo is true:
 	
 
 Report undoing an action:
+	say "[bracket]Taking you back to the moment before you entered the cafeteria[close bracket][paragraph break]";
 	say "[bold type]";
 	say "[Location]" in title case;
-	say "[roman type]";
-	say "[line break]";
-	say "[bracket]Taking you back to the moment your companion started having their reaction[close bracket][line break]";
+	say "[roman type][paragraph break]";
 	enable saving of undo state;
 	rule succeeds.
 		
