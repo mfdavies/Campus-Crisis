@@ -161,6 +161,7 @@ The description of Your shared locker is "Your shared locker with a number combi
 [Start "Gym" Definition]
 The Gym is a room.
 The description of the Gym is "There are quite a few nets and hoops set up here for various sports. The room is big and open and the ceiling is tall, a nice change from those narrow hallways.".
+The Storage Room is a room. [inaccessable, only for companion]
 [End "Gym" Definition]
 
 [Start "Computer Lab" Definition]
@@ -295,21 +296,21 @@ Does the player mean calling the Companion: it is likely.
 Carry out calling someone:
 	if player is carrying phone:
 		if the noun is Companion:
-			if Companion is following:
+			if Companion is not following:
 				if player is in Locker Room and Locker Room is dark:
-					say "You try to calm yourself as you call the Companion, who was separated from you by a heavy automatic door: 'Hello? As soon as you left, the lights in here turned off! The door isn[']t budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker there,' the Companion says in a nonchanlant tone. You hear the sound of their footsteps moving farther away, at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
-					now the companion is not following;
-					the companion arrivesLockerRoom in two turns from now;
-				otherwise:
-					say "'What are you doing? I'm right beside you,' says the Companion";
-			otherwise:
-				if player is in Study Room and wooden door is locked:
+					if Companion is in Gym:
+						say "You try to calm yourself as you call the Companion, who was separated from you by a heavy automatic door: 'Hello? As soon as you left, the lights in here turned off! The door isn[']t budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker there,' the Companion says in a nonchanlant tone. You hear the sound of their footsteps moving farther away, at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
+						now Companion is in the Storage Room;
+						the Companion arrivesLockerRoom in two turns from now;
+					else if Companion is in Storage Room:
+						say "Companion doesn[']t pick up the phone. They are probably too busy trying to find the breaker and turn the lights back on.";
+				else if player is in Study Room and wooden door is locked:
 					say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
-					the companion arrivesStudyRoom in four turns from now;
-				if player is in Locker Room and Locker Room is dark:
-					say "Companion doesn[']t pick up the phone. They are probably too busy trying to find the breaker and turn the lights back on.";
+					the Companion arrivesStudyRoom in four turns from now;
 				otherwise:
 					say "'Remember to come back and get me!' says the Companion";
+			otherwise:
+				say "'What are you doing? I'm right beside you,' says the Companion";
 		otherwise:
 			say "You can't call that person.";
 	otherwise:
@@ -378,9 +379,12 @@ response for companion when asked about "locker combination":
 
 [Start asking Companion for a boost definition]
 response for companion when asked for "a boost":
-	say "'Okay, stand on my shoulders and I'll boost you up. Don't forget to come back to get me after you unlock this yellow door,' says the Companion[paragraph break]"; [placeholder]
-	now the Companion is not following;
-	now the player is in the Outdoors Garden;
+	if the player is in the Gym:
+		say "'Okay, stand on my shoulders and I'll boost you up. Don't forget to come back to get me after you unlock this yellow door,' says the Companion"; [placeholder]
+		now the player is in the Outdoors Garden;
+		now the Companion is not following;
+	otherwise:
+		say "'What do you need a boost for? This ain['] the time for acrobatics,' says the Companion";
 [End asking Companion for a boost definition]
 
 [This is not currently used.]
@@ -416,12 +420,13 @@ Before going south:
 	if the player is in the Locker Room:
 		if the Locker Room is not LockerEventDone:
 			if the Locker Room is lit:
-				now the Companion is in the Gym;
+				now Companion is in the Gym;
+				now Companion is not following;
 				now the Locker Room is dark;
 				say "The Companion walks ahead of you as you both head towards the exit. As you try to remember if you forgot anything with your head down, the lights abruptly turn off and you hear the sound of a door slamming shut. You quickly lift your gaze to see the face of the Companion behind the vertical window in the automatic door, now closed.";
 				stop the action;
 			otherwise:
-				if companion is following:
+				if Companion is in the Storage Room:
 					say "You walk towards the automatic door and try to slide it open. The door stays firmly closed in place. You bang your fist on the window and yell at the Companion, but it seems nothing is getting through due to sound isolation. You see the Companion hold up their phone and point at it, indicating a more suitable form of communication.";
 				otherwise:
 					say "You walk towards the automatic door and try to slide it open. The door stays firmly closed in place.";
