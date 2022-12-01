@@ -295,15 +295,21 @@ Does the player mean calling the Companion: it is likely.
 Carry out calling someone:
 	if player is carrying phone:
 		if the noun is Companion:
-			if player is in Study Room and wooden door is locked:
-				say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
-				the companion arrivesStudyRoom in four turns from now;
-			else if player is in Locker Room and Locker Room is dark:
-				say "You try to calm yourself as you call the Companion, who was separated from you by a heavy automatic door: 'Hello? As soon as you left, the lights in here turned off! The door isn[']t budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker there,' the Companion says in a nonchanlant tone. You hear the sound of their footsteps moving farther away, at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
-				now the companion is not following;
-				the companion arrivesLockerRoom in two turns from now;
+			if Companion is following:
+				if player is in Locker Room and Locker Room is dark:
+					say "You try to calm yourself as you call the Companion, who was separated from you by a heavy automatic door: 'Hello? As soon as you left, the lights in here turned off! The door isn[']t budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker there,' the Companion says in a nonchanlant tone. You hear the sound of their footsteps moving farther away, at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
+					now the companion is not following;
+					the companion arrivesLockerRoom in two turns from now;
+				otherwise:
+					say "'What are you doing? I'm right beside you,' says the Companion";
 			otherwise:
-				say "'What are you doing? I'm right beside you,' says the Companion";
+				if player is in Study Room and wooden door is locked:
+					say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'companion, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
+					the companion arrivesStudyRoom in four turns from now;
+				if player is in Locker Room and Locker Room is dark:
+					say "Companion doesn[']t pick up the phone. They are probably too busy trying to find the breaker and turn the lights back on.";
+				otherwise:
+					say "'Remember to come back and get me!' says the Companion";
 		otherwise:
 			say "You can't call that person.";
 	otherwise:
@@ -333,7 +339,10 @@ Every turn:
 	if Companion is following:
 		if the location of Companion is not the location of the player:
 			let the way be the best route from the location of Companion to the location of the player, using even locked doors;
-			try Companion going the way.
+			try Companion going the way;
+	otherwise:
+		if the location of Companion is the location of the player:
+			now Companion is following.
 [End Companion following definition]	
 
 [Start Companion where they were definition (Takes place in the study room)]
@@ -366,6 +375,13 @@ After quizzing companion about sigh:
 response for companion when asked about "locker combination":
 	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 [End asking Companion about the locker combination definition]
+
+[Start asking Companion for a boost definition]
+response for companion when asked for "a boost":
+	say "'Okay, stand on my shoulders and I'll boost you up. Don't forget to come back to get me after you unlock this yellow door,' says the Companion[paragraph break]"; [placeholder]
+	now the Companion is not following;
+	now the player is in the Outdoors Garden;
+[End asking Companion for a boost definition]
 
 [This is not currently used.]
 response for companion when asked about "food":
@@ -429,8 +445,8 @@ Before going west:
 		
 Before going east:
 	if the player is in the Gym:
-		now the yellow door is unlocked;
-		say "Now the yellow door is unlocked.".
+		say "The yellow door is locked but you can see a small vent opening to the upper right. Maybe ask the companion for a boost?"; [placeholder]
+		stop the action.
 [End Before going In a direction]
 
 
