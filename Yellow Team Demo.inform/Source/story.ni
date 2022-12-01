@@ -80,8 +80,8 @@ The Exam Room is southwest of the Outdoors Garden.
 The Computer Lab is east of the Outdoors Garden.
 The red stair is south of the Computer Lab and below the Library. The red stair is an open door. The red stair is not openable.
 
-The Chemistry Lab is north of the Central Hub.
-The blue stair is east of the Chemistry Lab and below the Nurses Room. The blue stair is an open door. The blue stair is not openable.
+The Faculty Room is north of the Central Hub.
+The blue stair is east of the Faculty Room and below the Nurses Room. The blue stair is an open door. The blue stair is not openable.
 
 [End Room Layout Definition]
 
@@ -174,12 +174,10 @@ Some money is in Library.
 The description of Library is "There are tons of books scattered about, looks like you were not the only one panic-studying.".
 [End "Library" Definition]
 
-[Start "Chemistry Lab" Definition]
-The Chemistry Lab is a dark room.
-The description of Chemistry Lab is "There are a few workbenches spread around the room with stools along them.".
-Some workbenches are scenery in the Chemistry Lab.
-Some stools are scenery in the Chemistry Lab.
-[End "Chemistry Lab" Definition]
+[Start "Faculty Room" Definition]
+The Faculty Room is a dark room.
+The description of Faculty Room is "This is the Faculty Room.". [placeholder]
+[End "Faculty Room" Definition]
 
 [Start "Nurses Room" Definition]
 The Nurses Room is a room.
@@ -302,6 +300,7 @@ Carry out calling someone:
 				the companion arrivesStudyRoom in four turns from now;
 			else if player is in Locker Room and Locker Room is dark:
 				say "You try to calm yourself as you call the Companion, who was separated from you by a heavy automatic door: 'Hello? As soon as you left, the lights in here turned off! The door isn[']t budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker there,' the Companion says in a nonchanlant tone. You hear the sound of their footsteps moving farther away, at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
+				now the companion is not following;
 				the companion arrivesLockerRoom in two turns from now;
 			otherwise:
 				say "'What are you doing? I'm right beside you,' says the Companion";
@@ -366,9 +365,6 @@ After quizzing companion about sigh:
 [Start asking Companion for/about the locker combination definition]
 response for companion when asked about "locker combination":
 	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
-	
-response for companion when asked for "locker combination":
-	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 [End asking Companion about the locker combination definition]
 
 [This is not currently used.]
@@ -388,9 +384,9 @@ At the time when the companion arrivesLockerRoom:
 		now the Companion is in the Locker Room;
 		now the Companion is following;
 		now the Locker Room is lit;
-		now the Chemistry Lab is lit;
+		now the Faculty Room is lit;
 		now the Locker Room is LockerEventDone;
-		say "The electricity comes back on and the Companion returns to your side soon after. 'Took you long enough! All I could do was sit in this dark room and stare at the clock on my phone!' You exclaim.[paragraph break]The Companion replies in a dismissive tone: 'Chill, figuring out those switches in the breaker took some time! It[']s not like I'm an electrical engineer either. Hey, as a bonus, I also turned on the light in the Chemistry Lab. That should be north of the Central Hub, if I recall correctly.'[paragraph break] You decide to move on after collecting yourself, despite feelings of annoyance towards the Companion.".
+		say "The electricity comes back on and the Companion returns to your side soon after. 'Took you long enough! All I could do was sit in this dark room and stare at the clock on my phone!' You exclaim.[paragraph break]The Companion replies in a dismissive tone: 'Chill, figuring out those switches in the breaker took some time! It[']s not like I'm an electrical engineer either. Hey, as a bonus, I also turned on the light in the Faculty Room. That should be north of the Central Hub, if I recall correctly.'[paragraph break] You decide to move on after collecting yourself, despite feelings of annoyance towards the Companion.".
 [end Companion arrives definition]
 [End Companion Definition]
 
@@ -404,13 +400,15 @@ Before going south:
 	if the player is in the Locker Room:
 		if the Locker Room is not LockerEventDone:
 			if the Locker Room is lit:
-				now the Companion is not following;
 				now the Companion is in the Gym;
 				now the Locker Room is dark;
 				say "The Companion walks ahead of you as you both head towards the exit. As you try to remember if you forgot anything with your head down, the lights abruptly turn off and you hear the sound of a door slamming shut. You quickly lift your gaze to see the face of the Companion behind the vertical window in the automatic door, now closed.";
 				stop the action;
 			otherwise:
-				say "You walk towards the automatic door and try to slide it open. The door stays firmly closed in place. You bang your fist on the window and yell at the Companion, but it seems nothing is getting through due to sound isolation. You see the Companion hold up their phone and point at it, indicating a more suitable form of communication.";
+				if companion is following:
+					say "You walk towards the automatic door and try to slide it open. The door stays firmly closed in place. You bang your fist on the window and yell at the Companion, but it seems nothing is getting through due to sound isolation. You see the Companion hold up their phone and point at it, indicating a more suitable form of communication.";
+				otherwise:
+					say "You walk towards the automatic door and try to slide it open. The door stays firmly closed in place.";
 				stop the action.
 
 Before going southwest:
