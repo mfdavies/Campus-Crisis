@@ -40,10 +40,10 @@ Displayed Command
 "[fixed letter spacing]W  *  E"
 "[fixed letter spacing]   S"
 " "
+"Look at something"
 "Go direction"
 "Inventory (I)"
 "Take/Drop something"
-"Examine something"
 "Use something"
 "Call someone"
 "Open/Close something"
@@ -80,8 +80,8 @@ The Exam Room is southwest of the Outdoors Garden.
 The Computer Lab is east of the Outdoors Garden.
 The red stair is south of the Computer Lab and below the Library. The red stair is an open door. The red stair is not openable.
 
-The Faculty Room is north of the Central Hub.
-The blue stair is east of the Faculty Room and below the Nurses Room. The blue stair is an open door. The blue stair is not openable.
+The Faculty Lounge is north of the Central Hub.
+The blue stair is east of the Faculty Lounge and below the Nurses Room. The blue stair is an open door. The blue stair is not openable.
 
 [End Room Layout Definition]
 
@@ -175,13 +175,13 @@ Some money is in Library.
 The description of Library is "There are tons of books scattered about, looks like you were not the only one panic-studying.".
 [End "Library" Definition]
 
-[Start "Faculty Room" Definition]
-The Faculty Room is a dark room.
-The description of Faculty Room is "This is the Faculty Room.". [placeholder]
-[End "Faculty Room" Definition]
+[Start "Faculty Lounge" Definition]
+The Faculty Lounge is a dark room.
+The description of Faculty Lounge is "This is the Faculty Lounge.". [placeholder]
+[End "Faculty Lounge" Definition]
 
 [Start "Nurses Room" Definition]
-The Nurses Room is a room.
+The Nurses Room is a dark room.
 The description of the Nurses Room is "There are a number of beds here with curtains separating each one. This place has seen much less traffic ever since the panademic was cured.". [placeholder]
 A Epi Pen is a thing in the Nurses Room.
 [End "Nurses Room" Definition]
@@ -404,9 +404,9 @@ At the time when the companion arrivesLockerRoom:
 		now the Companion is in the Locker Room;
 		now the Companion is following;
 		now the Locker Room is lit;
-		now the Faculty Room is lit;
+		now the Nurses Room is lit;
 		now the Locker Room is LockerEventDone;
-		say "The electricity comes back on and the Companion returns to your side soon after. 'Took you long enough! All I could do was sit in this dark room and stare at the clock on my phone!' You exclaim.[paragraph break]The Companion replies in a dismissive tone: 'Chill, figuring out those switches in the breaker took some time! It[']s not like I'm an electrical engineer either. Hey, as a bonus, I also turned on the light in the Faculty Room. That should be north of the Central Hub, if I recall correctly.'[paragraph break] You decide to move on after collecting yourself, despite feelings of annoyance towards the Companion.".
+		say "The electricity comes back on and the Companion returns to your side soon after. 'Took you long enough! All I could do was sit in this dark room and stare at the clock on my phone!' You exclaim.[paragraph break]The Companion replies in a dismissive tone: 'Chill, figuring out those switches in the breaker took some time! It[']s not like I'm an electrical engineer either. Hey, as a bonus, I also turned on the light in the Nurses Room. That should be somewhere north of the Central Hub, if I recall correctly.'[paragraph break] You decide to move on after collecting yourself, despite feelings of annoyance towards the Companion.".
 [end Companion arrives definition]
 [End Companion Definition]
 
