@@ -40,8 +40,7 @@ Displayed Command
 "[fixed letter spacing]W  *  E"
 "[fixed letter spacing]   S"
 " "
-"Look (L)"
-"Go/Walk direction"
+"Go direction"
 "Inventory (I)"
 "Take/Drop something"
 "Examine something"
@@ -49,28 +48,23 @@ Displayed Command
 "Call someone"
 "Open/Close something"
 "Push/Pull something"
-"Put something in something"
-"Put something on something"
+"Put something in/on something"
 "Wait (Z)"
 "Talk to someone"
 "?"
 "When talking:"
 "Ask for something"
 "Ask about something"
-"Topics"
 "?"
-"Help"
-"Hint"
 "Save/Restore"
 "Quit (Q)"
-"Exits on/off"
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
 
 A person can be full or not full. The player is not full.
 
 [Start Room Layout Definition]
 The wooden door is west of the Study Room and east of the Hallway. The wooden door is a locked door.
-The red door is south of the Study Room and north of the Library. The red door is a locked door.
+The red door is south of the Study Room and north of the Computer Lab. The red door is a locked door.
 
 The Central Hub is west of the Hallway.
 The Locker Room is west of the Central Hub.
@@ -83,8 +77,8 @@ The yellow door is east of the Gym and west of the Outdoors Garden. The yellow d
 The Cafeteria is southeast of the Outdoors Garden.
 The Exam Room is southwest of the Outdoors Garden.
 
-The Library is east of the Outdoors Garden.
-The red stair is south of the Library and below the Computer Lab. The red stair is an open door. The red stair is not openable.
+The Computer Lab is east of the Outdoors Garden.
+The red stair is south of the Computer Lab and below the Library. The red stair is an open door. The red stair is not openable.
 
 The Chemistry Lab is north of the Central Hub.
 The blue stair is east of the Chemistry Lab and below the Nurses Room. The blue stair is an open door. The blue stair is not openable.
@@ -265,24 +259,23 @@ Understand "use [something]" as using.
 
 Carry out using something:
 	if the noun is the phone:
-		if the room is dark:
-			say "You try turning on the flashlight on your phone, but to no avail. 'Right, the flashlight hasn[']t worked ever since I dropped my phone last month! It must have landed right on the flashlight unit. Since everything else worked fine and I never used the flashlight on my phone, I thought I lucked out... until now. Why do insignificant things always come back to haunt me in crucial situations?' you say as you get frustrated at your bad luck.";
-		otherwise:
-			say "There is a list in the notes app that says: [line break]- Get Pencil";
-			if the player is carrying the pencil:
-				say " (DONE) ";
-			 say "[line break]- Get food";
-			if the player is full:
+		if in darkness:
+			say "You try turning on the flashlight on your phone, but to no avail. 'Right, the flashlight hasn[']t worked ever since I dropped my phone last month! It must have landed right on the flashlight unit. Since everything else worked fine and I never used the flashlight on my phone, I thought I lucked out... until now. Why do insignificant things always come back to haunt me in crucial situations?' you say as you get frustrated at your bad luck.[paragraph break]";
+		say "There is a list in the notes app that says: [line break]- Get Pencil";
+		if the player is carrying the pencil:
+			say " (DONE) ";
+		 say "[line break]- Get food";
+		if the player is full:
+			say " (DONE) ";
+		say "[line break]";
+		if the companion is dying:
+			 say "- Find EPI Pen";
+			if the player is carrying the epi pen: 
 				say " (DONE) ";
 			say "[line break]";
-			if the companion is dying:
-				 say "- Find EPI Pen";
-				if the player is carrying the epi pen: 
-					say " (DONE) ";
-				say "[line break]";
-			if the companion is saved:
-				 say "- Find EPI Pen (DONE) [line break]";
-			say "- Get to Exam on time[paragraph break]";
+		if the companion is saved:
+			 say "- Find EPI Pen (DONE) [line break]";
+		say "- Get to Exam on time[paragraph break]";
 	otherwise if the noun is the epi pen:
 		if the companion is dying and the player is in the cafeteria:
 			now the companion is not dying;
