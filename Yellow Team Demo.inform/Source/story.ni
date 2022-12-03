@@ -64,7 +64,7 @@ A person can be full or not full. The player is not full.
 
 [Start Room Layout Definition]
 The wooden door is west of the Study Room and east of the Hallway. The wooden door is a locked door.
-The red door is south of the Study Room and north of the Computer Lab. [The red door is a locked door.]
+The red door is south of the Study Room and north of the Computer Lab. The red door is a locked door.
 
 The Central Hub is west of the Hallway.
 The Locker Room is west of the Central Hub.
