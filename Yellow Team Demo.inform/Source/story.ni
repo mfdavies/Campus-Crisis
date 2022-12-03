@@ -64,7 +64,7 @@ A person can be full or not full. The player is not full.
 
 [Start Room Layout Definition]
 The wooden door is west of the Study Room and east of the Hallway. The wooden door is a locked door.
-The red door is south of the Study Room and north of the Computer Lab. The red door is a locked door.
+The red door is south of the Study Room and north of the Computer Lab. [The red door is a locked door.]
 
 The Central Hub is west of the Hallway.
 The Locker Room is west of the Central Hub.
@@ -149,7 +149,7 @@ The description of Locker Room is "[if unvisited] There is a row of lockers alon
 Your shared locker is a password-protected container.  Your shared locker is in Locker Room.
 The password of Your shared locker is "5020".
 The prompt of Your shared locker is "Combination".
-The password failure of Your shared locker is "[italic type]I don't know the combination...[roman type] Maybe I should ask my companion about it.".
+The password failure of Your shared locker is "[italic type]I don't know the combiopen nation...[roman type] Maybe I should ask my companion about it.".
 The password request of Your shared locker is "Please enter the combination".
 The password success of Your shared locker is "You hear the lock click as it unlocks and the door swings open.".
 
@@ -166,7 +166,17 @@ The Storage Room is a room. [inaccessable, only for companion]
 
 [Start "Computer Lab" Definition]
 The Computer Lab is a room.
-The description of Computer Lab is "There are tons of computers in here, thankfully, you don't need to use any of them.".
+The description of Computer Lab is "There are tons of computers in here, thankfully, you don't need to use any of them. There's a password note next to the Desktop Computer.".
+Your Desktop Computer is a password-protected container.  Your Desktop Computer is in Computer Lab.
+A password note is scenery in Computer Lab. The description of the password note is "Here is the note to login the Desktop Computer.[line break][italic type]1: should know the password of this computer, obviously.  [line break]2: To login the Computer you should try 350. [line break]3: The password is composed of five digits, is it?[line break]4: What's on your cheat sheet?[line break]5: The PASSWORD is !@#$%.[line break]6: Your Companion doesn't know the password either.[line break]7: You have no clue at this time, but [line break]8: This note is USELESS. [line break]9: If you want to login, you[line break]*: you will figure it out."
+
+The password of Your Desktop Computer is "917*".
+The prompt of Desktop Computer is "Password".
+
+The password request of Your Desktop Computer is "Please enter the Password: _ _ _ _ ".
+The password success of Your Desktop Computer is "You loged in successful. You printed out your cheatsheet, and you can grab it at the printer".
+
+
 [End "Computer Lab" Definition]
 
 [Start "Library" Definition]
