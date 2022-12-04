@@ -409,10 +409,13 @@ Every turn:
 
 [Start Companion where they were definition (Takes place in the study room)]
 response for companion-intro-node when asked about "where they were":
-	say "[remove wtw-suggestion other suggestion]'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs, which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'[leavenode]".
+	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs, which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'[remove wtw-suggestion other suggestion][leavenode]".
 	
 default response for companion-intro-node:
 	say "'Huh? what are you talking about? Did you mean to ask me where I was?' Your companion replies.".
+	
+default response for Companion:
+	say "'Sorry I don't understand what you are asking about' Your companion replies.".
 [End Companion where they were definition]
 
 [Start asking for help definition] [This will need to be handled per room, and will only be suggested when no nodes are active]
@@ -460,8 +463,9 @@ At the time when the companion arrivesStudyRoom:
 	now the Companion is following;
 	now the wooden door is unlocked;
 	now the wooden door is open;
-	initiate a conversation with Companion at companion-intro-node;
-	say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]".
+	say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. companion strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your companion smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]";
+	initiate a conversation with Companion at companion-intro-node, immediately;
+	continue the action.
 		
 At the time when the companion arrivesLockerRoom:
 		now the Companion is in the Locker Room;
@@ -528,9 +532,6 @@ Understand "pull [switched off device]" as switching on. Understand "pull [switc
 Understand "use [switched off device]" as switching on. Understand "use [switched on device]" as switching off.  Understand "use[device]" as switching on.
 
 [Start Save and Undo Definitions]
-DisablePlayerUndo is a truth state that varies. DisablePlayerUndo is true.
-SavedCompanion is a truth state that varies. SavedCompanion is false.
-
 [When at the cafeteria, discuss how you only have x amount of time to get to the exam on time. Then have the companion have their reaction, and force the player to rush to get the epi pen, make it to the exam, neither, or both.]
 
 At the time when the companion succumbs:
@@ -546,6 +547,7 @@ At the time when the exam starts:
 	undo the current turn.
 	
 
+DisablePlayerUndo is a truth state that varies. DisablePlayerUndo is true.
 Before undoing an action when DisablePlayerUndo is true:
 	 say "You can't undo the actions you have made. What is this, some kind of game to you?";
 	 rule fails.
