@@ -55,9 +55,11 @@ Displayed Command
 "When talking:"
 "Ask for something"
 "Ask about something"
+"Topics"
 "?"
 "Save/Restore"
 "Quit (Q)"
+"Exits on/off"
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
 
 A person can be full or not full. The player is not full.
@@ -384,6 +386,9 @@ After quizzing companion about sigh:
 
 [Start asking Companion for/about the locker combination definition]
 response for companion when asked about "locker combination":
+	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
+	
+response for companion when asked for "locker combination":
 	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 [End asking Companion about the locker combination definition]
 
