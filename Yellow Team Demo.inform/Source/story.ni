@@ -36,15 +36,18 @@ Table of Custom Sidebar Commands (continued)
 Displayed Command
 "[bold type]Useful Commands"
 " "
-"[fixed letter spacing]   N"
-"[fixed letter spacing]W  *  E"
-"[fixed letter spacing]   S"
+"[fixed letter spacing]     N"
+"[fixed letter spacing]  NW   NE"
+"[fixed letter spacing]W    *    E"
+"[fixed letter spacing]  SW   SE"
+"[fixed letter spacing]	    S"
 " "
-"Look at something"
-"Go direction"
-"Inventory (I)"
+"Go/Walk direction"
+"Look (L)"
+"Examine something"
 "Take/Drop something"
 "Use something"
+"Inventory (I)"
 "Call someone"
 "Open/Close something"
 "Push/Pull something"
@@ -57,10 +60,11 @@ Displayed Command
 "Ask about something"
 "Topics"
 "?"
-"Save/Restore"
-"Quit (Q)"
 "Exits on/off"
 "[if the sidebar is allowing toggling]Sidebar on/off[end if]"
+"?"
+"Save/Restore"
+"Quit (Q)"
 
 A person can be full or not full. The player is not full.
 
@@ -111,7 +115,7 @@ A computer terminal is scenery in the Study Room. The description of the compute
 
 A your seat is scenery in the Study Room. The description of your seat is "[italic type]C'mon [pname], we can't even think about sitting right now [roman type].".
 
-An empty chair is scenery in the Study Room. The description of the empty chair is "[italic type]I wonder where companion is...[roman type]".
+An empty chair is scenery in the Study Room. The description of the empty chair is "[if companion is not following][italic type]I wonder where companion is...[roman type][otherwise]Its just a plain looking chair".
 
 [End "Study Room" Definition]
 
@@ -151,7 +155,7 @@ The description of Locker Room is "[if unvisited] There is a row of lockers alon
 Your shared locker is a password-protected container.  Your shared locker is in Locker Room.
 The password of Your shared locker is "5020".
 The prompt of Your shared locker is "Combination".
-The password failure of Your shared locker is "[italic type]I don't know the combiopen nation...[roman type] Maybe I should ask my companion about it.".
+The password failure of Your shared locker is "[italic type]I don't know the combination...[roman type] Maybe I should ask my companion about it.".
 The password request of Your shared locker is "Please enter the combination".
 The password success of Your shared locker is "You hear the lock click as it unlocks and the door swings open.".
 
@@ -168,32 +172,64 @@ The Storage Room is a room. [inaccessable, only for companion]
 
 [Start "Computer Lab" Definition]
 The Computer Lab is a room.
-The description of Computer Lab is "There are tons of computers in here, thankfully, you don't need to use any of them. There's a password note next to the Desktop Computer.".
+The description of Computer Lab is "There are tons of computers in here. There's a password note next to one of them.".
+
+A password note is scenery in Computer Lab. The description of the password note is "Here is the note to login the Desktop Computer.[line break][italic type]0: should know the password of this computer, obviously.  [line break]1: To login the Computer you should try 350. [line break]2: The password is composed of five digits, is it?[line break]3: What's on your cheatsheet?[line break]4: The PASSWORD is !@#$%.[line break]5: Your Companion doesn't know the password either.[line break]6: You have no clue at this time, but [line break]7: This note is USELESS. [line break]8: If you want to login, you[line break]9: you will figure it out."
+
 Your Desktop Computer is a password-protected container.  Your Desktop Computer is in Computer Lab.
-A password note is scenery in Computer Lab. The description of the password note is "Here is the note to login the Desktop Computer.[line break][italic type]1: should know the password of this computer, obviously.  [line break]2: To login the Computer you should try 350. [line break]3: The password is composed of five digits, is it?[line break]4: What's on your cheat sheet?[line break]5: The PASSWORD is !@#$%.[line break]6: Your Companion doesn't know the password either.[line break]7: You have no clue at this time, but [line break]8: This note is USELESS. [line break]9: If you want to login, you[line break]*: you will figure it out."
-
-The password of Your Desktop Computer is "917*".
+The password of Your Desktop Computer is "8069".
 The prompt of Desktop Computer is "Password".
-
 The password request of Your Desktop Computer is "Please enter the Password: _ _ _ _ ".
-The password success of Your Desktop Computer is "You loged in successful. You printed out your cheatsheet, and you can grab it at the printer".
+The password success of Your Desktop Computer is "You loged in successfully. You printed out your cheatsheet, and you can grab it at the printer".
+The password failure of Your Desktop Computer is "The computer beeps as if its mad at you.. that was the wrong password".
+
+Cheatsheet is inside Your Desktop Computer.
 
 
+The breaker is a closed openable container. The breaker is in the Computer Lab. The breaker is fixed in place.
+
+Instead of opening the breaker:
+	say "The breaker is closed tight with a screw. [italic type]I guess I'll need to find a screwdriver to use on it...[roman type][line break]";
+	[now the breaker is open. - used for testing]
+	
+The Gym Switch is a switched off device in the breaker. The Gym Switch is fixed in place.
+The Faculty Switch is a switched off device in the breaker. The Faculty Switch is fixed in place.
+
+[Note for Simon: The player should need to call the companion so they can switch both of their breakers at the same time]
+Instead of switching on the Gym Switch:
+	say "The switch clicks into the on position but then snaps back off. [italic type]Maybe there is another breaker somewhere that has to be activated at the same time.[roman type]".
+
+Instead of switching off the Gym Switch when the Gym Switch is switched on:
+	say "[italic type]Why would I switch something thats already on.[roman type]".
+
+Instead of switching on the Faculty Switch:
+	say  "The switch clicks into the on position.";
+	now the Faculty Switch is switched on;
+	now the Faculty Lounge is lit.
+
+Instead of switching off the Faculty Switch when the Faculty Switch is switched on:
+	say "[italic type]Why would I switch something thats already on.[roman type]".
+	
 [End "Computer Lab" Definition]
 
 [Start "Library" Definition]
 The Library is a room.
 Some money is in Library.
 The description of Library is "There are tons of books scattered about, looks like you were not the only one panic-studying.".
+
+A bookshelf is scenery in the Study Room. The description of thebookshelf is "A massive bookshelf with more books than I'll ever need. Oh! There is the textbook that I'm looking for.".
+
+The textbook is on the bookshelf. The textbook is undescribed.
 [End "Library" Definition]
 
 [Start "Faculty Lounge" Definition]
 The Faculty Lounge is a dark room.
-The description of Faculty Lounge is "This is the Faculty Lounge.". [placeholder]
+The description of Faculty Lounge is "You see a kitchenette as well as a bunch of couches and comfy chairs scattered around the room". [placeholder]
+Mr Robinsons Coat is a thing in the Faculty Lounge.
 [End "Faculty Lounge" Definition]
 
 [Start "Nurses Room" Definition]
-The Nurses Room is a dark room.
+The Nurses Room is a room.
 The description of the Nurses Room is "There are a number of beds here with curtains separating each one. This place has seen much less traffic ever since the panademic was cured.". [placeholder]
 A Epi Pen is a thing in the Nurses Room.
 [End "Nurses Room" Definition]
@@ -201,13 +237,14 @@ A Epi Pen is a thing in the Nurses Room.
 [Start "Outdoors Garden" Definition]
 The Outdoors Garden is a room.
 The description of the Outdoors Garden is "This is the Outdoors Garden.". [placeholder]
+The screwdriver is a thing in the Outdoors Garden.
 [End "Outdoors Garden" Definition]
 
 [Start "Cafeteria" Definition]
 The Cafeteria is a room.
 The description of Cafeteria is "You can smell a lot of delicious food in here, unfortunately only one shop is open. There are a bunch of tables scattered around the room and there is one employee working at McRonalds."
 
-After going to the Cafeteria when the the money is carried and the pencil is carried and the companion is not dying and the companion is not saved:
+After going to the Cafeteria when the the money is carried and the pencil is carried and the textbook is carried and the companion is not dying and the companion is not saved:
 	disable saving of undo state;
 	say "Alright, lets go get some food, we only have 15 minutes until the exam!";
 	the exam starts in 15 turns from now;
@@ -275,7 +312,13 @@ Carry out using something:
 		say "There is a list in the notes app that says: [line break]- Get Pencil";
 		if the player is carrying the pencil:
 			say " (DONE) ";
-		 say "[line break]- Get food";
+		say "[line break]- Get textbook";
+		if the player is carrying the textbook:
+			say " (DONE) ";
+		say "[line break]- Get Cheatsheet";
+		if the player is carrying the Cheatsheet:
+			say " (DONE) ";
+		say "[line break]- Get food";
 		if the player is full:
 			say " (DONE) ";
 		say "[line break]";
@@ -295,6 +338,12 @@ Carry out using something:
 			say "You managed to save your companion! Now to get to the Exam!";
 		otherwise:
 			say "You can't see anyone to use that on.";
+	otherwise if the noun is the screwdriver:
+		if the player is in the Computer Lab and the breaker is closed:
+			say "You pull out your screwdriver and use it to open the breaker, it swings open and reveals all of the switches.";
+			now the breaker is open;
+		otherwise:
+			say "You can't see anything to use that on.";
 	otherwise:
 		say "You can't use that.".
 [End "Use" Definition]
@@ -379,8 +428,7 @@ response for companion when asked for "help":
 response for companion when asked about "what's wrong":
 	say "'Hey companion, are you alright? You seem preoccupied.' Companion doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about?[roman type][paragraph break]".
 	
-Sigh is a familiar thing.
-After quizzing companion about sigh:
+response for companion when asked about "sigh":
 	say "'We've been friends long enough for me to know when something's on your mind, seriously, what is it?' 'Well,' they begin, 'I'm kind of glad this is happening.' Your concern slowly fades and frustration builds in you once more,[italic type] They're GLAD?[roman type]".
 [End quizzing companion in hallway definition]
 
@@ -399,7 +447,7 @@ response for companion when asked for "a boost":
 		now the player is in the Outdoors Garden;
 		now the Companion is not following;
 	otherwise:
-		say "'What do you need a boost for? This ain['] the time for acrobatics,' says the Companion";
+		say "'What do you need a boost for? This ain[']t the time for acrobatics,' says the Companion";
 [End asking Companion for a boost definition]
 
 [This is not currently used.]
@@ -419,7 +467,6 @@ At the time when the companion arrivesLockerRoom:
 		now the Companion is in the Locker Room;
 		now the Companion is following;
 		now the Locker Room is lit;
-		now the Nurses Room is lit;
 		now the Locker Room is LockerEventDone;
 		say "The electricity comes back on and the Companion returns to your side soon after. 'Took you long enough! All I could do was sit in this dark room and stare at the clock on my phone!' You exclaim.[paragraph break]The Companion replies in a dismissive tone: 'Chill, figuring out those switches in the breaker took some time! It[']s not like I'm an electrical engineer either. Hey, as a bonus, I also turned on the light in the Nurses Room. That should be somewhere north of the Central Hub, if I recall correctly.'[paragraph break] You decide to move on after collecting yourself, despite feelings of annoyance towards the Companion.".
 [end Companion arrives definition]
@@ -449,14 +496,14 @@ Before going south:
 
 Before going southwest:
 	if the player is in the Outdoors Garden:
-		if the player is not full or the pencil is not carried:
+		if the player is not full or the pencil is not carried or the textbook is not carried:
 			say "You have more things to do before you can enter the exam room. Use your phone for to see the list.";
 			stop the action;
 		otherwise:
 			if the companion is dying:
 				end the story saying "You left your companion behind to suffer.";
 			otherwise:
-				end the story saying "You made it to the exam on time! And you mangedto save your companion!".
+				end the story saying "You made it to the exam on time! And you manged to save your companion!".
 
 Before going west:
 	if the player is in the Hallway and the wooden crates is blocking:
@@ -470,10 +517,19 @@ Before going east:
 [End Before going In a direction]
 
 
+[Start Understand More Options]
+Understand "flip [switched off device]" as switching on. Understand "flip [switched on device]" as switching off.
+ Understand "flip [device]" as switching on.
+
+Understand "push [switched off device]" as switching on. Understand "push [switched on device]" as switching off.  Understand "push [device]" as switching on.
+
+Understand "pull [switched off device]" as switching on. Understand "pull [switched on device]" as switching off.  Understand "pull [device]" as switching on.
+
+Understand "use [switched off device]" as switching on. Understand "use [switched on device]" as switching off.  Understand "use[device]" as switching on.
+
 [Start Save and Undo Definitions]
 DisablePlayerUndo is a truth state that varies. DisablePlayerUndo is true.
 SavedCompanion is a truth state that varies. SavedCompanion is false.
-MadeExam is a truth state that varies. MadeExam is false.
 
 [When at the cafeteria, discuss how you only have x amount of time to get to the exam on time. Then have the companion have their reaction, and force the player to rush to get the epi pen, make it to the exam, neither, or both.]
 
