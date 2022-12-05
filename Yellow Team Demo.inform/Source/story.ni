@@ -140,7 +140,7 @@ After taking the screwdriver, say "[italic type]Hmmm, I'm not sure if this will 
 Some wooden crates are in the Hallway. The wooden crates are fixed in place.
 The wooden crates can be blocking or not blocking. The wooden crates are blocking.
 Instead of pushing the wooden crates:
-	say "You attempt to move the wooden crates, but they’re too heavy. You exasperatedly turn to your friend and make a self-deprecating joke about your noodle arms. 'Heh, I’m starting to wish my parents signed me up for sports instead of band lessons when I was younger…' Your friend is distractedly looking down, popping bubble wrap they found on the floor. [italic type]*pop* *pop* *pop*[roman type]. You think to yourself, [italic type]What's wrong with them?[roman type]".
+	say "You attempt to move the wooden crates, but they’re too heavy. You exasperatedly turn to your friend and make a self-deprecating joke about your noodle arms. 'Heh, I’m starting to wish my parents signed me up for sports instead of band lessons when I was younger…' Your friend is distractedly looking down, popping bubble wrap they found on the floor. [italic type]*pop* *pop* *pop*[roman type]. You think to yourself, [italic type]What is wrong with them?[roman type][paragraph break]".
 [End "Hallway" Definition]
 
 [Start "Central Hub" Definition]
@@ -415,7 +415,7 @@ wtw-suggestion is a misc-suggestion.
 The printed name of wtw-suggestion is "ask them about where they were".
 
 ww-suggestion is a misc-suggestion.
-The printed name of ww-suggestion is "ask them about what's wrong".
+The printed name of ww-suggestion is "ask them about what is wrong".
 
 The companion-intro-node is a closed convnode.
 The other-suggestions of companion-intro-node are {wtw-suggestion}.
@@ -463,15 +463,15 @@ response for companion when asked for "help":
 [End asking for help definition]
 
 [Start asking companion in hallway definition]
-response for companion-ww1-node when asked about "what's wrong":
-	say "'Hey companion, are you alright? You seem preoccupied.' Companion doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about?[roman type][node companion-ww2-node]".
+response for companion-ww1-node when asked about "what is wrong":
+	say "'Hey companion, are you alright? You seem preoccupied.' Companion doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about...?[line break][roman type]You silently debate with yourself whether you should return your focus back to moving the crates, or further nudge your companion to open up about what is wrong.[node companion-ww2-node]".
 	
 response for companion-ww1-node when asked for "help": [This is needed]
 	say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.[leavenode]";
 	now the wooden crates are not blocking.
 
-response for companion-ww2-node when asked about "what's wrong":
-	say "'We've been friends long enough for me to know when something's on your mind, seriously, what is it?' 'Well,' they begin, 'I'm kind of glad this is happening.' Your concern slowly fades and frustration builds in you once more,[italic type] They're GLAD?[roman type][leavenode][paragraph break]".
+response for companion-ww2-node when asked about "what is wrong":
+	say "'We've been friends long enough for me to know when something's on your mind, seriously, what is it?' 'Well,' they begin, 'I'm kind of glad this is happening.' Your concern slowly fades and frustration builds in you once more,[italic type] They're GLAD?[roman type] 'You know how things are for me at home, and I still haven't heard back from any of the jobs I've applied for post-grad,' they continue, 'and just. Well. It's nice to spend more time with you. I've missed hanging out.' Your face softens into a smile.[leavenode][paragraph break]".
 	
 response for companion-ww2-node when asked for "help": [This is needed]
 	say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.[leavenode]";
