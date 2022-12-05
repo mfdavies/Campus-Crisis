@@ -2,7 +2,6 @@
 
 Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
-Include NPC Implicit Actions by Eric Eve.
 Include Undo Output Control by Erik Temple.
 Include Exit Lister by Gavin Lambert.
 Include Password Protected Containers by Matthew Davies.
@@ -117,7 +116,7 @@ A chalkboard is scenery in the Study Room. The description of the chalkboard is 
 
 A computer terminal is scenery in the Study Room. The description of the computer terminal is "Looking closer at the computer terminal you see that its cord is frayed, rendering the machine useless. [italic type]Looks dangerous to plug in, I better leave this broken terminal alone.[roman type]".
 
-A  player chair is scenery in the Study Room. The description of player chair is "[italic type]C'mon [pname], we can't even think about sitting right now.[roman type]".
+A  player chair is scenery in the Study Room. The description of player chair is "[italic type]C[']mon [pname], we can't even think about sitting right now.[roman type]".
 
 An empty chair is scenery in the Study Room. The description of the empty chair is "[if companion is not following][italic type]I wonder where companion is...[roman type][otherwise][italic type]I can't wait to go back to bed after all of this.[roman type]".
 
@@ -128,8 +127,9 @@ The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTime
 The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to check if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' a small toolkit, and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
 
 After going to the hallway for the first time:
-	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.[paragraph break][leavenode](PRESS ANY KEY)[paragraph break]";
+	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.[paragraph break](PRESS ANY KEY)[paragraph break]";
 	wait for any key;
+	now the node of Companion is the companion-ww1-node;
 	continue the action.
 
 A toolbox is a closed openable container in the Hallway. The toolbox is fixed in place. The description of the toolbox is "You approach the small, metal box hoping something inside might be useful.".
@@ -196,7 +196,7 @@ Your Desktop Computer is a password-protected container.  Your Desktop Computer 
 The password of Your Desktop Computer is "8069".
 The prompt of Desktop Computer is "Password".
 The password request of Your Desktop Computer is "Please enter the Password: _ _ _ _ ".
-The password success of Your Desktop Computer is "You loged in successfully. You printed out your Student ID's, and you can collect them at the printer.".
+The password success of Your Desktop Computer is "You logged in successfully. You printed out your Student ID's, and you can collect them at the printer.".
 The password failure of Your Desktop Computer is "The computer beeps as if its mad at you.. that was the wrong password".
 
 The printer is scenery in the Computer lab. The Student ID is on the printer. The description of the Student ID is "'Ha, we look so young in our ID photos! I can't believe these were taken 4 years ago...'". 
@@ -399,23 +399,35 @@ Carry out calling someone:
 
 [Start Companion Definition]
 Companion is a person.
+
 The Companion can be dying or not dying. The Companion is not dying.
 The Companion can be saved or not saved. The Companion is not saved.
 [General Suggestions]
 help-suggestion is a misc-suggestion.
 The printed name of help-suggestion is "ask them for help".
+
 The other-suggestions of Companion are {help-suggestion}.
 [Convonodes]
-The companion-help-node is a closed convnode.
-The companion-intro-node is a closed convnode.
-The companion-boost-node is a closed convnode.
 boost-suggestion is a misc-suggestion.
 The printed name of boost-suggestion is "ask them for a boost".
-The other-suggestions of companion-boost-node are {boost-suggestion}.
 
 wtw-suggestion is a misc-suggestion.
 The printed name of wtw-suggestion is "ask them about where they were".
+
+ww-suggestion is a misc-suggestion.
+The printed name of ww-suggestion is "ask them about what's wrong".
+
+The companion-intro-node is a closed convnode.
 The other-suggestions of companion-intro-node are {wtw-suggestion}.
+
+The companion-boost-node is a closed convnode.
+The other-suggestions of companion-boost-node are {boost-suggestion}.
+
+The companion-ww1-node is a closed convnode.
+The other-suggestions of companion-ww1-node are {help-suggestion, ww-suggestion}.
+
+The companion-ww2-node is a closed convnode.
+The other-suggestions of companion-ww2-node are {help-suggestion, ww-suggestion}.
 
 [Start Companion following definition]
 Companion can be following or not following. Companion is not following.
@@ -450,13 +462,21 @@ response for companion when asked for "help":
 		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room.".
 [End asking for help definition]
 
-[Start quizzing companion in hallway definition] [I'm not sure what to do with theses -Matt]
-response for companion when asked about "what's wrong":
-	say "'Hey companion, are you alright? You seem preoccupied.' Companion doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about?[roman type][paragraph break]".
+[Start asking companion in hallway definition]
+response for companion-ww1-node when asked about "what's wrong":
+	say "'Hey companion, are you alright? You seem preoccupied.' Companion doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about?[roman type][node companion-ww2-node]".
 	
-response for companion when asked about "sigh":
-	say "'We've been friends long enough for me to know when something's on your mind, seriously, what is it?' 'Well,' they begin, 'I'm kind of glad this is happening.' Your concern slowly fades and frustration builds in you once more,[italic type] They're GLAD?[roman type]".
-[End quizzing companion in hallway definition]
+response for companion-ww1-node when asked for "help": [This is needed]
+	say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.[leavenode]";
+	now the wooden crates are not blocking.
+
+response for companion-ww2-node when asked about "what's wrong":
+	say "'We've been friends long enough for me to know when something's on your mind, seriously, what is it?' 'Well,' they begin, 'I'm kind of glad this is happening.' Your concern slowly fades and frustration builds in you once more,[italic type] They're GLAD?[roman type][leavenode][paragraph break]".
+	
+response for companion-ww2-node when asked for "help": [This is needed]
+	say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.[leavenode]";
+	now the wooden crates are not blocking.
+[End asking companion in hallway definition]
 
 [Start asking Companion for/about the locker combination definition]
 response for companion when asked about "locker combination":
