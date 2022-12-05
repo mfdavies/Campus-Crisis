@@ -135,7 +135,7 @@ After going to the hallway for the first time:
 A toolbox is a closed openable container in the Hallway. The toolbox is fixed in place. The description of the toolbox is "You approach the small, metal box hoping something inside might be useful.".
 After opening the toolbox, say "You flip up the metal clips holding the toolbox lid in place. Looking into the toolbox, you notice an orange screwdriver lying at the top of other various tools.".
 A screwdriver is an object inside the toolbox. The description of the screwdriver is "An orange screwdriver sitting atop other tools.".
-After taking the screwdriver, say "[italic type]Hmmm, I'm not sure if this will be useful for moving the crates. Maybe it'll come in handy later?[roman type] You chuckle to yourself over your unintentional pun.".
+After taking the screwdriver, say "[if wooden crates are blocking][italic type]Hmmm, I'm not sure if this will be useful for moving the crates. Maybe it'll come in handy later?[roman type] You chuckle to yourself over your unintentional pun.[otherwise] Perfect! This will come in handy for the breaker!".
 
 Some wooden crates are in the Hallway. The wooden crates are fixed in place.
 The wooden crates can be blocking or not blocking. The wooden crates are blocking.
@@ -145,7 +145,7 @@ Instead of pushing the wooden crates:
 
 [Start "Central Hub" Definition]
 The Central Hub is a room.
-The description of Central Hub is "Stepping into the large atrium, you feel a sense of relief hearing the quiet trickling of the fountain. It's too early for anyone else to be here, and the usually crowded area feels quite tranquil at this hour. The moonlight is pouring in from the glass dome, casting a shadow on the whole room."
+The description of Central Hub is "Stepping into the large atrium, you feel a sense of relief hearing the quiet trickling of the fountain. It's too early for anyone else to be here, and the usually crowded area feels quite tranquil at this hour. The moonlight is pouring in from the glass dome, casting a shadow on the whole room. You notice something refracting light near the log bench."
 
 A fountain is scenery in Central Hub. The description of the fountain is "Walking to the centre of the room, you stare up at the oddly ethereal fountain. It doesn't usually look this pretty, but the moonlight shining in from the glass ceiling is giving the fountain a faint glow.[italic type] I should make a wish.[roman type]".
 
@@ -153,7 +153,8 @@ A directory is scenery in Central Hub. The description of the directory is "Blur
 
 A plant is scenery in central hub. The description of plant is "How lively."
 
-A log bench is scenery in central hub. The description of log bench is "Right, the founder's bench. What does it say on the plaque?"
+A log bench is scenery in central hub. The description of log bench is "Right, the founder's bench. What does it say on the plaque?" 
+A gold key is an object on the log bench. The description of the gold key is "You notice a key shining atop the log bench. I wonder what door this is for."
 
 A plaque is scenery on the log bench. The description of the plaque is "Albert M. Ford."
 [End "Central Hub" Definition]
@@ -205,7 +206,7 @@ The printer is scenery in the Computer lab. The Student ID is on the printer. Th
 The breaker is a closed openable container. The breaker is in the Computer Lab. The breaker is fixed in place.
 
 Instead of opening the breaker:
-	say "The breaker is closed tight with a screw. [italic type]I guess I'll need to find a screwdriver to use on it...[roman type][line break]";
+	say "[if the breaker is closed]The breaker is closed tight with a screw. [italic type]I guess I'll need to find a screwdriver to use on it...[roman type][otherwise]The breaker box is open.[line break]";
 	[now the breaker is open. - used for testing]
 	
 The Gym Switch is a switched off device in the breaker. The Gym Switch is fixed in place.
@@ -230,7 +231,6 @@ Instead of switching off the Faculty Switch when the Faculty Switch is switched 
 
 [Start "Library" Definition]
 The Library is a room.
-Some money is in Library.
 The description of Library is "There are tons of books scattered about, looks like you were not the only one panic-studying.".
 
 A bookshelf is scenery in the Study Room. The description of thebookshelf is "A massive bookshelf with more books than I'll ever need. Oh! There is the textbook that I'm looking for.".
@@ -240,8 +240,21 @@ The textbook is on the bookshelf. The textbook is undescribed.
 
 [Start "Faculty Lounge" Definition]
 The Faculty Lounge is a dark room.
-The description of Faculty Lounge is "You see a kitchenette as well as a bunch of couches and comfy chairs scattered around the room". [placeholder]
-Mr Robinsons Coat is a thing in the Faculty Lounge.
+The description of Faculty Lounge is "[if unvisited]You see a fridge, coat hangers, and a jacket hung up.[otherwise]You see a kitchenette as well as a bunch of couches and comfy chairs scattered around the room". [placeholder]
+
+Robbie Banks jacket is a thing in the Faculty Lounge. The description of robbie banks jacket is "You watch your companion squint at the stitching on the jacket. 'The name reads 'Robbie Banks.' Banks you say? Well, I could benefit from an ATM withdrawl, if you catch my drift.' Companion nudges you to look at the bills sticking out of the expensive jacket's pocket.".
+Money is an undescribed object in robbie banks jacket. The description of money is "You look at the bills and wonder whether you should take them or not. 'C'mon [pname], it's the least this crummy University can do for us since tuition hikes are the REAL robbery here.' You think back to your class with Proffesor Banks last year: [italic type]Well, they were really nice to me when I had that vet emergency with my dog. They gave me a generous extension even though the deadline had already passed. I could maybe find money elsewhere, people tend to drop change in the cafeteria. Then again... do I have time to scour for change?[roman type]".
+After taking money, say "I feel a little guilty... 'Yeah, but think about all the FOOD we can buy with a $50 bill!'". 
+
+
+A fridge is a closed openable container in the faculty lounge. The description of the fridge is "A stainless steel fridge. You companion eagerly exclaims, 'Oooooh, I wonder what's inside!!'". 
+After opening fridge, say "You open the fridge to reveal a massive white sheet cake with text that reads 'Congrats on retirement Robbie! You think to yourself, Sheesh, how can anyone afford to retire in this economy?". 
+A massive white sheet cake is scenery in the fridge. The description of the massive white sheet cake is "Covered in vanilla frosting with balloon shaped piping, the cake reads'Congrats on retirement Robbie!' Your companion exlcaims, 'That. Cake. Looks. DELICIOUS!!' Your stomach rumbles in agreeance. 'Yeah, but it's not our retirement,' you reluctantly respond.".
+
+The Coat hangers are scenery in the faculty lounge. The description of the coat hangers is "Some empty hooks, all except one...". 
+The name plaques are scenery on the coat hangers. The description of the name plaques is "Sara, Evenson, Julie, Robbie.".
+
+
 [End "Faculty Lounge" Definition]
 
 [Start "Nurses Room" Definition]
@@ -444,7 +457,7 @@ Every turn:
 
 [Start Companion where they were definition (Takes place in the study room)]
 response for companion-intro-node when asked about "where they were":
-	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs, which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'[remove wtw-suggestion other suggestion][leavenode]".
+	say "'Yeah, I do have something to ask you. What the hell companion, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'[remove wtw-suggestion other suggestion][leavenode]".
 	
 default response for companion-intro-node:
 	say "'Huh? what are you talking about? Did you mean to ask me where I was?' Your companion replies.".
@@ -556,6 +569,10 @@ Before going east:
 	if the player is in the Gym:
 		say "The yellow door is locked but you can see a small vent opening to the upper right. Maybe ask the companion?[node companion-boost-node]"; [placeholder]
 		stop the action.
+		
+Before going north: 
+	if the player is in the central hub and the gold key is carried:
+		now the framed door is unlocked.
 [End Before going In a direction]
 
 
