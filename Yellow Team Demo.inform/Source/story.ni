@@ -173,6 +173,7 @@ The description of Your shared locker is "Your shared locker with a number combi
 The Gym is a room.
 The description of the Gym is "There are quite a few nets and hoops set up here for various sports. The room is big and open and the ceiling is tall, a nice change from those narrow hallways.".
 The Storage Room is a room. [inaccessable, only for companion]
+
 [End "Gym" Definition]
 
 [Start "Computer Lab" Definition]
@@ -394,6 +395,11 @@ The other-suggestions of Companion are {help-suggestion}.
 [Convonodes]
 The companion-help-node is a closed convnode.
 The companion-intro-node is a closed convnode.
+The companion-boost-node is a closed convnode.
+boost-suggestion is a misc-suggestion.
+The printed name of boost-suggestion is "ask them for a boost".
+The other-suggestions of companion-boost-node are {boost-suggestion}.
+
 wtw-suggestion is a misc-suggestion.
 The printed name of wtw-suggestion is "ask them about where they were".
 The other-suggestions of companion-intro-node are {wtw-suggestion}.
@@ -448,13 +454,13 @@ response for companion when asked for "locker combination":
 [End asking Companion about the locker combination definition]
 
 [Start asking Companion for a boost definition]
-response for companion when asked for "a boost":
-	if the player is in the Gym:
-		say "'Okay, stand on my shoulders and I'll boost you up. Don't forget to come back to get me after you unlock this yellow door,' says the Companion"; [placeholder]
-		now the player is in the Outdoors Garden;
-		now the Companion is not following;
-	otherwise:
-		say "'What do you need a boost for? This ain[']t the time for acrobatics,' says the Companion";
+response for companion-boost-node when asked for "a boost":
+	say "'Okay, stand on my shoulders and I'll boost you up. Don't forget to come back to get me after you unlock this yellow door,' says the Companion[remove boost-suggestion other suggestion][leavenode]"; [placeholder]
+	now the player is in the Outdoors Garden;
+	now the Companion is not following;
+		
+response for companion when asked for "a boost": [This is used every other time]
+	say "'What do you need a boost for? This ain[']t the time for acrobatics,' says the Companion";
 [End asking Companion for a boost definition]
 
 [This is not currently used.]
@@ -520,7 +526,7 @@ Before going west:
 		
 Before going east:
 	if the player is in the Gym:
-		say "The yellow door is locked but you can see a small vent opening to the upper right. Maybe ask the companion for a boost?"; [placeholder]
+		say "The yellow door is locked but you can see a small vent opening to the upper right. Maybe ask the companion?[node companion-boost-node]"; [placeholder]
 		stop the action.
 [End Before going In a direction]
 
@@ -550,12 +556,10 @@ At the time when the exam starts:
 		end the story saying "You weren't even able to save your companion";
 	undo the current turn.
 	
-
 DisablePlayerUndo is a truth state that varies. DisablePlayerUndo is true.
 Before undoing an action when DisablePlayerUndo is true:
 	 say "You can't undo the actions you have made. What is this, some kind of game to you?";
 	 rule fails.
-	
 
 Report undoing an action:
 	say "[bracket]Taking you back to the moment before you entered the cafeteria[close bracket][paragraph break]";
