@@ -69,8 +69,9 @@ Displayed Command
 A person can be full or not full. The player is not full.
 
 [Start Room Layout Definition]
-The wooden door is west of the Study Room and east of the Hallway. The wooden door is a locked door.
-The red door is south of the Study Room and north of the Computer Lab. The red door is a locked door.
+The large wooden door is west of the Study Room and east of the Hallway. The large wooden door is a locked door.
+The plain door is south of the Study Room and north of the Computer Lab. The plain door is a locked door.
+The framed door is north of the Central Hub and south of the Faculty Lounge. The framed door is a locked door.
 
 The Central Hub is west of the Hallway.
 The Locker Room is west of the Central Hub.
@@ -86,14 +87,14 @@ The Exam Room is southwest of the Outdoors Garden.
 The Computer Lab is east of the Outdoors Garden.
 The red stair is south of the Computer Lab and below the Library. The red stair is an open door. The red stair is not openable.
 
-The Faculty Lounge is north of the Central Hub.
+The Faculty Lounge is a room.
 The blue stair is east of the Faculty Lounge and below the Nurses Room. The blue stair is an open door. The blue stair is not openable.
 
 [End Room Layout Definition]
 
 [Start "Study Room" Definition]
 Study Room is a room.
-The description of Study Room is "[if unvisited]You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from your seat at the desk, you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type] I should probably find where they are. [roman type] [otherwise]You look around the warm room and see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room.".
+The description of Study Room is "[if unvisited]You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from your seat at the desk, you notice that the chair across from you where companion was sitting is still empty. You think to yourself, [italic type]I should probably find where they are.[roman type][otherwise]You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. The chairs where you and companion were sitting are both pulled out.".
 
 A large oak desk is scenery in the Study Room. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
 
@@ -106,16 +107,19 @@ After opening the backpack, say "[italic type]Wow... my backpack's so empty. Whe
 A phone is an object inside the backpack.
 After taking phone, say "You pick up your phone and immediately dismiss the alarm. [italic type]Finally, now I can hear myself think. Maybe I should call companion and ask if they're okay...?[roman type] You notice that Let's Get This Bread is the most recently used app on your phone. [italic type]Oh right, my to do list[roman type]. Your stomach growls at the reference of delicious carbs.".
 
-Check opening the locked wooden door:
-	say “You walk towards the door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call companion and see if they can open it from the other side[roman type].” instead.
+Check opening the locked large wooden door:
+	say “You walk towards the large wooden door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call companion and see if they can open it from the other side[roman type].” instead.
+	
+Check opening the plain door:
+	say "The plain door creaks open ever so slightly, just enough for you to see rows of computers, before it [italic type]*thud*[roman type] hits something and comes to a halt. [italic type]The door must be blocked from the other room, I'll have to move whatever it is first if I want to get through.[roman type][paragraph break]" instead.
 	
 A chalkboard is scenery in the Study Room. The description of the chalkboard is "You notice a faded circle next to a calculus formula, along with a pun that reads, 'Why did Pi get its drivers license revoked? Because it didn’t know when to stop!' You lightly chuckle at the joke. [italic type]Funny, but not helpful.[roman type]".
 
 A computer terminal is scenery in the Study Room. The description of the computer terminal is "Looking closer at the computer terminal you see that its cord is frayed, rendering the machine useless. [italic type]Looks dangerous to plug in, I better leave this broken terminal alone.[roman type]".
 
-A your seat is scenery in the Study Room. The description of your seat is "[italic type]C'mon [pname], we can't even think about sitting right now [roman type].".
+A  player chair is scenery in the Study Room. The description of player chair is "[italic type]C'mon [pname], we can't even think about sitting right now.[roman type]".
 
-An empty chair is scenery in the Study Room. The description of the empty chair is "[if companion is not following][italic type]I wonder where companion is...[roman type][otherwise]Its just a plain looking chair".
+An empty chair is scenery in the Study Room. The description of the empty chair is "[if companion is not following][italic type]I wonder where companion is...[roman type][otherwise][italic type]I can't wait to go back to bed after all of this.[roman type]".
 
 [End "Study Room" Definition]
 
@@ -123,14 +127,15 @@ An empty chair is scenery in the Study Room. The description of the empty chair 
 The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTimeEnterHallway. The Hallway is FirstTimeEnterHallway.
 The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to check if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' a small toolkit, and the trash your companion kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
 
+After going to the hallway for the first time:
+	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.[paragraph break][leavenode](PRESS ANY KEY)[paragraph break]";
+	wait for any key;
+	continue the action.
+
 A toolbox is a closed openable container in the Hallway. The toolbox is fixed in place. The description of the toolbox is "You approach the small, metal box hoping something inside might be useful.".
 After opening the toolbox, say "You flip up the metal clips holding the toolbox lid in place. Looking into the toolbox, you notice an orange screwdriver lying at the top of other various tools.".
 A screwdriver is an object inside the toolbox. The description of the screwdriver is "An orange screwdriver sitting atop other tools.".
 After taking the screwdriver, say "[italic type]Hmmm, I'm not sure if this will be useful for moving the crates. Maybe it'll come in handy later?[roman type] You chuckle to yourself over your unintentional pun.".
-
-After going to the hallway for the first time:
-	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Companion kicks over a garbage can in protest.[leavenode]";
-	continue the action.
 
 Some wooden crates are in the Hallway. The wooden crates are fixed in place.
 The wooden crates can be blocking or not blocking. The wooden crates are blocking.
@@ -165,7 +170,8 @@ The password request of Your shared locker is "Please enter the combination".
 The password success of Your shared locker is "You hear the lock click as it unlocks and the door swings open.".
 
 
-pencil is inside Your shared locker.
+The Essential oil is an object inside Your shared locker.
+The Writing materials is an object in Your shared locker.
 The description of Your shared locker is "Your shared locker with a number combination lock.".
 [End "Locker Room" Definition]
 
@@ -180,16 +186,20 @@ The Storage Room is a room. [inaccessable, only for companion]
 The Computer Lab is a room.
 The description of Computer Lab is "There are tons of computers in here. There's a password note next to one of them.".
 
+Check opening the locked plain door:
+	If computer lab is visited:
+		now the plain door is unlocked.
+
 A password note is scenery in Computer Lab. The description of the password note is "Here is the note to login the Desktop Computer.[line break][italic type]0: should know the password of this computer, obviously.  [line break]1: To login the Computer you should try 350. [line break]2: The password is composed of five digits, is it?[line break]3: What's on your cheatsheet?[line break]4: The PASSWORD is !@#$%.[line break]5: Your Companion doesn't know the password either.[line break]6: You have no clue at this time, but [line break]7: This note is USELESS. [line break]8: If you want to login, you[line break]9: you will figure it out."
 
 Your Desktop Computer is a password-protected container.  Your Desktop Computer is in Computer Lab.
 The password of Your Desktop Computer is "8069".
 The prompt of Desktop Computer is "Password".
 The password request of Your Desktop Computer is "Please enter the Password: _ _ _ _ ".
-The password success of Your Desktop Computer is "You loged in successfully. You printed out your cheatsheet, and you can grab it at the printer".
+The password success of Your Desktop Computer is "You loged in successfully. You printed out your Student ID's, and you can collect them at the printer.".
 The password failure of Your Desktop Computer is "The computer beeps as if its mad at you.. that was the wrong password".
 
-Cheatsheet is inside Your Desktop Computer.
+The printer is scenery in the Computer lab. The Student ID is on the printer. The description of the Student ID is "'Ha, we look so young in our ID photos! I can't believe these were taken 4 years ago...'". 
 
 
 The breaker is a closed openable container. The breaker is in the Computer Lab. The breaker is fixed in place.
@@ -249,7 +259,7 @@ The description of the Outdoors Garden is "This is the Outdoors Garden.". [place
 The Cafeteria is a room.
 The description of Cafeteria is "You can smell a lot of delicious food in here, unfortunately only one shop is open. There are a bunch of tables scattered around the room and there is one employee working at McRonalds."
 
-After going to the Cafeteria when the the money is carried and the pencil is carried and the textbook is carried and the companion is not dying and the companion is not saved:
+After going to the Cafeteria when the the money is carried and the essential oil is carried and the textbook is carried and the companion is not dying and the companion is not saved:
 	disable saving of undo state;
 	say "Alright, lets go get some food, we only have 15 minutes until the exam!";
 	the exam starts in 15 turns from now;
@@ -314,16 +324,19 @@ Carry out using something:
 	if the noun is the phone:
 		if in darkness:
 			say "You try turning on the flashlight on your phone, but to no avail. 'Right, the flashlight hasn[']t worked ever since I dropped my phone last month! It must have landed right on the flashlight unit. Since everything else worked fine and I never used the flashlight on my phone, I thought I lucked out... until now. Why do insignificant things always come back to haunt me in crucial situations?' you say as you get frustrated at your bad luck.[paragraph break]";
-		say "There is a list in the notes app that says: [line break]- Get Pencil";
-		if the player is carrying the pencil:
+		say "There is a list in the notes app that says: [line break]- Get essential oil";
+		if the player is carrying the essential oil:
+			say " (DONE) ";
+		say "[line break]- Get writing materials (2HB pencil, eraser, & pencil sharpener)";
+		if the player is carrying the writing materials:
 			say " (DONE) ";
 		say "[line break]- Get textbook";
 		if the player is carrying the textbook:
 			say " (DONE) ";
-		say "[line break]- Get Cheatsheet";
-		if the player is carrying the Cheatsheet:
+		say "[line break]- Get student ID";
+		if the player is carrying the student ID:
 			say " (DONE) ";
-		say "[line break]- Get food";
+		say "[line break]- CONSUME ALL OF THE CARBS (mmm, delicious food)";
 		if the player is full:
 			say " (DONE) ";
 		say "[line break]";
@@ -334,7 +347,7 @@ Carry out using something:
 			say "[line break]";
 		if the companion is saved:
 			 say "- Find EPI Pen (DONE) [line break]";
-		say "- Get to Exam on time[paragraph break]";
+		say "- [bold type]GET TO EXAM ON TIME!!![roman type][paragraph break]";
 	otherwise if the noun is the epi pen:
 		if the companion is dying and the player is in the cafeteria:
 			now the companion is not dying;
@@ -487,11 +500,6 @@ At the time when the companion arrivesLockerRoom:
 [End Companion Definition]
 
 [Start Before going In a direction]
-Before going north:
-	if the player is in the Library:
-		now the red door is unlocked;
-		say "Now the red door is unlocked.".
-
 Before going south:
 	if the player is in the Locker Room:
 		if the Locker Room is not LockerEventDone:
@@ -510,7 +518,7 @@ Before going south:
 
 Before going southwest:
 	if the player is in the Outdoors Garden:
-		if the player is not full or the pencil is not carried or the textbook is not carried:
+		if the player is not full or the essential oil is not carried or the textbook is not carried:
 			say "You have more things to do before you can enter the exam room. Use your phone for to see the list.";
 			stop the action;
 		otherwise:
