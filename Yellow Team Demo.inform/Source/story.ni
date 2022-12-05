@@ -154,7 +154,8 @@ A directory is scenery in Central Hub. The description of the directory is "Blur
 A plant is scenery in central hub. The description of plant is "How lively."
 
 A log bench is scenery in central hub. The description of log bench is "Right, the founder's bench. What does it say on the plaque?" 
-A gold key is an object on the log bench. The description of the gold key is "You notice a key shining atop the log bench. I wonder what door this is for."
+A gold key is an object on the log bench. The description of the gold key is "You notice a key shining atop the log bench."
+After taking the key, say "I wonder what door this is for.".
 
 A plaque is scenery on the log bench. The description of the plaque is "Albert M. Ford."
 [End "Central Hub" Definition]
@@ -254,6 +255,9 @@ A massive white sheet cake is scenery in the fridge. The description of the mass
 The Coat hangers are scenery in the faculty lounge. The description of the coat hangers is "Some empty hooks, all except one...". 
 The name plaques are scenery on the coat hangers. The description of the name plaques is "Sara, Evenson, Julie, Robbie.".
 
+The brown couch is scenery in the faculty lounge. The description of the brown couch is "You admire how inviting it's plush, corduroy fabric and fluffed up pillows appear. You quickly shake your head and tell yourself you can sleep after your exam.".
+
+A sign on the wall is scenery in the faculty lounge. The description of the sign on the wall is "NURSES ROOM: Second Floor.".
 
 [End "Faculty Lounge" Definition]
 
