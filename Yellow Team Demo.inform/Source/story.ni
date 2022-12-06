@@ -6,7 +6,7 @@ Include Undo Output Control by Erik Temple.
 Include Exit Lister by Gavin Lambert.
 Include Password Protected Containers by Matthew Davies.
 
-Release along with cover art ("Classroom").
+Release along with a interpreter and cover art ("Classroom").
 The pname is a text that varies.
 
 When play begins:
@@ -567,11 +567,15 @@ Before going southwest:
 Before going west:
 	if the player is in the Hallway and the wooden crates is blocking:
 		say "You can't get past because of the wooden crates.";
-		stop the action.
+		stop the action;
+	otherwise if the player is in the outdoors garden and the gold key is carried:
+		now the yellow door is unlocked.
 		
+
 Before going east:
 	if the player is in the Gym:
-		say "The yellow door is locked but you can see a small vent opening to the upper right. Maybe ask Reese?[node reese-boost-node]"; [placeholder]
+		say "The yellow door is locked but you can see a small vent opening to the upper right. Maybe ask Reese?"; [placeholder]
+		now the node of Reese is the reese-boost-node;
 		stop the action.
 		
 Before going north: 
