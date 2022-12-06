@@ -6,8 +6,7 @@ Include Undo Output Control by Erik Temple.
 Include Exit Lister by Gavin Lambert.
 Include Password Protected Containers by Matthew Davies.
 
-Release along with a interpreter.
-
+Release along with cover art ("Classroom").
 The pname is a text that varies.
 
 When play begins:
