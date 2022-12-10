@@ -210,14 +210,21 @@ Instead of opening the breaker:
 	say "[if the breaker is closed]The breaker is closed tight with a screw. [italic type]I guess I'll need to find a screwdriver to use on it...[roman type][otherwise]The breaker box is open.[line break]";
 	[now the breaker is open. - used for testing]
 	
-The Gym Switch is a switched off device in the breaker. The Gym Switch is fixed in place.
+The Gym Switch is a switched off device in the breaker. The Gym Switch is fixed in place. The Gym Switch can be either GymSwitchLocked or GymSwitchUnlocked. The Gym Switch is GymSwitchLocked.
 The Faculty Switch is a switched off device in the breaker. The Faculty Switch is fixed in place.
 
 [Note for Simon: The player should need to call the reese so they can switch both of their breakers at the same time]
-Instead of switching on the Gym Switch:
-	say "The switch clicks into the on position but then snaps back off. [italic type]Maybe there is another breaker somewhere that has to be activated at the same time.[roman type]".
+At the time when the Gym Switch timeouts:
+	now the Gym Switch is GymSwitchLocked.
 
-Instead of switching off the Gym Switch when the Gym Switch is switched on:
+Instead of switching on the Gym Switch when the Gym Switch is GymSwitchLocked:
+	say "The switch clicks into the on position but then snaps back off. [italic type]Maybe there is another breaker somewhere that has to be activated at the same time. Seems like Reese and I need to be split up for this one[roman type].".
+
+after switching on the Gym Switch:
+	say "[italic type]Now the Yellow Door in the Gym should be unlocked. I should hurry back to Reese.[roman type]";
+	now the Yellow Door is unlocked.
+
+Instead of switching off the Gym Switch:
 	say "[italic type]Why would I switch something thats already on.[roman type]".
 
 Instead of switching on the Faculty Switch:
@@ -403,6 +410,10 @@ Carry out calling someone:
 				else if player is in Study Room and wooden door is locked:
 					say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'reese, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
 					the Reese arrivesStudyRoom in four turns from now;
+				else if player is in Computer Lab and the Gym Switch is switched off:
+					say "'Hey Reese, I've got a switch here that needs to be activated at the same time as another switch in the Gym. Can you try flipping on the switch in the Gym at the same time? Let do it immediately after I hang up,' you say.[paragraph break]After hearing an approval from Reese, you get ready to flip the switch and hang up.";
+					now the Gym Switch is GymSwitchUnlocked;
+					the Gym Switch timeouts in 1 turn from now;
 				otherwise:
 					say "'Remember to come back and get me!' says Reese";
 			otherwise:
@@ -568,12 +579,9 @@ Before going west:
 	if the player is in the Hallway and the wooden crates is blocking:
 		say "You can't get past because of the wooden crates.";
 		stop the action;
-	otherwise if the player is in the outdoors garden and the gold key is carried:
-		now the yellow door is unlocked.
-		
 
 Before going east:
-	if the player is in the Gym:
+	if the player is in the Gym and the Yellow Door is locked:
 		say "The yellow door is locked but you can see a small vent opening to the upper right. Maybe ask Reese?"; [placeholder]
 		now the node of Reese is the reese-boost-node;
 		stop the action.
