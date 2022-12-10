@@ -93,7 +93,7 @@ The blue stair is east of the Faculty Lounge and below the Nurses Room. The blue
 
 [Start "Study Room" Definition]
 Study Room is a room.
-The description of Study Room is "[if unvisited]You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from your seat at the desk, you notice that the chair across from you where reese was sitting is still empty. You think to yourself, [italic type]I should probably find where they are.[roman type][otherwise]You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. The chairs where you and reese were sitting are both pulled out.".
+The description of Study Room is "[if unvisited]You jolt awake at the sound of an abrasive alarm. Disoriented, you look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. As you stand up from your seat at the desk, you notice that the chair across from you where Reese was sitting is still empty. You think to yourself, [italic type]I should probably find where they are.[roman type][otherwise]You look around the warm room to see notes strewn across a large oak desk, formulas scribbled on a dusty chalkboard, and an unplugged computer terminal in the far corner of the room. The chairs where you and Reese were sitting are both pulled out.".
 
 A large oak desk is scenery in the Study Room. The description of the large oak desk is "You look at your mess of notes and cue cards covering the surface of the large oak desk. Some have writing, others are dauntingly blank and serve as an unfortunate reminder of your lack of preparation. [italic type]I wonder if any of these might be useful…[roman type]".
 
@@ -104,10 +104,10 @@ After taking the pink sticky note, say "You take the pink sticky note. [italic t
 A backpack is a closed openable container in the Study Room. The backpack is fixed in place. The description of the backpack is "The bronze coloured backpack is arguably far too small for a university student. It must be difficult to fit all of your academic materials into it.".
 After opening the backpack, say "[italic type]Wow... my backpack's so empty. Where did I leave my exam materials?[roman type] You see your phone lying at the bottom of your bag. [italic type]This alarm is giving me a headache, I need to take my phone and shut it off[roman type].".
 A phone is an object inside the backpack.
-After taking phone, say "You pick up your phone and immediately dismiss the alarm. [italic type]Finally, now I can hear myself think. Maybe I should call reese and ask if they're okay...?[roman type] You notice that Let's Get This Bread is the most recently used app on your phone. [italic type]Oh right, my to do list[roman type]. Your stomach growls at the reference of delicious carbs.".
+After taking phone, say "You pick up your phone and immediately dismiss the alarm. [italic type]Finally, now I can hear myself think. Maybe I should call Reese and ask if they're okay...?[roman type] You notice that Let's Get This Bread is the most recently used app on your phone. [italic type]Oh right, my to do list[roman type]. Your stomach growls at the reference of delicious carbs.".
 
 Check opening the locked large wooden door:
-	say “You walk towards the large wooden door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call reese and see if they can open it from the other side[roman type].” instead.
+	say “You walk towards the large wooden door to leave the study room, but the handle doesn’t turn. [italic type]Hmm, locked in? Maybe I should call Reese and see if they can open it from the other side[roman type].” instead.
 	
 Check opening the plain door:
 	say "The plain door creaks open ever so slightly, just enough for you to see rows of computers, before it [italic type]*thud*[roman type] hits something and comes to a halt. [italic type]The door must be blocked from the other room, I'll have to move whatever it is first if I want to get through.[roman type][paragraph break]" instead.
@@ -118,18 +118,18 @@ A computer terminal is scenery in the Study Room. The description of the compute
 
 A  player chair is scenery in the Study Room. The description of player chair is "[italic type]C[']mon [pname], we can't even think about sitting right now.[roman type]".
 
-An empty chair is scenery in the Study Room. The description of the empty chair is "[if reese is not following][italic type]I wonder where reese is...[roman type][otherwise][italic type]I can't wait to go back to bed after all of this.[roman type]".
+An empty chair is scenery in the Study Room. The description of the empty chair is "[if Reese is not following][italic type]I wonder where Reese is...[roman type][otherwise][italic type]I can't wait to go back to bed after all of this.[roman type]".
 
 [End "Study Room" Definition]
 
 [Start "Hallway" Definition]
 The Hallway is a room. The Hallway can be FirstTimeEnterHallway or not FirstTimeEnterHallway. The Hallway is FirstTimeEnterHallway.
-The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to check if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' a small toolkit, and the trash your reese kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
+The description of Hallway is "[if wooden crates are blocking]Looking around the hallway you notice some large wooden crates blocking the south passageway. You glance to the other end of the hallway to check if anything might be useful, but all you see is an orange pylon with a taped on sign that reads 'CLOSED: USE OTHER EXIT,' a small toolkit, and the trash Reese kicked over littered on the floor. [otherwise]You enter the hallway, still annoyed with the construction. [italic type]At least we were able to move the wooden crates.[roman type]".
 
 After going to the hallway for the first time:
 	say "You briskly leave the room, aware that time is quickly ticking away every second. As you step into the hallway, you’re shocked to see the mess. 'WHEN will they finish this construction? Tuition keeps going up, but we can’t even access half of campus. What a scam,' you agitatedly exclaim. Reese kicks over a garbage can in protest.[paragraph break](PRESS ANY KEY)[paragraph break]";
 	wait for any key;
-	now the node of Reese is the reese-ww1-node;
+	now the node of Reese is the Reese-ww1-node;
 	continue the action.
 
 A toolbox is a closed openable container in the Hallway. The toolbox is fixed in place. The description of the toolbox is "You approach the small, metal box hoping something inside might be useful.".
@@ -162,12 +162,12 @@ A plaque is scenery on the log bench. The description of the plaque is "Albert M
 
 [Start "Locker Room" Definition]
 The Locker Room is a room. The Locker Room can be LockerEventDone or not LockerEventDone. The Locker Room is not LockerEventDone.
-The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and your reese always store your supplies. [otherwise] There is a row of lockers along the south wall, this is where you and your reese always store your supplies.".
+The description of Locker Room is "[if unvisited] There is a row of lockers along the south wall, this is where you and Reese always store your supplies. [otherwise] There is a row of lockers along the south wall, this is where you and Reese always store your supplies.".
 
 Your shared locker is a password-protected container.  Your shared locker is in Locker Room.
 The password of Your shared locker is "5020".
 The prompt of Your shared locker is "Combination".
-The password failure of Your shared locker is "[italic type]I don't know the combination...[roman type] Maybe I should ask my reese about it.".
+The password failure of Your shared locker is "[italic type]I don't know the combination...[roman type] Maybe I should ask my Reese about it.".
 The password request of Your shared locker is "Please enter the combination".
 The password success of Your shared locker is "You hear the lock click as it unlocks and the door swings open.".
 
@@ -180,7 +180,7 @@ The description of Your shared locker is "Your shared locker with a number combi
 [Start "Gym" Definition]
 The Gym is a room.
 The description of the Gym is "There are quite a few nets and hoops set up here for various sports. The room is big and open and the ceiling is tall, a nice change from those narrow hallways.".
-The Storage Room is a room. [inaccessable, only for reese]
+The Storage Room is a room. [inaccessable, only for Reese]
 
 [End "Gym" Definition]
 
@@ -213,7 +213,7 @@ Instead of opening the breaker:
 The Gym Switch is a switched off device in the breaker. The Gym Switch is fixed in place. The Gym Switch can be either GymSwitchLocked or GymSwitchUnlocked. The Gym Switch is GymSwitchLocked.
 The Faculty Switch is a switched off device in the breaker. The Faculty Switch is fixed in place.
 
-[Note for Simon: The player should need to call the reese so they can switch both of their breakers at the same time]
+[Note for Simon: The player should need to call Reese so they can switch both of their breakers at the same time]
 At the time when the Gym Switch timeouts:
 	now the Gym Switch is GymSwitchLocked.
 
@@ -250,14 +250,14 @@ The textbook is on the bookshelf. The textbook is undescribed.
 The Faculty Lounge is a dark room.
 The description of Faculty Lounge is "[if unvisited]You see a fridge, coat hangers, and a jacket hung up.[otherwise]You see a kitchenette as well as a bunch of couches and comfy chairs scattered around the room". [placeholder]
 
-Robbie Banks jacket is a thing in the Faculty Lounge. The description of robbie banks jacket is "You watch your reese squint at the stitching on the jacket. 'The name reads 'Robbie Banks.' Banks you say? Well, I could benefit from an ATM withdrawl, if you catch my drift.' Reese nudges you to look at the bills sticking out of the expensive jacket's pocket.".
+Robbie Banks jacket is a thing in the Faculty Lounge. The description of robbie banks jacket is "You watch Reese squint at the stitching on the jacket. 'The name reads 'Robbie Banks.' Banks you say? Well, I could benefit from an ATM withdrawl, if you catch my drift.' Reese nudges you to look at the bills sticking out of the expensive jacket's pocket.".
 Money is an undescribed object in robbie banks jacket. The description of money is "You look at the bills and wonder whether you should take them or not. 'C'mon [pname], it's the least this crummy University can do for us since tuition hikes are the REAL robbery here.' You think back to your class with Proffesor Banks last year: [italic type]Well, they were really nice to me when I had that vet emergency with my dog. They gave me a generous extension even though the deadline had already passed. I could maybe find money elsewhere, people tend to drop change in the cafeteria. Then again... do I have time to scour for change?[roman type]".
 After taking money, say "I feel a little guilty... 'Yeah, but think about all the FOOD we can buy with a $50 bill!'". 
 
 
-A fridge is a closed openable container in the faculty lounge. The description of the fridge is "A stainless steel fridge. You reese eagerly exclaims, 'Oooooh, I wonder what's inside!!'". 
+A fridge is a closed openable container in the faculty lounge. The description of the fridge is "A stainless steel fridge. You Reese eagerly exclaims, 'Oooooh, I wonder what's inside!!'". 
 After opening fridge, say "You open the fridge to reveal a massive white sheet cake with text that reads 'Congrats on retirement Robbie! You think to yourself, Sheesh, how can anyone afford to retire in this economy?". 
-A massive white sheet cake is scenery in the fridge. The description of the massive white sheet cake is "Covered in vanilla frosting with balloon shaped piping, the cake reads'Congrats on retirement Robbie!' Your reese exlcaims, 'That. Cake. Looks. DELICIOUS!!' Your stomach rumbles in agreeance. 'Yeah, but it's not our retirement,' you reluctantly respond.".
+A massive white sheet cake is scenery in the fridge. The description of the massive white sheet cake is "Covered in vanilla frosting with balloon shaped piping, the cake reads'Congrats on retirement Robbie!' Your Reese exlcaims, 'That. Cake. Looks. DELICIOUS!!' Your stomach rumbles in agreeance. 'Yeah, but it's not our retirement,' you reluctantly respond.".
 
 The Coat hangers are scenery in the faculty lounge. The description of the coat hangers is "Some empty hooks, all except one...". 
 The name plaques are scenery on the coat hangers. The description of the name plaques is "Sara, Evenson, Julie, Robbie.".
@@ -283,7 +283,7 @@ The description of the Outdoors Garden is "This is the Outdoors Garden.". [place
 The Cafeteria is a room.
 The description of Cafeteria is "You can smell a lot of delicious food in here, unfortunately only one shop is open. There are a bunch of tables scattered around the room and there is one employee working at McRonalds."
 
-After going to the Cafeteria when the the money is carried and the essential oil is carried and the textbook is carried and the reese is not dying and the reese is not saved:
+After going to the Cafeteria when the the money is carried and the essential oil is carried and the textbook is carried and the Reese is not dying and the Reese is not saved:
 	disable saving of undo state;
 	say "Alright, lets go get some food, we only have 15 minutes until the exam!";
 	the exam starts in 15 turns from now;
@@ -319,12 +319,12 @@ response for Employee when asked about "food":
 
 [This is so that everything does not need to be written twice]
 To say got food:
-	say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' your reese exclaims' [line break] 'Coming up.'";
+	say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' Reese exclaims' [line break] 'Coming up.'";
 	now the player is full;
-	say "You're sitting enjoying the burgers when your reese suddenly burst out in hives, they start to struggle and gasp for air as their throat slowly closes... How could you forget, McRonalds is famous for using peanut oil to cook their burgers! You realize you must quickly find an epi pen to save your dear reeses life..... But it would also suck to be late for the exam.";
+	say "You're sitting enjoying the burgers when Reese suddenly burst out in hives, they start to struggle and gasp for air as their throat slowly closes... How could you forget, McRonalds is famous for using peanut oil to cook their burgers! You realize you must quickly find an epi pen to save your dear Reeses life..... But it would also suck to be late for the exam.";
 	now the Reese is not following;
-	now the reese is dying;
-	the reese succumbs in 6 turns from now.
+	now the Reese is dying;
+	the Reese succumbs in 6 turns from now.
 [End ask about/for food]
 
 Default ask response for the Employee:
@@ -364,20 +364,20 @@ Carry out using something:
 		if the player is full:
 			say " (DONE) ";
 		say "[line break]";
-		if the reese is dying:
+		if the Reese is dying:
 			 say "- Find EPI Pen";
 			if the player is carrying the epi pen: 
 				say " (DONE) ";
 			say "[line break]";
-		if the reese is saved:
+		if the Reese is saved:
 			 say "- Find EPI Pen (DONE) [line break]";
 		say "- [bold type]GET TO EXAM ON TIME!!![roman type][paragraph break]";
 	otherwise if the noun is the epi pen:
-		if the reese is dying and the player is in the cafeteria:
-			now the reese is not dying;
-			now the reese is saved;
-			now the reese is following;
-			say "You managed to save your reese! Now to get to the Exam!";
+		if the Reese is dying and the player is in the cafeteria:
+			now the Reese is not dying;
+			now the Reese is saved;
+			now the Reese is following;
+			say "You managed to save Reese! Now to get to the Exam!";
 		otherwise:
 			say "You can't see anyone to use that on.";
 	otherwise if the noun is the screwdriver:
@@ -408,7 +408,7 @@ Carry out calling someone:
 					else if Reese is in Storage Room:
 						say "Reese doesn[']t pick up the phone. They are probably too busy trying to find the breaker and turn the lights back on.";
 				else if player is in Study Room and wooden door is locked:
-					say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'reese, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
+					say "You call them, but they don[']t answer. Fear and panic begin to set in as you realize your final exam begins in an hour, and your friend has disappeared… You decide to leave a voicemail: 'Reese, where are you? I must have fallen asleep after you left for the bathroom, but why aren[']t you back? I’m locked in our study room and your bag is still here. Can you come let me out?' You end the call and anxiously hope they hear it in time, [italic type]I guess I’ll just have to wait...[roman type][paragraph break]";
 					the Reese arrivesStudyRoom in four turns from now;
 				else if player is in Computer Lab and the Gym Switch is switched off:
 					say "'Hey Reese, I've got a switch here that needs to be activated at the same time as another switch in the Gym. Can you try flipping on the switch in the Gym at the same time? Let do it immediately after I hang up,' you say.[paragraph break]After hearing an approval from Reese, you get ready to flip the switch and hang up.";
@@ -445,17 +445,17 @@ The printed name of wtw-suggestion is "ask them about where they were".
 ww-suggestion is a misc-suggestion.
 The printed name of ww-suggestion is "ask them about what is wrong".
 
-The reese-intro-node is a closed convnode.
-The other-suggestions of reese-intro-node are {wtw-suggestion}.
+The Reese-intro-node is a closed convnode.
+The other-suggestions of Reese-intro-node are {wtw-suggestion}.
 
-The reese-boost-node is a closed convnode.
-The other-suggestions of reese-boost-node are {boost-suggestion}.
+The Reese-boost-node is a closed convnode.
+The other-suggestions of Reese-boost-node are {boost-suggestion}.
 
-The reese-ww1-node is a closed convnode.
-The other-suggestions of reese-ww1-node are {help-suggestion, ww-suggestion}.
+The Reese-ww1-node is a closed convnode.
+The other-suggestions of Reese-ww1-node are {help-suggestion, ww-suggestion}.
 
-The reese-ww2-node is a closed convnode.
-The other-suggestions of reese-ww2-node are {help-suggestion, ww-suggestion}.
+The Reese-ww2-node is a closed convnode.
+The other-suggestions of Reese-ww2-node are {help-suggestion, ww-suggestion}.
 
 [Start Reese following definition]
 Reese can be following or not following. Reese is not following.
@@ -471,18 +471,18 @@ Every turn:
 [End Reese following definition]	
 
 [Start Reese where they were definition (Takes place in the study room)]
-response for reese-intro-node when asked about "where they were":
-	say "'Yeah, I do have something to ask you. What the hell reese, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'[remove wtw-suggestion other suggestion][leavenode]".
+response for Reese-intro-node when asked about "where they were":
+	say "'Yeah, I do have something to ask you. What the hell Reese, where have you been?! I fell asleep studying and you know we have our exam today, why didn’t you wake me!?'[paragraph break]Your friend laughs which annoys you even more since you don’t find the situation to be funny, but then they blurt out, 'I fell asleep too… on the toilet.' Suddenly, your irritation begins to fade away and you start laughing with them. 'Alright,' you say, 'I guess I can forgive you this time. Come on, let’s get out of here.'[remove wtw-suggestion other suggestion][leavenode]".
 	
-default response for reese-intro-node:
-	say "'Huh? what are you talking about? Did you mean to ask me where I was?' Your reese replies.".
+default response for Reese-intro-node:
+	say "'Huh? what are you talking about? Did you mean to ask me where I was?' Your Reese replies.".
 	
 default response for Reese:
-	say "'Sorry I don't understand what you are asking about' Your reese replies.".
+	say "'Sorry I don't understand what you are asking about' Your Reese replies.".
 [End Reese where they were definition]
 
 [Start asking for help definition] [This will need to be handled per room, and will only be suggested when no nodes are active]
-response for reese when asked for "help":
+response for Reese when asked for "help":
 	if the player is in the Hallway and the wooden crates is blocking:
 		say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.";
 		now the wooden crates are not blocking;
@@ -490,55 +490,55 @@ response for reese when asked for "help":
 		say "What do you need help with [pname]?[line break] I don't see anything you need me to do in this room.".
 [End asking for help definition]
 
-[Start asking reese in hallway definition]
-response for reese-ww1-node when asked about "what is wrong":
-	say "'Hey reese, are you alright? You seem preoccupied.' Reese doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about...?[line break][roman type]You silently debate with yourself whether you should return your focus back to moving the crates, or further nudge your reese to open up about what is wrong.[node reese-ww2-node]".
+[Start asking Reese in hallway definition]
+response for Reese-ww1-node when asked about "what is wrong":
+	say "'Hey Reese, are you alright? You seem preoccupied.' Reese doesn't look up from their bubble wrap, but they do let out a heavy sigh. [italic type]What was THAT about...?[line break][roman type]You silently debate with yourself whether you should return your focus back to moving the crates, or further nudge Reese to open up about what is wrong.[node Reese-ww2-node]".
 	
-response for reese-ww1-node when asked for "help": [This is needed]
+response for Reese-ww1-node when asked for "help": [This is needed]
 	say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.[leavenode]";
 	now the wooden crates are not blocking.
 
-response for reese-ww2-node when asked about "what is wrong":
+response for Reese-ww2-node when asked about "what is wrong":
 	say "'We've been friends long enough for me to know when something's on your mind, seriously, what is it?' 'Well,' they begin, 'I'm kind of glad this is happening.' Your concern slowly fades and frustration builds in you once more,[italic type] They're GLAD?[roman type] 'You know how things are for me at home, and I still haven't heard back from any of the jobs I've applied for post-grad,' they continue, 'and just. Well. It's nice to spend more time with you. I've missed hanging out.' Your face softens into a smile.[leavenode][paragraph break]".
 	
-response for reese-ww2-node when asked for "help": [This is needed]
+response for Reese-ww2-node when asked for "help": [This is needed]
 	say "Alright [pname], I'll help you out.[paragraph break]Together, you pick up the heavy crates one by one and move them across the hall. Wiping sweat off your forehead, you're relieved to see the path's now clear.[leavenode]";
 	now the wooden crates are not blocking.
-[End asking reese in hallway definition]
+[End asking Reese in hallway definition]
 
 [Start asking Reese for/about the locker combination definition]
-response for reese when asked about "locker combination":
+response for Reese when asked about "locker combination":
 	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 	
-response for reese when asked for "locker combination":
+response for Reese when asked for "locker combination":
 	say "'You forgot our locker combination?! Come on [pname]... I wrote it down on a pink note, maybe its somewhere in the study room.'[paragraph break]".
 [End asking Reese about the locker combination definition]
 
 [Start asking Reese for a boost definition]
-response for reese-boost-node when asked for "a boost":
+response for Reese-boost-node when asked for "a boost":
 	say "'Okay, stand on my shoulders and I'll boost you up. Don't forget to come back to get me after you unlock this yellow door,' says Reese[remove boost-suggestion other suggestion][leavenode]"; [placeholder]
 	now the player is in the Outdoors Garden;
 	now the Reese is not following;
 		
-response for reese when asked for "a boost": [This is used every other time]
+response for Reese when asked for "a boost": [This is used every other time]
 	say "'What do you need a boost for? This ain[']t the time for acrobatics,' says Reese";
 [End asking Reese for a boost definition]
 
 [This is not currently used.]
-response for reese when asked about "food":
+response for Reese when asked about "food":
 	say "Oh yeah I'm starving', they reply.".
 
 [Start Reese arrives definition]
-At the time when the reese arrivesStudyRoom:
+At the time when the Reese arrivesStudyRoom:
 	now the Reese is in the Study Room;
 	now the Reese is following;
 	now the wooden door is unlocked;
 	now the wooden door is open;
-	say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. reese strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your reese smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]";
-	initiate a conversation with Reese at reese-intro-node, immediately;
+	say "After a few brief moments, you hear a *[italic type]click[roman type]* and see the door swing open. Reese strolls in casually as if nothing[']s happened, and you stare at them in bewilderment. [italic type]How can they be so calm right now?! Our final is starting soon, we don’t even have everything we need for it yet, and we have to walk all the way across campus![roman type] Your Reese smirks back at you and says, 'You look like you have something to ask me?' [italic type]Do I ask them about where they were or quit wasting time?'[roman type][paragraph break]";
+	initiate a conversation with Reese at Reese-intro-node, immediately;
 	continue the action.
 		
-At the time when the reese arrivesLockerRoom:
+At the time when the Reese arrivesLockerRoom:
 		now the Reese is in the Locker Room;
 		now the Reese is following;
 		now the Locker Room is lit;
@@ -570,10 +570,10 @@ Before going southwest:
 			say "You have more things to do before you can enter the exam room. Use your phone for to see the list.";
 			stop the action;
 		otherwise:
-			if the reese is dying:
-				end the story saying "You left your reese behind to suffer.";
+			if the Reese is dying:
+				end the story saying "You left Reese behind to suffer.";
 			otherwise:
-				end the story saying "You made it to the exam on time! And you manged to save your reese!".
+				end the story saying "You made it to the exam on time! And you manged to save Reese!".
 
 Before going west:
 	if the player is in the Hallway and the wooden crates is blocking:
@@ -583,7 +583,7 @@ Before going west:
 Before going east:
 	if the player is in the Gym and the Yellow Door is locked:
 		say "The yellow door is locked but you can see a small vent opening to the upper right. Maybe ask Reese?"; [placeholder]
-		now the node of Reese is the reese-boost-node;
+		now the node of Reese is the Reese-boost-node;
 		stop the action.
 		
 Before going north: 
@@ -603,18 +603,18 @@ Understand "pull [switched off device]" as switching on. Understand "pull [switc
 Understand "use [switched off device]" as switching on. Understand "use [switched on device]" as switching off.  Understand "use[device]" as switching on.
 
 [Start Save and Undo Definitions]
-[When at the cafeteria, discuss how you only have x amount of time to get to the exam on time. Then have the reese have their reaction, and force the player to rush to get the epi pen, make it to the exam, neither, or both.]
+[When at the cafeteria, discuss how you only have x amount of time to get to the exam on time. Then have the Reese have their reaction, and force the player to rush to get the epi pen, make it to the exam, neither, or both.]
 
-At the time when the reese succumbs:
-	if the reese is not saved:
+At the time when the Reese succumbs:
+	if the Reese is not saved:
 		say "You failed to save your friend, they passed into another life, maybe you can still make it to the exam on time.".
 
 At the time when the exam starts:
 	say "You failed to make it to the exam on time.";
-	if reese is not dying:
-		end the story saying "At least you were able to save your reese";
+	if Reese is not dying:
+		end the story saying "At least you were able to save Reese";
 	otherwise:
-		end the story saying "You weren't even able to save your reese";
+		end the story saying "You weren't even able to save Reese";
 	undo the current turn.
 	
 DisablePlayerUndo is a truth state that varies. DisablePlayerUndo is true.
