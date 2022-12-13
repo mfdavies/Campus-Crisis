@@ -141,7 +141,7 @@ After going to the hallway for the first time:
 A toolbox is a closed openable container in the Hallway. The toolbox is fixed in place. The description of the toolbox is "You approach the small, metal box hoping something inside might be useful.".
 After opening the toolbox, say "You flip up the metal clips holding the toolbox lid in place. Looking into the toolbox, you notice an orange screwdriver lying at the top of other various tools.".
 A screwdriver is an object inside the toolbox. The description of the screwdriver is "An orange screwdriver sitting atop other tools.".
-After taking the screwdriver, say "[if wooden crates are blocking][italic type]Hmmm, I'm not sure if this will be useful for moving the crates. Maybe it'll come in handy later?[roman type] You chuckle to yourself over your unintentional pun.[otherwise] Perfect! This will come in handy for the breaker!".
+After taking the screwdriver, say "[if wooden crates are blocking][italic type]Hmmm, I'm not sure if this will be useful for moving the crates. Maybe it'll come in handy later? I'll take it anyways.[roman type] You chuckle to yourself over your unintentional pun.[otherwise] Perfect! This will come in handy for the breaker!".
 
 Some wooden crates are in the Hallway. The wooden crates are fixed in place.
 The wooden crates can be blocking or not blocking. The wooden crates are blocking.
@@ -330,7 +330,7 @@ To say got food:
 	say "You're sitting enjoying the burgers when Reese suddenly burst out in hives, they start to struggle and gasp for air as their throat slowly closes... How could you forget, McRonalds is famous for using peanut oil to cook their burgers! You realize you must quickly find an epi pen to save your dear Reeses life..... But it would also suck to be late for the exam.";
 	now the Reese is not following;
 	now the Reese is dying;
-	the Reese succumbs in 6 turns from now.
+	the Reese succumbs in 10 turns from now.
 [End ask about/for food]
 
 Default ask response for the Employee:
