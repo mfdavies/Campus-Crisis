@@ -1,4 +1,10 @@
-"Campus Crisis" by The Yellow Team
+The story title is "Campus Crisis".
+The story author is "The Yellow Team".
+The story headline is "An Interactive University Struggle".
+The story genre is "Comedy".
+The release number is 1.
+The story description is "Embark on a journey with your lifelong friend as the two of you attempt to reach your final exam before it starts. Together, you and Reese must navigate through various rooms on campus and pick up your exam materials as you go. But each new room poses its own challenge, and the clock continuously ticks closer and closer to your exam..."
+The story creation year is 2022.
 
 Include Common Commands Sidebar by Alice Grove.
 Include Conversation Package by Eric Eve.
@@ -283,7 +289,7 @@ The description of the Outdoors Garden is "This is the Outdoors Garden.". [place
 The Cafeteria is a room.
 The description of Cafeteria is "You can smell a lot of delicious food in here, unfortunately only one shop is open. There are a bunch of tables scattered around the room and there is one employee working at McRonalds."
 
-After going to the Cafeteria when the the money is carried and the essential oil is carried and the textbook is carried and the Reese is not dying and the Reese is not saved:
+After going to the Cafeteria when the the money is carried and the essential oil is carried and the textbook is carried and the writing materials is carried and the Reese is not dying and the Reese is not saved:
 	disable saving of undo state;
 	say "Alright, lets go get some food, we only have 15 minutes until the exam!";
 	the exam starts in 15 turns from now;
@@ -362,6 +368,9 @@ Carry out using something:
 			say " (DONE) ";
 		say "[line break]- CONSUME ALL OF THE CARBS (mmm, delicious food)";
 		if the player is full:
+			say " (DONE) ";
+		say "[line break]- Relax a bit (Locate my essential oils)";
+		if the player is carrying the essential oil:
 			say " (DONE) ";
 		say "[line break]";
 		if the Reese is dying:
@@ -566,14 +575,14 @@ Before going south:
 
 Before going southwest:
 	if the player is in the Outdoors Garden:
-		if the player is not full or the essential oil is not carried or the textbook is not carried:
+		if the player is not full or the essential oil is not carried or the textbook is not carried or the writing materials is not carried:
 			say "You have more things to do before you can enter the exam room. Use your phone for to see the list.";
 			stop the action;
 		otherwise:
 			if the Reese is dying:
-				end the story saying "You left Reese behind to suffer.";
+				end the story saying "You left Reese behind to suffer. [credits]";
 			otherwise:
-				end the story saying "You made it to the exam on time! And you manged to save Reese!".
+				end the story saying "You made it to the exam on time! And you manged to save Reese! [credits]".
 
 Before going west:
 	if the player is in the Hallway and the wooden crates is blocking:
@@ -612,9 +621,9 @@ At the time when the Reese succumbs:
 At the time when the exam starts:
 	say "You failed to make it to the exam on time.";
 	if Reese is not dying:
-		end the story saying "At least you were able to save Reese";
+		end the story saying "At least you were able to save Reese. [credits]";
 	otherwise:
-		end the story saying "You weren't even able to save Reese";
+		end the story saying "You weren't even able to save Reese. [credits]";
 	undo the current turn.
 	
 DisablePlayerUndo is a truth state that varies. DisablePlayerUndo is true.
@@ -631,3 +640,8 @@ Report undoing an action:
 	rule succeeds.
 		
 [End Save and Undo Definitions]
+
+To say credits:
+	say "Created by the Yellow Team:[line break] - Matthew Davies[line break] - Haley Skjersven[line break] - Marie De Baere[line break] - Simon Chen[line break] - Leslie Qin[line break]";
+	say "Used Extensions By:[line break] - Alice Grove[line break] - Eric Eve[line break] -  Erik Temple[line break] -  Gavin Lambert[line break] - Matthew Davies[line break]";
+	say "Cover Image Via:[line break]Chiikun Box/Shutterstock.com[line break]".
