@@ -369,9 +369,6 @@ Carry out using something:
 		say "[line break]- CONSUME ALL OF THE CARBS (mmm, delicious food)";
 		if the player is full:
 			say " (DONE) ";
-		say "[line break]- Relax a bit (Locate my essential oils)";
-		if the player is carrying the essential oil:
-			say " (DONE) ";
 		say "[line break]";
 		if the Reese is dying:
 			 say "- Find EPI Pen";
