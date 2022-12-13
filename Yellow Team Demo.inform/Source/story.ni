@@ -261,7 +261,7 @@ Money is an undescribed object in robbie banks jacket. The description of money 
 After taking money, say "I feel a little guilty... 'Yeah, but think about all the FOOD we can buy with a $50 bill!'". 
 
 
-A fridge is a closed openable container in the faculty lounge. The description of the fridge is "A stainless steel fridge. You Reese eagerly exclaims, 'Oooooh, I wonder what's inside!!'". 
+A fridge is a closed openable container in the faculty lounge. The description of the fridge is "A stainless steel fridge. Reese eagerly exclaims, 'Oooooh, I wonder what's inside!!'". 
 After opening fridge, say "You open the fridge to reveal a massive white sheet cake with text that reads 'Congrats on retirement Robbie! You think to yourself, Sheesh, how can anyone afford to retire in this economy?". 
 A massive white sheet cake is scenery in the fridge. The description of the massive white sheet cake is "Covered in vanilla frosting with balloon shaped piping, the cake reads'Congrats on retirement Robbie!' Your Reese exlcaims, 'That. Cake. Looks. DELICIOUS!!' Your stomach rumbles in agreeance. 'Yeah, but it's not our retirement,' you reluctantly respond.".
 
@@ -327,7 +327,7 @@ response for Employee when asked about "food":
 To say got food:
 	say "'What do you want to eat?' he replies' [line break] 'Two double cheeseburgers!' Reese exclaims' [line break] 'Coming up.'";
 	now the player is full;
-	say "You're sitting enjoying the burgers when Reese suddenly burst out in hives, they start to struggle and gasp for air as their throat slowly closes... How could you forget, McRonalds is famous for using peanut oil to cook their burgers! You realize you must quickly find an epi pen to save your dear Reeses life..... But it would also suck to be late for the exam.";
+	say "You're sitting enjoying the burgers when Reese suddenly burst out in hives, they start to struggle and gasp for air as their throat slowly closes... How could you forget, McRonalds is famous for using peanut oil to cook their burgers! You realize you must quickly find an epi pen to save your dear friend Reese's life..... But it would also suck to be late for the exam.";
 	now the Reese is not following;
 	now the Reese is dying;
 	the Reese succumbs in 10 turns from now.
@@ -408,7 +408,7 @@ Carry out calling someone:
 			if Reese is not following:
 				if player is in Locker Room and Locker Room is dark:
 					if Reese is in Gym:
-						say "You try to calm yourself as you call the Reese, who was separated from you by a heavy automatic door: 'Hello? As soon as you left, the lights in here turned off! The door isn[']t budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker there,' the Reese says in a nonchanlant tone. You hear the sound of their footsteps moving farther away, at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
+						say "You try to calm yourself as you call Reese who is separated by the heavy automatic door. 'Hello? As soon as you left, the lights in here turned off! The door isn't budging either. Can you look around for some sort of switch to turn the electricity back on?'[paragraph break]'Sure sure... just hang in there. I'm going to head to the gym storage room and look for the breaker in there,' says Reese in a nonchanlant tone. You hear the sound of their footsteps moving farther away at a normal walking pace.[paragraph break]'What are they doing being so casual in a situation like this?' You look at the clock on your phone advancing steadly, but all you can do it wait again.";
 						now Reese is in the Storage Room;
 						the Reese arrivesLockerRoom in two turns from now;
 					else if Reese is in Storage Room:
