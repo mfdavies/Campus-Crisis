@@ -160,8 +160,8 @@ A directory is scenery in Central Hub. The description of the directory is "Blur
 A plant is scenery in central hub. The description of plant is "How lively."
 
 A log bench is scenery in central hub. The description of log bench is "Right, the founder's bench. What does it say on the plaque?" 
-A gold key is an object on the log bench. The description of the gold key is "You notice a key shining atop the log bench."
-After taking the key, say "I wonder what door this is for.".
+A gold key is an object on the log bench. The description of the gold key is "You notice a gold key shining atop the log bench."
+After taking the gold key, say "I wonder what door this is for.".
 
 A plaque is scenery on the log bench. The description of the plaque is "Albert M. Ford."
 [End "Central Hub" Definition]
@@ -179,20 +179,22 @@ The password success of Your shared locker is "You hear the lock click as it unl
 
 
 The Essential oil is an object inside Your shared locker.
+After taking the essential oil, say "'You know me, I CAN'T write an exam without the calming scent of lavendar. And besides, 'memory recall' is a real thing! I always have to study with this too.' You take a deep breath in.".
 The Writing materials is an object in Your shared locker.
+After taking the writing materials, say "Awesome, that's two items off my 'To Do' list!". 
 The description of Your shared locker is "Your shared locker with a number combination lock.".
 [End "Locker Room" Definition]
 
 [Start "Gym" Definition]
 The Gym is a room.
-The description of the Gym is "There are quite a few nets and hoops set up here for various sports. The room is big and open and the ceiling is tall, a nice change from those narrow hallways.".
+The description of the Gym is "There are quite a few nets and hoops set up here for various sports. The room is big and open and the ceiling is tall, a nice change from those narrow hallways. You notice Reece left the door to the breaker room open.".
 The Storage Room is a room. [inaccessable, only for Reese]
 
 [End "Gym" Definition]
 
 [Start "Computer Lab" Definition]
 The Computer Lab is a room.
-The description of Computer Lab is "There are tons of computers in here. There's a password note next to one of them.".
+The description of Computer Lab is "You walk into the 90s-esque computer lab and can't help but laugh everytime you see the big brick computer monitors. 'These really need to be updated, I doubt most of them are even still functional.' You look around the outdated room, the bright fluorescent lights only seem to make this room look worse. 'C'mon Reese, let's go print off our student IDs.' The two of you wander over to the desktop computer, the only one that doesn't take eons to start up. Next to the desktop is a password note.".
 
 Check opening the locked plain door:
 	If computer lab is visited:
@@ -257,7 +259,7 @@ The Faculty Lounge is a dark room.
 The description of Faculty Lounge is "[if unvisited]You see a fridge, coat hangers, and a jacket hung up.[otherwise]You see a kitchenette as well as a bunch of couches and comfy chairs scattered around the room". [placeholder]
 
 Robbie Banks jacket is a thing in the Faculty Lounge. The description of robbie banks jacket is "You watch Reese squint at the stitching on the jacket. 'The name reads 'Robbie Banks.' Banks you say? Well, I could benefit from an ATM withdrawl, if you catch my drift.' Reese nudges you to look at the bills sticking out of the expensive jacket's pocket.".
-Money is an undescribed object in robbie banks jacket. The description of money is "You look at the bills and wonder whether you should take them or not. 'C'mon [pname], it's the least this crummy University can do for us since tuition hikes are the REAL robbery here.' You think back to your class with Proffesor Banks last year: [italic type]Well, they were really nice to me when I had that vet emergency with my dog. They gave me a generous extension even though the deadline had already passed. I could maybe find money elsewhere, people tend to drop change in the cafeteria. Then again... do I have time to scour for change?[roman type]".
+Money is an undescribed object in robbie banks jacket. The description of money is "You look at the bills and wonder whether you should take them or not. 'C'mon [pname], it's the least this darn University can do for us since tuition hikes are the REAL robbery here.' You think back to your class with Proffesor Banks last year: [italic type]Well, they were really nice to me when I had that vet emergency with my dog. They gave me a generous extension even though the deadline had already passed. I could maybe find money elsewhere, people tend to drop change in the cafeteria. Then again... do I have time to scour for change?[roman type]".
 After taking money, say "I feel a little guilty... 'Yeah, but think about all the FOOD we can buy with a $50 bill!'". 
 
 
@@ -276,13 +278,14 @@ A sign on the wall is scenery in the faculty lounge. The description of the sign
 
 [Start "Nurses Room" Definition]
 The Nurses Room is a room.
-The description of the Nurses Room is "There are a number of beds here with curtains separating each one. This place has seen much less traffic ever since the panademic was cured.". [placeholder]
+The description of the Nurses Room is "You walk into the bright, sterile clinic, but no one is sitting at the reception desk. 'UGH! It must be too early still!' Luckily you look to the right of the desk to see a sign that says 'FREE EPI-PENS' with a wicker basket underneath holding one. last. epi-pen. You scream out of relief!". 
 A Epi Pen is a thing in the Nurses Room.
+After taking epi pen, say "FINALLY! Can I make it back in time?! I hope so... Hang in there Reece, I'm coming for you!!".
 [End "Nurses Room" Definition]
 
 [Start "Outdoors Garden" Definition]
 The Outdoors Garden is a room.
-The description of the Outdoors Garden is "This is the Outdoors Garden.". [placeholder]
+The description of the Outdoors Garden is "You look around the open courtyard, grateful it isn't raining. You quickly look up at the sky and see a shooting star. You think to yourself, I hope that's good luck... There are various shrubs and flowers lining the sides of the building.". 
 [End "Outdoors Garden" Definition]
 
 [Start "Cafeteria" Definition]
