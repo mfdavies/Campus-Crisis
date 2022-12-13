@@ -208,8 +208,11 @@ The prompt of Desktop Computer is "Password".
 The password request of Your Desktop Computer is "Please enter the Password: _ _ _ _ ".
 The password success of Your Desktop Computer is "You logged in successfully. You printed out your Student ID's, and you can collect them at the printer.".
 The password failure of Your Desktop Computer is "The computer beeps as if its mad at you.. that was the wrong password".
+The printer is scenery in the Computer lab. 
 
-The printer is scenery in the Computer lab. The Student ID is on the printer. The description of the Student ID is "'Ha, we look so young in our ID photos! I can't believe these were taken 4 years ago...'". 
+Check opening the locked Desktop Computer:
+	If Desktop Computer is unlocked:
+		now the The Student ID is on the printer. The description of the Student ID is "'Ha, we look so young in our ID photos! I can't believe these were taken 4 years ago...'". 
 
 
 The breaker is a closed openable container. The breaker is in the Computer Lab. The breaker is fixed in place.
