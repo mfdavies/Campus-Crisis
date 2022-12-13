@@ -289,7 +289,7 @@ The description of the Outdoors Garden is "This is the Outdoors Garden.". [place
 The Cafeteria is a room.
 The description of Cafeteria is "You can smell a lot of delicious food in here, unfortunately only one shop is open. There are a bunch of tables scattered around the room and there is one employee working at McRonalds."
 
-After going to the Cafeteria when the the money is carried and the essential oil is carried and the textbook is carried and the writing materials is carried and the Reese is not dying and the Reese is not saved:
+After going to the Cafeteria when the the money is carried and the essential oil is carried and the textbook is carried and the writing materials is carried and the Student ID is carried and the Reese is not dying and the Reese is not saved:
 	disable saving of undo state;
 	say "Alright, lets go get some food, we only have 15 minutes until the exam!";
 	the exam starts in 15 turns from now;
@@ -572,7 +572,7 @@ Before going south:
 
 Before going southwest:
 	if the player is in the Outdoors Garden:
-		if the player is not full or the essential oil is not carried or the textbook is not carried or the writing materials is not carried:
+		if the player is not full or the essential oil is not carried or the textbook is not carried or the writing materials is not carried or the Student ID is not carried:
 			say "You have more things to do before you can enter the exam room. Use your phone for to see the list.";
 			stop the action;
 		otherwise:
