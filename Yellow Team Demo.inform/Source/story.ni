@@ -247,9 +247,9 @@ Instead of switching off the Faculty Switch when the Faculty Switch is switched 
 
 [Start "Library" Definition]
 The Library is a room.
-The description of Library is "There are tons of books scattered about, looks like you were not the only one panic-studying.".
+The description of Library is "There are tons of books scattered about various bookshelves, looks like you were not the only one panic-studying.".
 
-A bookshelf is scenery in the Study Room. The description of thebookshelf is "A massive bookshelf with more books than I'll ever need. Oh! There is the textbook that I'm looking for.".
+A bookshelf is scenery in the Library. The description of the bookshelf is "A massive bookshelf with more books than I'll ever need. Oh! There is the textbook that I'm looking for.".
 
 The textbook is on the bookshelf. The textbook is undescribed.
 [End "Library" Definition]
